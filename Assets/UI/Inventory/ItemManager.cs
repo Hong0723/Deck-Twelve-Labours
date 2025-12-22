@@ -15,19 +15,19 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public GameObject activeButton;
     public GameObject DeleteButton;
     private bool isEnterMouse;
-
+    public Transform dragLayer; // Inspector에 DragLayer 연결 (Root Canvas 하위)
     //ScriptableObject 아이템 데이터 연결
     [Header("Item Data")]
-    public ItemData itemData;
+    public ItemBase itemData;
 
     //private Canvas dragCanvas; // 드래그 중에 임시로 붙는 Canvas
     //public RectTransform rect;
-    public Transform dragLayer; // Inspector에 DragLayer 연결 (Root Canvas 하위)
+    
     private Transform originalParent;
     private int originalSiblingIndex;
     private CanvasGroup canvasGroup;
 
-    void Start()
+    void Awake()
     {
         Image img = GetComponent<Image>();
         // 완전히 투명해도 감지되게 (0은 완전 투명도까지 감지)
@@ -38,7 +38,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         //아이템 아이콘 표시
         if (itemData != null)
         {
-            img.sprite = itemData.itemIcon;
+            //img.sprite = itemData.itemIcon;--------------------
         }
 
         // CanvasGroup 보장
@@ -172,6 +172,8 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         */
         if (dragLayer == null)
             dragLayer = GameObject.Find("DragLayer").transform;
+            //dragLayer = GameObject.Find("DragLayer")
+             //                 .GetComponent<RectTransform>();
         // 원래 부모와 인덱스 저장
         //originalParent = transform.parent;
         //originalSiblingIndex = transform.GetSiblingIndex();
@@ -203,6 +205,12 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         // Raycast 다시 활성화
         canvasGroup.blocksRaycasts = true;
+    }
+
+    //아이템 충돌이후 아이템을 인벤토리에 등록
+    public void ItemToInventory()
+    {
+        Inventory.Instance.AddItem(gameObject);
     }
     
 }

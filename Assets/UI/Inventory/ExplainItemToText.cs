@@ -12,7 +12,7 @@ public class ExplainItemToText : MonoBehaviour
 
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         Debug.Log("ExplainItemToText Start ½ÇÇà");
         Debug.Log($"Instance: {Instance}, descriptionTextUI: {descriptionTextUI}");

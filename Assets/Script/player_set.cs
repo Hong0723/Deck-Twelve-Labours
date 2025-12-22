@@ -32,6 +32,7 @@ public class player_set : MonoBehaviour
 
         // 2. 애니메이터 상태 업데이트
         UpdateAnimationState();
+        
     }
 
     void FixedUpdate()
