@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour
     public Player player;
     public Enemy enemy;
     public TextMeshProUGUI turnText;
+    public CardSystem cardSystem;
 
     void Awake()
     {
@@ -26,6 +27,10 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
+        cardSystem.Init();
+        cardSystem.Draw(5);
+        DebugHand();
+
         state = BattleState.PlayerTurn;
         enemy.OnPlayerTurnStart();   // ✅ 첫 턴 Defense 반영
         UpdateTurnUI();
@@ -91,5 +96,28 @@ public class BattleManager : MonoBehaviour
             BattleState.Defeat => "DEFEAT",
             _ => ""
         };
+    }
+
+    void DebugHand()
+    {
+        if (cardSystem == null)
+        {
+            Debug.LogWarning("CardSystem이 BattleManager에 연결 안됨");
+            return;
+        }
+
+        if (cardSystem.hand == null)
+        {
+            Debug.LogWarning("CardSystem.hand가 null임 (CardSystem 스크립트 확인)");
+            return;
+        }
+
+        string s = "HAND: ";
+        foreach (var c in cardSystem.hand)
+        {
+            if (c == null) { s += "(null) "; continue; }
+            s += c.cardName + " ";
+        }
+        Debug.Log(s);
     }
 }

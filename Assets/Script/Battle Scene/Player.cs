@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
+        int absorbed = Mathf.Min(block, dmg);
+        block -= absorbed; 
+        dmg -= absorbed; 
+
         currentHP = Mathf.Max(currentHP - dmg, 0);
         UpdateHPBar();
     }
@@ -30,7 +34,7 @@ public class Player : MonoBehaviour
     void UpdateHPBar()
     {
         if (hpBar)
-            hpBar.Set(currentHP, maxHP, 0);
+            hpBar.Set(currentHP, maxHP, block);
     }
 
     public bool IsDead() => currentHP <= 0;
