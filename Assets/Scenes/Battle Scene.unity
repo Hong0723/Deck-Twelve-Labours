@@ -396,6 +396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 541816129}
   - component: {fileID: 541816128}
+  - component: {fileID: 541816130}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -419,6 +420,7 @@ MonoBehaviour:
   player: {fileID: 269354710}
   enemy: {fileID: 60189824}
   turnText: {fileID: 1359793439}
+  cardSystem: {fileID: 541816130}
 --- !u!4 &541816129
 Transform:
   m_ObjectHideFlags: 0
@@ -434,6 +436,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &541816130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541816127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd2072b902d949b449e7202725b8df16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardSystem
+  initialDeck:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  drawPile: []
+  hand: []
+  discardPile: []
 --- !u!1 &912489601
 GameObject:
   m_ObjectHideFlags: 0
