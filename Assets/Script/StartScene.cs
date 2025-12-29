@@ -5,23 +5,23 @@ public class StartScene : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Game Scene"); // ´ÙÀ½ ¾ÀÀ¸·Î ÀÌµ¿
+        SceneManager.LoadScene("UI Scene"); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     }
 
     public void OpenOption()
     {
-        Debug.Log("¿É¼ÇÃ¢ ¿­±â (³ªÁß¿¡ ±¸Çö)");
+        Debug.Log("ï¿½É¼ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½)");
     }
 
     public void ExitGame()
     {
-        Debug.Log("°ÔÀÓ Á¾·á");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 
-        // ¿¡µðÅÍ È¯°æ¿¡¼­´Â Á¾·á°¡ ¾È µÇ¹Ç·Î Á¶°Ç ºÐ±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¯ï¿½æ¿¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½á°¡ ï¿½ï¿½ ï¿½Ç¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // ÇÃ·¹ÀÌ ¸ðµå ÁßÁö
+        UnityEditor.EditorApplication.isPlaying = false; // ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 #else
-        Application.Quit(); // ºôµåµÈ ½ÇÇà ÆÄÀÏ¿¡¼­´Â ½ÇÁ¦·Î Á¾·áµÊ
+        Application.Quit(); // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 #endif
     }
 }

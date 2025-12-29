@@ -14,20 +14,16 @@ public class ExplainItemToText : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        Debug.Log("ExplainItemToText Start 실행");
-        Debug.Log($"Instance: {Instance}, descriptionTextUI: {descriptionTextUI}");
-
-        // 이미 인스턴스가 존재한다면 중복 제거
+        //Debug.Log("ExplainItemToText Start 실행");
+        //Debug.Log($"Instance: {Instance}, descriptionTextUI: {descriptionTextUI}");
+        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-
-        // 인스턴스 등록
-        Instance = this;
-
-        // 씬 전환 시 파괴되지 않도록 (필요할 때만)
+        
+        Instance = this;        
         DontDestroyOnLoad(gameObject);
 
         descriptionTextUI.gameObject.SetActive(false);//텍스트를 숨김상태로 시작
@@ -38,13 +34,13 @@ public class ExplainItemToText : MonoBehaviour
         
         if (descriptionTextUI != null)
         {
-            Debug.LogWarning($"[ItemManager] descriptionTextUI가 설정");
+            //Debug.LogWarning($"[ItemManager] descriptionTextUI가 설정");
             descriptionTextUI.text = description;
             descriptionTextUI.gameObject.SetActive(true);
         }
         else
         {
-            Debug.LogWarning($"[ItemManager] descriptionTextUI가 설정되지 않음: {name}");
+            //Debug.LogWarning($"[ItemManager] descriptionTextUI가 설정되지 않음: {name}");
         }
     }
 
@@ -55,7 +51,6 @@ public class ExplainItemToText : MonoBehaviour
         if (descriptionTextUI != null)
         {
             descriptionTextUI.gameObject.SetActive(false);
-        }
-        
+        }        
     }
 }
