@@ -914,7 +914,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 62606037}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -6194,7 +6193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 218773035}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -8119,7 +8117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 309711409}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -8218,7 +8215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 322498394}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -8379,7 +8375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 332098650}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -9238,7 +9233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 369891484}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -13885,7 +13879,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 377215232}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -13984,7 +13977,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 379004842}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -16543,7 +16535,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 485557281}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -17792,7 +17783,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 545217075}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -17981,7 +17971,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 553175789}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -18356,7 +18345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 568124880}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -18730,7 +18718,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 582103704}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -19787,7 +19774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 648098144}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -25031,7 +25017,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 954786751}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -25474,7 +25459,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 963365721}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -26218,7 +26202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 984440472}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -29028,7 +29011,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1094815813}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -29127,7 +29109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1097693505}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -30249,7 +30230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1174363818}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -34197,7 +34177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222015270}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -39247,7 +39227,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1383180131}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -40450,7 +40429,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1414361369}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -40945,7 +40923,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1445042206}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -45029,7 +45006,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.6, y: 0.9}
+  m_Size: {x: 0.6, y: 0.3}
   m_Direction: 0
 --- !u!114 &1622224644
 MonoBehaviour:
@@ -46327,7 +46304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1695575740}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -46713,7 +46689,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1700391989}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -50257,7 +50232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1883866499}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -50780,7 +50754,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1915968266}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -51530,7 +51503,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1978825082}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -51843,7 +51815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 1994381688}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -52066,7 +52037,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 2010774732}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -53729,7 +53699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 2097690502}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
@@ -59791,7 +59760,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
   rectTransform: {fileID: 3450459335330373091}
-  originalPosition: {x: 0, y: 0, z: 0}
   mainCam: {fileID: 519420031}
   isDragging: 0
   savedParent: {fileID: 0}
