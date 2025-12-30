@@ -1011,6 +1011,7 @@ MonoBehaviour:
   textPosition: {x: 0, y: -3, z: 0}
   text_box: {fileID: 848277529}
   text: {fileID: 1012117822}
+  button: {fileID: 2078490073}
 --- !u!4 &1344157780
 Transform:
   m_ObjectHideFlags: 0
@@ -1155,7 +1156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1080, y: -611}
+  m_AnchoredPosition: {x: 1028.4, y: -608}
   m_SizeDelta: {x: 252.6, y: 79.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2078490073
