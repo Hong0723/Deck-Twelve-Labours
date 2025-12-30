@@ -16,6 +16,10 @@ public class CharacterManager : MonoBehaviour
     public TextMeshProUGUI text;
     private int currentIndex = -1;      // 현재 등장 중인 캐릭터 인덱스
 
+    public Button button;
+
+
+    
     void Start()
     {
         // UI Scene이 아닐 경우 실행 금지
@@ -24,6 +28,7 @@ public class CharacterManager : MonoBehaviour
 
         // 모든 캐릭터 화면 밖으로 이동
 
+        button.gameObject.SetActive(false);
         text_box.position = offscreenPosition;
         text.text = "";
         foreach (var c in characters)
@@ -42,13 +47,15 @@ public class CharacterManager : MonoBehaviour
         // 스페이스 또는 엔터
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
+            button.gameObject.SetActive(true);
             HandleCharacterSequence();
         }
     }
 
-    void HandleCharacterSequence()
+    public void HandleCharacterSequence()
     {
         currentIndex++;
+
 
         // 마지막 이후 → Game Scene 로드
         switch (currentIndex)
