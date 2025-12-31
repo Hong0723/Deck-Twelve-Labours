@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     public HPBar hpBar;
 
+    public Animator animator;//±èµ¿ÁÖ
+
     void Start()
     {
         currentHP = maxHP;
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
 
         currentHP = Mathf.Max(currentHP - dmg, 0);
         UpdateHPBar();
+        //±èµ¿ÁÖ
+        HurtedAnimation();
     }
 
     public void Heal(int amount)
@@ -38,4 +42,19 @@ public class Player : MonoBehaviour
     }
 
     public bool IsDead() => currentHP <= 0;
+
+    //±èµ¿ÁÖ
+    public void Attack1Animation()
+    {
+        animator.SetTrigger("Attack1");
+    }
+
+    public void Attack2Animation()
+    {
+        animator.SetTrigger("Attack2");
+    }    
+        public void HurtedAnimation()
+    {
+        animator.SetTrigger("Hurted");
+    }
 }
