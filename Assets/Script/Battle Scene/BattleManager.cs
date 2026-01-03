@@ -45,9 +45,9 @@ public class BattleManager : MonoBehaviour
         if (state == BattleState.PlayerTurn && Input.GetKeyDown(KeyCode.Space))
         {
 
-            //김동주
+            
+            player.SetDefensed(false);
             player.Attack1Animation();
-
 
             enemy.TakeHitFromPlayer(10);
             

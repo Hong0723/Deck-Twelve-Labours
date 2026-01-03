@@ -9,8 +9,10 @@ public class player_set : MonoBehaviour
     private Vector2 movement;
     
     // 마지막으로 입력한 방향을 저장할 변수 (Idle 상태를 위해)
-    private Vector2 lastMoveDirection; 
+    private Vector2 lastMoveDirection;
 
+    //GameScene에서 BattleScene으로 넘어갈때 필요한 현재 플레이어 정보(스크립터블 오브젝트)
+    [SerializeField] private MonsterType PlayerInfo;
     void Start()
     {
         // 필요한 컴포넌트들을 미리 가져옵니다.
@@ -22,6 +24,9 @@ public class player_set : MonoBehaviour
         lastMoveDirection = new Vector2(0, -1); 
         anim.SetFloat("moveX", 0);
         anim.SetFloat("moveY", -1);
+
+        //static에 값 저장
+        DeliverBattleData.PlayerInfo = PlayerInfo;
     }
 
     void Update()
