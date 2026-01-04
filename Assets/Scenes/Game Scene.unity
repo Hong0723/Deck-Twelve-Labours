@@ -14578,7 +14578,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 0}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &392014438
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15892,7 +15891,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 0}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &465247456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19448,7 +19446,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 0}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &638127321
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20561,7 +20558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 0}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &693300788
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28547,7 +28543,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 0}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &1087435057
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29776,7 +29771,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 0}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &1157502352
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40111,7 +40105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 0}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &1405533747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48701,7 +48694,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 11400000, guid: ecc34e9830d528740a1702bd99088e50, type: 2}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &1792369341
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -51115,7 +51107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 0}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &1925427033
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52724,7 +52715,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
   MonsterInfo: {fileID: 0}
-  PlayerInfo: {fileID: 0}
 --- !u!61 &2045085436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53582,6 +53572,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1177272032}
     m_Modifications:
+    - target: {fileID: 97940379881846774, guid: 78e9efbdf9b33994da8dfbe530f65e5e, type: 3}
+      propertyPath: layerLower
+      value: Ground1
+      objectReference: {fileID: 0}
+    - target: {fileID: 97940379881846774, guid: 78e9efbdf9b33994da8dfbe530f65e5e, type: 3}
+      propertyPath: layerUpper
+      value: Ground2
+      objectReference: {fileID: 0}
+    - target: {fileID: 97940379881846774, guid: 78e9efbdf9b33994da8dfbe530f65e5e, type: 3}
+      propertyPath: sortingLayerLower
+      value: Ground1
+      objectReference: {fileID: 0}
+    - target: {fileID: 97940379881846774, guid: 78e9efbdf9b33994da8dfbe530f65e5e, type: 3}
+      propertyPath: sortingLayerUpper
+      value: Ground2
+      objectReference: {fileID: 0}
     - target: {fileID: 6075975974975622417, guid: 78e9efbdf9b33994da8dfbe530f65e5e, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -58391,6 +58397,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1177272032}
     m_Modifications:
+    - target: {fileID: 2577585254963922478, guid: fb2df5b680b64b449a78162ebcd98e97, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577585254963922478, guid: fb2df5b680b64b449a78162ebcd98e97, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1197162843
+      objectReference: {fileID: 0}
     - target: {fileID: 2577585254963922481, guid: fb2df5b680b64b449a78162ebcd98e97, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -62162,6 +62176,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5628018140324151388, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5628018140324151391, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.871
@@ -62176,7 +62194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5628018140324151391, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.84
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628018141983903104, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903106, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
       propertyPath: m_RootOrder
@@ -62233,6 +62255,18 @@ PrefabInstance:
     - target: {fileID: 5628018141983903107, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628018141983903107, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628018141983903107, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628018141983903107, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1197162843
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903116, guid: ef67ba864d1ecc042b5f4cf48455c0a6, type: 3}
       propertyPath: m_Enabled
@@ -65930,6 +65964,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1177272032}
     m_Modifications:
+    - target: {fileID: 8150476868300563374, guid: 2e2ac125e54a1e44780363d638b1df34, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150476868300563374, guid: 2e2ac125e54a1e44780363d638b1df34, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150476868300563374, guid: 2e2ac125e54a1e44780363d638b1df34, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1197162843
+      objectReference: {fileID: 0}
     - target: {fileID: 8150476868300563375, guid: 2e2ac125e54a1e44780363d638b1df34, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -67081,8 +67127,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1467707186}
   - {fileID: 1622312051}
-  - {fileID: 5628018140380570485}
   - {fileID: 974464233}
   - {fileID: 6956127013483754481}
   - {fileID: 494124837}
   - {fileID: 2011815143}
+  - {fileID: 5628018140380570485}
