@@ -1,4 +1,4 @@
-using NUnit.Framework.Internal.Execution;
+ï»¿using NUnit.Framework.Internal.Execution;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,22 +14,29 @@ public class ItemSlot {
     public bool contained;
     public float posX;
     public float posY;
+    public bool isStand;
 }
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
     private Camera mainCamera;
-    public Canvas myInventory;//ÀÎº¥Åä¸® canvas
-    public bool isWatchInventory;//ÀÎº¥Åä¸® ²¯´ÙÄ×´Ù filpflop
-    public List<ItemSlot> itemslots;//¾ÆÀÌÅÛ ½½·Ô(itembackground)ÀÇ °ÔÀÓ¿ÀºêÁ§Æ® ¸®½ºÆ®
+    public Canvas myInventory;//ì¸ë²¤í† ë¦¬ canvas
+    public bool isWatchInventory;//ì¸ë²¤í† ë¦¬ ê»ë‹¤ì¼°ë‹¤ filpflop
+    public List<ItemSlot> itemslots;//ì•„ì´í…œ ìŠ¬ë¡¯(itembackground)ì˜ ê²Œì„ì˜¤ë¸Œì íŠ¸ ë¦¬ìŠ¤íŠ¸
     public static Inventory Instance { get; private set; }
-    private int itemIndex;//¾ÆÀÌÅÛÀÌ ºñ¾îÀÖ°í Á¦ÀÏ ÁÂ»ó´Ü¿¡ À§Ä¡ÇÑ itemslotsÀÇ index
-    private bool isChangeSlot;//ÃßÈÄ ÀÎº¥Åä¸® È®Àå°°Àº°Å ÇÒ¶§ true·Î ÇÏ¸é ´Ù½Ã Á¤·ÄÇÏ´Â flag
+    private int itemIndex;//ì•„ì´í…œì´ ë¹„ì–´ìˆê³  ì œì¼ ì¢Œìƒë‹¨ì— ìœ„ì¹˜í•œ itemslotsì˜ index
+    private bool isChangeSlot;//ì¶”í›„ ì¸ë²¤í† ë¦¬ í™•ì¥ê°™ì€ê±° í• ë•Œ trueë¡œ í•˜ë©´ ë‹¤ì‹œ ì •ë ¬í•˜ëŠ” flag
+    private bool firstSort;
+    private List<List<ItemSlot>> grid;
+    [SerializeField]
+    private GameObject slotPrefab;
+    public GameObject Content;
+    
     void Awake()
     {
-        //½Ì±ÛÅæ
-        if (Instance != null && Instance != this)
+        //ì‹±ê¸€í†¤
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
@@ -41,14 +48,19 @@ public class Inventory : MonoBehaviour
         isWatchInventory = false;
         itemIndex = 0;
         isChangeSlot = true;
+        firstSort = false;
+
+        grid = new List<List<ItemSlot>>();
+        grid.Add(new List<ItemSlot>(4));
+        
     }
 
-   
+
     void Update()
     {
 
         myInventory.transform.position = mainCamera.transform.position;
-        //ÀÎº¥Åä¸® ÄÑ±â²ô±â
+        //ì¸ë²¤í† ë¦¬ ì¼œê¸°ë„ê¸°
         if (Input.GetKeyDown(KeyCode.I))
         {            
             if (isWatchInventory)
@@ -62,48 +74,61 @@ public class Inventory : MonoBehaviour
                 isWatchInventory = true;
             }
 
-            //ÀÎº¥Åä¸®°¡ ÄÑÁ®ÀÖ°í Á¤·ÄÀ» ÇØ¾ßÇÑ´Ù¸é
+            //ì¸ë²¤í† ë¦¬ê°€ ì¼œì ¸ìˆê³  ì •ë ¬ì„ í•´ì•¼í•œë‹¤ë©´
             if (isWatchInventory && isChangeSlot)
             {
                 StartCoroutine(LateSort());
                 isChangeSlot = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            AddInventorySlot(4);
+        }
     }
+    
 
+    //itemslotì—ì„œ í˜¸ì¶œí•©ë‹ˆë‹¤
+    //1ì°¨ì ìœ¼ë¡œ itemslotsë¦¬ìŠ¤íŠ¸ì— itembackgroundì˜¤ë¸Œì íŠ¸ ë“±ë¡
+    public void Enroll(GameObject gameObject, int posx, int posy, bool isstand)
+    {
+        ItemSlot slot = CreateItemSlotObj(gameObject, posx, posy, isstand);
+        itemslots.Add(slot);               
+    }   
 
-    //itemslot¿¡¼­ È£ÃâÇÕ´Ï´Ù
-    //1Â÷ÀûÀ¸·Î itemslots¸®½ºÆ®¿¡ itembackground¿ÀºêÁ§Æ® µî·Ï
-    public void Enroll(GameObject gameObject,int posx,int posy)
+    public ItemSlot CreateItemSlotObj(GameObject gameObject, int posx, int posy, bool isstand)
     {
         ItemSlot slot = new ItemSlot();
         slot.obj = gameObject;
         slot.contained = false;
         slot.posX = posx;
-        slot.posY = posy;        
-        itemslots.Add(slot);               
-    }   
+        slot.posY = posy;
+        slot.isStand = isstand;
+        return slot;
+    }
 
     public bool CheckImagePosition(PointerEventData eventData, GameObject gameobject)
     {
-        // ÇöÀç ¾ÆÀÌÅÛÀÌ µé¾îÀÖ´Â ½½·Ô ÀÎµ¦½º Ã£±â      
+        // í˜„ì¬ ì•„ì´í…œì´ ë“¤ì–´ìˆëŠ” ìŠ¬ë¡¯ ì¸ë±ìŠ¤ ì°¾ê¸°      
         ItemManager manager = gameobject.GetComponent<ItemManager>();
         int remainIndex = manager.GetMyItemslotsIndex();
-        //Debug.Log($"ÇöÀç ¾ÆÀÌÅÛÀÌ µé¾îÀÖ´ÂÀ§Ä¡ {remainIndex}");
+        //Debug.Log($"í˜„ì¬ ì•„ì´í…œì´ ë“¤ì–´ìˆëŠ”ìœ„ì¹˜ {remainIndex}");
         if (remainIndex < 0)
         {
             
-            Debug.LogError($"ÀÎµ¦½º {remainIndex} ±âÁ¸ ½½·ÔÀ» Ã£Áö ¸øÇÔ");
+            Debug.LogError($"ì¸ë±ìŠ¤ {remainIndex} ê¸°ì¡´ ìŠ¬ë¡¯ì„ ì°¾ì§€ ëª»í•¨");
             return false;
         }
-        //Debug.Log($"¸®½ºÆ® °³¼ö {itemslots.Count}");
-        // ¸ğµç ½½·Ô ¼øÈ¸
+        //Debug.Log($"ë¦¬ìŠ¤íŠ¸ ê°œìˆ˜ {itemslots.Count}");
+        // ëª¨ë“  ìŠ¬ë¡¯ ìˆœíšŒ
         for (int i = 0; i < itemslots.Count; i++)
         {
             GameObject slot = itemslots[i].obj;
-            if (slot == null) continue;
-
-            // °°Àº ½½·ÔÀÌ¸é ¹«½Ã
+            if (slot == null) 
+                continue;
+           
+            // ê°™ì€ ìŠ¬ë¡¯ì´ë©´ ë¬´ì‹œ
             if (i == remainIndex)
                 continue;
             
@@ -111,19 +136,19 @@ public class Inventory : MonoBehaviour
             RectTransform slotRect = slot.GetComponent<RectTransform>();
             if (slotRect == null) continue;
 
-            // ½½·Ô ¿µ¿ª ¾È¿¡ ³õ¿´´ÂÁö Ã¼Å©            
+            // ìŠ¬ë¡¯ ì˜ì—­ ì•ˆì— ë†“ì˜€ëŠ”ì§€ ì²´í¬            
             if(RectTransformUtility.RectangleContainsScreenPoint(
                 slotRect,
                 eventData.position,
                 eventData.pressEventCamera))
             {
-                // ´ë»ó ½½·Ô¿¡ ÀÌ¹Ì ¾ÆÀÌÅÛÀÌ ÀÖ´ÂÁö È®ÀÎ
+                // ëŒ€ìƒ ìŠ¬ë¡¯ì— ì´ë¯¸ ì•„ì´í…œì´ ìˆëŠ”ì§€ í™•ì¸
                 GameObject remainItem = FindChildWithTag(slot.transform, "Item");
                 ItemManager remainmanager = remainItem.GetComponent<ItemManager>(); 
 
-                //Debug.Log($"¿Å±æ ÀÚ¸® {i}");
-                // ÀÌ¹Ì ¾ÆÀÌÅÛÀÌ ÀÖ°í, ±×°Ô ÀÚ±â ÀÚ½ÅÀÌ ¾Æ´Ï¸é
-                // ¿©±â ÃßÈÄ ¼öÁ¤ÇØ¾ßÇÒµí
+                //Debug.Log($"ì˜®ê¸¸ ìë¦¬ {i}");
+                // ì´ë¯¸ ì•„ì´í…œì´ ìˆê³ , ê·¸ê²Œ ìê¸° ìì‹ ì´ ì•„ë‹ˆë©´
+                // ì—¬ê¸° ì¶”í›„ ìˆ˜ì •í•´ì•¼í• ë“¯
                 if (remainItem != null && remainItem != gameobject)
                 {
                     GameObject remainSlot = itemslots[remainIndex].obj;
@@ -136,7 +161,7 @@ public class Inventory : MonoBehaviour
                                                 
                     }
                 }
-                // ÇöÀç ¾ÆÀÌÅÛÀ» »õ ½½·ÔÀ¸·Î ÀÌµ¿
+                // í˜„ì¬ ì•„ì´í…œì„ ìƒˆ ìŠ¬ë¡¯ìœ¼ë¡œ ì´ë™
                 RectTransform rect = gameobject.GetComponent<RectTransform>();
                 Transform edge = slot.transform.Find("itemedge");
                 if (edge != null)
@@ -151,7 +176,7 @@ public class Inventory : MonoBehaviour
                 return true;
             }
         }        
-        //Debug.Log("Á¶°Ç¿¡ ¸Â´Â ½½·Ô ¾øÀ½");
+        //Debug.Log("ì¡°ê±´ì— ë§ëŠ” ìŠ¬ë¡¯ ì—†ìŒ");
         return false;
     }
 
@@ -159,69 +184,78 @@ public class Inventory : MonoBehaviour
     public void AddItem(GameObject gameObject)
     {
 
-        //¾ÆÀÌÅÛÃ¢ÀÌ ºñ¾îÀÖ´Â ÃÖÁÂ»ó´Ü ¾ÆÀÌÅÛ ½½·Ô
-        for(int k=0; k<itemslots.Count;)
+        //ì•„ì´í…œì°½ì´ ë¹„ì–´ìˆëŠ” ìµœì¢Œìƒë‹¨ ì•„ì´í…œ ìŠ¬ë¡¯
+        for(int k=0; k<itemslots.Count; k++)
         {
-            if (itemslots[k].contained)
-            {
-                continue;
-            }
-            else if (k + 1 >= itemslots.Count)
-            {
-                itemIndex = -1;//¾ÆÀÌÅÛÃ¢ ²ËÂü ÀÏ´Ü -1
-                break;
-            }
-            else
-            {
-                itemIndex = k;
-                break;
-            }
+            //ì„ìƒì—ëŠ” ë„£ì§€ ì•ŠìŠµë‹ˆë‹¤
+            
+           if (itemslots[k].isStand)
+           {
+               continue;
+           }
+                   
+           
+
+           if (itemslots[k].contained)
+           {
+               continue;
+           }
+           else if (k + 1 >= itemslots.Count)
+           {
+               itemIndex = -1;//ì•„ì´í…œì°½ ê½‰ì°¸ ì¼ë‹¨ -1
+               break;
+           }
+           else
+           {
+               itemIndex = k;
+               break;
+           }
             
         }
 
         //Debug.Log($"{itemIndex}");
         //Debug.Log($"{itemslots.Count}");
         GameObject itembackground = itemslots[itemIndex].obj;
-        // itemedge Ã£±â
+        // itemedge ì°¾ê¸°
         Transform itemedge = itembackground.transform.Find("itemedge");
         if (itemedge == null)
         {
-            Debug.LogError("itemedge¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+            Debug.LogError("itemedgeë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
-        // item Ã£±â
+        // item ì°¾ê¸°
         Transform item = itemedge.transform.Find("Item");
         if (item == null)
         {
-            Debug.LogError("¿ÀºêÁ§Æ®¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+            Debug.LogError("ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
-        // Image ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
+        // Image ì»´í¬ë„ŒíŠ¸ ê°€ì ¸ì˜¤ê¸°
         Image itemImage = item.GetComponent<Image>();
         if (itemImage == null)
         {
-            Debug.LogError("¿ÀºêÁ§Æ®¿¡ Image ÄÄÆ÷³ÍÆ®°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("ì˜¤ë¸Œì íŠ¸ì— Image ì»´í¬ë„ŒíŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
-        // Sprite º¯°æ
-        //Áö±İÀº ¸ÆÁÖÀÜÀÌÁö¸¸ ³ªÁß¿¡ Åõ¸íÀÌ¹ÌÁö·Î ¹Ù²ã¼­
-        //¾ÆÀÌÅÛÀÌ µé¾î¿À¸é sprite¸¸ ¹Ù²Ù´Â Çü½ÄÀ¸·Î ±¸Çö
+        // Sprite ë³€ê²½
+        //ì§€ê¸ˆì€ ë§¥ì£¼ì”ì´ì§€ë§Œ ë‚˜ì¤‘ì— íˆ¬ëª…ì´ë¯¸ì§€ë¡œ ë°”ê¿”ì„œ
+        //ì•„ì´í…œì´ ë“¤ì–´ì˜¤ë©´ spriteë§Œ ë°”ê¾¸ëŠ” í˜•ì‹ìœ¼ë¡œ êµ¬í˜„
         SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
         if (sr == null)
         {
-            Debug.LogError("¿ùµå ¾ÆÀÌÅÛ¿¡ SpriteRenderer°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("ì›”ë“œ ì•„ì´í…œì— SpriteRendererê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
         itemImage.sprite = sr.sprite;
 
-        //ItemBase(½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ® ¼³Á¤
+        //ItemBase(ìŠ¤í¬ë¦½í„°ë¸” ì˜¤ë¸Œì íŠ¸ ì„¤ì •
         GameObject itemGO = itemedge.Find("Item").gameObject;
 
         if (itemGO == null)
         {
-            Debug.LogError("Item GameObject¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+            Debug.LogError("Item GameObjectë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
         ItemManager itemManager = itemGO.GetComponent<ItemManager>();
@@ -229,7 +263,7 @@ public class Inventory : MonoBehaviour
         Item itemComponent = gameObject.GetComponent<Item>();
         if (itemComponent == null)
         {
-            Debug.LogError("¿ùµå ¾ÆÀÌÅÛ¿¡ Item ÄÄÆ÷³ÍÆ®°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("ì›”ë“œ ì•„ì´í…œì— Item ì»´í¬ë„ŒíŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
@@ -237,12 +271,12 @@ public class Inventory : MonoBehaviour
 
         Destroy(gameObject);
 
-        //¾ÆÀÌÅÛ Ã¢¾øÀ¸¸é ÆÄ±«ÇÏÁö¸»¾Æ¾ßÇÒµí ÃßÈÄ
-        //½½·Ô »óÅÂ °»½Å ÃßÈÄ ¼öÁ¤¿¹Á¤
+        //ì•„ì´í…œ ì°½ì—†ìœ¼ë©´ íŒŒê´´í•˜ì§€ë§ì•„ì•¼í• ë“¯ ì¶”í›„
+        //ìŠ¬ë¡¯ ìƒíƒœ ê°±ì‹  ì¶”í›„ ìˆ˜ì •ì˜ˆì •
         itemslots[itemIndex].contained = true;        
     }
 
-    //itemslots¸®½ºÆ® ³»¿ëÀ» ¼­·Î ¹Ù²Ù´Â swap
+    //itemslotsë¦¬ìŠ¤íŠ¸ ë‚´ìš©ì„ ì„œë¡œ ë°”ê¾¸ëŠ” swap
     void SwapItemSlots(int indexA, int indexB, ItemManager AManager, ItemManager BManager)
     {
         Itemslot Aslot = itemslots[indexA].obj.GetComponent<Itemslot>();
@@ -270,28 +304,157 @@ public class Inventory : MonoBehaviour
 
     IEnumerator LateSort()
     {
-        // ÇÑÇÁ·¹ÀÓµÚ °è»ê
+        // í•œí”„ë ˆì„ë’¤ ê³„ì‚°
         yield return null;
 
+        Debug.Log("Sortí•¨");
         itemslots.Sort((a, b) =>
         {
-            // 1¼øÀ§: Y (Å« °ªÀÌ À§)
+            // 1ìˆœìœ„: Y (í° ê°’ì´ ìœ„)
             if (a.posY != b.posY)
             {
                 return b.posY.CompareTo(a.posY);
             }
 
-            // 2¼øÀ§: X (ÀÛÀº °ªÀÌ ¿ŞÂÊ)
+            // 2ìˆœìœ„: X (ì‘ì€ ê°’ì´ ì™¼ìª½)
             return a.posX.CompareTo(b.posX);
         });
 
-        //¾ÆÀÌÅÛÀÌ °¡Áö°íÀÖ´Â itemManager.cs¿¡¼­ ÀÚ±â°¡
-        //ÇöÀç ¿©±â itemslots¸®½ºÆ®¿¡ ¼ÓÇÑ ÀÎµ¦½º¸¦ ÀúÀåÇÕ´Ï´Ù
+        //ì•„ì´í…œì´ ê°€ì§€ê³ ìˆëŠ” itemManager.csì—ì„œ ìê¸°ê°€
+        //í˜„ì¬ ì—¬ê¸° itemslotsë¦¬ìŠ¤íŠ¸ì— ì†í•œ ì¸ë±ìŠ¤ë¥¼ ì €ì¥í•©ë‹ˆë‹¤
         for (int i = 0; i < itemslots.Count; i++)
         {
             ItemManager item = itemslots[i].obj.GetComponentInChildren<ItemManager>();
             item.SetMyItemslotsIndex(i);
         }
     }
+
+    public void gridListCreate()
+    {
+        Debug.Log(itemslots.Count);
+
+        for (int i = 0; i < itemslots.Count; i++)
+        {
+            if (itemslots[i].isStand)
+                continue;
+
+            // ë§ˆì§€ë§‰ í–‰ì´ ê½‰ ì°¼ìœ¼ë©´ ìƒˆ í–‰ ì¶”ê°€
+            if (grid[grid.Count - 1].Count >= 4)
+            {
+                grid.Add(new List<ItemSlot>(4));
+            }
+
+            grid[grid.Count - 1].Add(itemslots[i]);
+        }
+        //ë””ë²„ê·¸
+        for (int r = 0; r < grid.Count; r++)
+        {
+            string rowLog = $"Row {r}: ";
+            for (int c = 0; c < grid[r].Count; c++)
+            {
+                rowLog += $"[{c}] ";
+            }
+            Debug.Log(rowLog);
+        }
+        //ë””ë²„ê·¸
+
+    }
+    //content y ì¢Œí‘œê°€ -150ì—ì„œ 150
+    //ì²˜ìŒ 30 ë„ìš°ê³  ì‹œì‘ ê°„ê²© 50ì”©
+    //xì¢Œí‘œëŠ” -90 ~90 ì²˜ìŒ 20ë„ìš°ê³  ê°„ê²© 47ì”©
+    public void AddInventorySlot(int amount)//ìƒì„±í•  ê°œìˆ˜
+    {
+        if (!firstSort)
+        {
+            gridListCreate();
+            firstSort = true;
+        }
+        
+
+
+
+        int index = 0;
+        for (int i = 0; i < amount; i++)
+        {
+
+            Debug.Log(grid[grid.Count - 1].Count);
+            if (grid[grid.Count - 1].Count >= 4)
+            {
+                
+                grid.Add(new List<ItemSlot>(4)); // ì—´ì€ í•­ìƒ 4
+                
+                float xpos = grid[grid.Count - 2][0].posX;
+                float ypos = grid[grid.Count - 2][0].posY - 50;
+                Debug.Log("xpos = " + xpos + ", ypos = " + (ypos+50));
+
+                // 1ï¸ ìœ„ì¹˜ ì—†ì´ ìƒì„± (UIëŠ” ìœ„ì¹˜ ë‚˜ì¤‘ì— ì„¸íŒ…)
+                GameObject slot = Instantiate(slotPrefab, Content.transform);
+                
+                // 2ï¸ RectTransform ê°€ì ¸ì˜¤ê¸°
+                RectTransform rt = slot.GetComponent<RectTransform>();
+
+                // 3ï¸ anchoredPositionìœ¼ë¡œ ìœ„ì¹˜ ì§€ì •
+                rt.anchoredPosition = new Vector2(xpos, ypos);
+
+                // ìƒì„±ë˜ëŠ” íš¨ê³¼ë°œìƒ
+                Itemslot EffectSlot = slot.GetComponent<Itemslot>();
+                EffectSlot.SetItemEdgeAlpha(0);
+                EffectSlot.CreateEffectActivate();
+
+                grid[grid.Count - 1].Add(CreateItemSlotObj(slot, (int)xpos, (int)ypos, false));
+                Debug.Log("xpos = " + xpos + ", ypos = " + ypos + ", spawnPos = " + rt.anchoredPosition);
+                //index++;
+                //ë””ë²„ê·¸
+                for (int r = 0; r < grid.Count; r++)
+                {
+                    string rowLog = $"Row {r}: ";
+                    for (int c = 0; c < grid[r].Count; c++)
+                    {
+                        rowLog += $"[{c}] ";
+                    }
+                    Debug.Log(rowLog);
+                }
+                //ë””ë²„ê·¸
+            }
+            else
+            {
+                index = grid[grid.Count-1].Count-1;
+                float xpos = grid[grid.Count - 1][index].posX + 47;
+                float ypos = grid[grid.Count - 1][index].posY;
+
+                // 1ï¸ ìœ„ì¹˜ ì—†ì´ ìƒì„± (UIëŠ” ìœ„ì¹˜ ë‚˜ì¤‘ì— ì„¸íŒ…)
+                GameObject slot = Instantiate(slotPrefab, Content.transform);
+
+                // 2ï¸ RectTransform ê°€ì ¸ì˜¤ê¸°
+                RectTransform rt = slot.GetComponent<RectTransform>();
+
+                // 3ï¸ anchoredPositionìœ¼ë¡œ ìœ„ì¹˜ ì§€ì •
+                rt.anchoredPosition = new Vector2(xpos, ypos);
+
+                // ìƒì„±ë˜ëŠ” íš¨ê³¼ë°œìƒ
+                Itemslot EffectSlot = slot.GetComponent<Itemslot>();
+                EffectSlot.SetItemEdgeAlpha(0);
+                EffectSlot.CreateEffectActivate();
+
+                grid[grid.Count - 1].Add(CreateItemSlotObj(slot, (int)xpos, (int)ypos, false));
+                Debug.Log("xpos = " + xpos + ", ypos = " + ypos + ", spawnPos = " + rt.anchoredPosition);
+                //ë””ë²„ê·¸
+                for (int r = 0; r < grid.Count; r++)
+                {
+                    string rowLog = $"Row {r}: ";
+                    for (int c = 0; c < grid[r].Count; c++)
+                    {
+                        rowLog += $"[{c}] ";
+                    }
+                    Debug.Log(rowLog);
+                }
+                //ë””ë²„ê·¸
+            }
+        }
+
+        isChangeSlot = true;
+
+    }
+
     
 }
