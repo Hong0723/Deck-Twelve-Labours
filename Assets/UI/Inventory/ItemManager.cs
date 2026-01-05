@@ -4,17 +4,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler
+public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler
 {
   
     public RectTransform rectTransform;//아이템 Transform    
     public Camera mainCam;
     public bool isDragging = false;
-    public Transform savedParent; // 임시
-    public GameObject activeButton;
-    public GameObject DeleteButton;
-    private bool isEnterMouse;
+    public Transform savedParent; // 임시    
     public Transform dragLayer; // Inspector에 DragLayer 연결 (Root Canvas 하위)
+    public GameObject ItemDescription;
+
     //ScriptableObject 아이템 데이터 연결
     [Header("Item Data")]
     public ItemBase itemData;       
@@ -26,8 +25,6 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         Image img = GetComponent<Image>();
         // 완전히 투명해도 감지되게 (0은 완전 투명도까지 감지)
         img.alphaHitTestMinimumThreshold = 0.0f;        
-        isEnterMouse = false;     
-        
 
         // CanvasGroup
         canvasGroup = GetComponent<CanvasGroup>();
@@ -51,17 +48,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         //Debug.Log("OnPointerDown");
         isDragging = true;
 
-        if (eventData.pointerPress == activeButton)
-        {
-            //Debug.Log("ActiveButton 클릭됨!");
-        }
-        else if (eventData.pointerPress == DeleteButton)
-        {
-            //Debug.Log("DeleteButton 클릭됨!");
-        }
-        //  드래그 시작 시 버튼 숨김
-        activeButton.SetActive(false);
-        DeleteButton.SetActive(false);
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -86,12 +73,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             myRect.anchoredPosition = Vector2.zero;
         }
 
-        //  드래그가 끝나면 마우스가 여전히 아이템 위에 있으면 버튼 다시 표시
-        if (isEnterMouse)
-        {
-            activeButton.SetActive(true);
-            DeleteButton.SetActive(true);
-        }
+        
 
     }
 
@@ -106,9 +88,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, mousePos, mainCam, out worldPos2);
         rectTransform.position = worldPos2;
 
-        //  드래그 중에도 계속 비활성화 유지
-        activeButton.SetActive(false);
-        DeleteButton.SetActive(false);
+        
     }
 
 
@@ -117,34 +97,45 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         //Debug.Log("마우스가 들어옴!");  
         savedParent = transform.parent;//임시
 
-        activeButton.SetActive(true);
-        DeleteButton.SetActive(true);
         
-        SetRaycast(activeButton, false);//아이템 위에 사용,삭제 버튼을 달아두었는데 이 버튼이 아이템의 레이캐스팅 방해해서 레이캐스팅 비활성화
-        SetRaycast(DeleteButton, false);
 
         //아이템 설명창 표시 (ScriptableObject 기반)
         if (itemData != null)
         {
             ExplainItemToText.Instance.ShowDescription(itemData.description);
         }
+
+        
+        //새로운 설명창        
+
+        RectTransform rect = ItemDescription.GetComponent<RectTransform>();
+
+        // 좌상단 기준
+        rect.pivot = new Vector2(0f, 1f);
+
+        //마우스위치를 월드좌표로 변경
+        Vector2 WorldPos;
+        WorldPos = mainCam.ScreenToWorldPoint(eventData.position);       
+
+        // 좌상단이 마우스 위치에 오도록
+        rect.position = WorldPos;
+
+        //rect.SetParent(dragLayer, true);
+
+        ItemDescription.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         //Debug.Log("마우스가 나감!");    
 
-        activeButton.SetActive(false);
-        DeleteButton.SetActive(false);
+       
 
         ExplainItemToText.Instance.HideDescription(); //마우스 나가면 설명 숨김
+
+        ItemDescription.SetActive(false);
+
     }
-    private void SetRaycast(GameObject obj, bool enable)
-    {
-        var cg = obj.GetComponent<CanvasGroup>();
-        if (cg == null) cg = obj.AddComponent<CanvasGroup>();
-        cg.blocksRaycasts = enable;
-    }   
 
     
     public void OnBeginDrag(PointerEventData eventData)
@@ -168,6 +159,19 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         canvasGroup.blocksRaycasts = true;
     }
 
+    // 아이템 사용
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            Debug.Log("우클릭 감지!");
+            Image itemImage = GetComponent<Image>();
+            itemImage.sprite = null;
+            itemImage.color = new Color(1, 1, 1, 0);
+
+        }
+    }
+
     //아이템 충돌이후 아이템을 인벤토리에 등록
     public void ItemToInventory()
     {
@@ -184,4 +188,5 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         return myItemslotsIndex;
     }
 
+    
 }
