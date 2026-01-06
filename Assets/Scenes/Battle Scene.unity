@@ -477,6 +477,138 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HPBar
   hpFill: {fileID: 1980842748}
   shieldFill: {fileID: 530161885}
+--- !u!1 &481863426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 481863427}
+  - component: {fileID: 481863428}
+  m_Layer: 0
+  m_Name: Spline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &481863427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481863426}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1499727138}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &481863428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481863426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Splines::UnityEngine.Splines.SplineContainer
+  m_Spline:
+    m_EditModeType: 1
+    m_Knots: []
+    m_MetaData: []
+    m_Closed: 0
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Splines:
+  - m_EditModeType: 1
+    m_Knots:
+    - Position:
+        x: -40
+        y: -10
+        z: 0
+      TangentIn:
+        x: -0
+        y: -0
+        z: -4.1231055
+      TangentOut:
+        x: 0
+        y: 0
+        z: 4.1231055
+      Rotation:
+        value:
+          x: -0.55734533
+          y: 0.43516225
+          z: -0.43516204
+          w: 0.55734545
+    - Position:
+        x: 0
+        y: 0
+        z: 0
+      TangentIn:
+        x: 0
+        y: 0
+        z: -25.066267
+      TangentOut:
+        x: 0
+        y: 0
+        z: 25.066267
+      Rotation:
+        value:
+          x: 0.4996139
+          y: -0.5003859
+          z: 0.50038624
+          w: -0.49961334
+    - Position:
+        x: 40
+        y: -10
+        z: 0
+      TangentIn:
+        x: -0
+        y: -0
+        z: -4.1231055
+      TangentOut:
+        x: 0
+        y: 0
+        z: 4.1231055
+      Rotation:
+        value:
+          x: -0.43516204
+          y: 0.55734545
+          z: -0.55734533
+          w: 0.43516225
+    m_MetaData:
+    - Mode: 0
+      Tension: 0.5
+    - Mode: 2
+      Tension: 0.5
+    - Mode: 0
+      Tension: 0.5
+    m_Closed: 0
+    m_IntData:
+      m_Data: []
+    m_FloatData:
+      m_Data: []
+    m_Float4Data:
+      m_Data: []
+    m_ObjectData:
+      m_Data: []
+  m_Knots:
+    m_KnotsLink: []
 --- !u!1 &530161884
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +780,11 @@ MonoBehaviour:
   drawPile: []
   hand: []
   discardPile: []
+--- !u!1 &616088199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 60560405235974238, guid: 679270e88cf2646ea9b8c8da69009a2e, type: 3}
+  m_PrefabInstance: {fileID: 1601862473985861061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &912489601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1682,19 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6979260577981406167, guid: 679270e88cf2646ea9b8c8da69009a2e, type: 3}
   m_PrefabInstance: {fileID: 1601862473985861061}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1499727140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616088199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af46d2d43030940d6ad38bfdcdd0052f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  splineContainer: {fileID: 481863428}
 --- !u!1 &1542085964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,8 +2282,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6979260577981406167, guid: 679270e88cf2646ea9b8c8da69009a2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 481863427}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 60560405235974238, guid: 679270e88cf2646ea9b8c8da69009a2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1499727140}
   m_SourcePrefab: {fileID: 100100000, guid: 679270e88cf2646ea9b8c8da69009a2e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
