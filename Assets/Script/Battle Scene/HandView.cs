@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.Splines;
 using DG.Tweening;
-
-public class NewMonoBehaviourScript : MonoBehaviour
+using System.Collections;
+using System.Collections.Generic;
+public class HandView : MonoBehaviour
 {
     [SerializeField] private SplineContainer splineContainer;
 
@@ -14,12 +13,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         cards.Add(cardView);
         yield return UpdateCardPositions(0.15f);
-    }
+    } 
 
     private IEnumerator UpdateCardPositions(float duration)
     {
         if(cards.Count == 0)yield break;
-        float cardSpacing = 1f / 10f;
+        float cardSpacing = 0.1f;
         float firstCardPosition = 0.5f - (cards.Count - 1) * cardSpacing / 2;
         Spline spline = splineContainer.Spline;
         for(int i = 0; i < cards.Count; i++)

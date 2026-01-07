@@ -8,7 +8,7 @@ public enum CardEffectType
 }
 
 [CreateAssetMenu(menuName = "Cards/CardData")]
-public class CardData : ScriptableObject
+public class CardData : ScriptableObject     
 {
     public string cardName;        
     [TextArea] public string description; 
