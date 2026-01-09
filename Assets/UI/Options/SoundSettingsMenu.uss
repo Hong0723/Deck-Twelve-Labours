@@ -1,0 +1,81 @@
+#sound-root {
+    width: 450px;
+    padding: 20px;
+    background-color: rgba(20,20,20,0.8);
+    border-radius: 8px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.title {
+    color: white;
+    font-size: 20px;
+    unity-text-align: center;
+}
+
+.volume-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.label {
+    color: white;
+    width: 80px;
+}
+
+.percent {
+    width: 50px;
+    color: white;
+    text-align: right;
+}
+
+/* 슬라이더 전체 */
+unity-slider {
+    width: 230px;
+    height: 14px;
+    flex-grow: 0;
+}
+
+unity-slider {
+    width: 240px;
+    height: 18px;
+}
+
+unity-slider > .unity-base-field__input {
+    height: 100%;
+}
+
+unity-slider > .unity-base-field__input > .unity-slider__input {
+    height: 100%;
+}
+
+unity-slider > .unity-base-field__input > .unity-slider__input > .unity-slider__tracker {
+    height: 6px;
+    margin-top: 6px;
+    background: linear-gradient(to right, #444, #bbb);
+    border-radius: 3px;
+}
+
+unity-slider > .unity-base-field__input > .unity-slider__input > .unity-slider__dragger {
+    width: 14px;
+    height: 18px;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 0 3px black;
+}
+
+
+.back-button {
+    width: 100px;
+    height: 32px;
+    align-self: flex-start;
+}

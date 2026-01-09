@@ -1,0 +1,31 @@
+#video-root {
+    width: 350px;
+    background-color: rgba(20,20,20,0.8);
+    padding: 20px;
+    border-radius: 12px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.title {
+    color: white;
+    font-size: 20px;
+    unity-text-align: center;
+}
+
+.menu-button {
+    width: 100%;
+    height: 34px;
+}
+
+.back-button {
+    width: 120px;
+    height: 32px;
+}

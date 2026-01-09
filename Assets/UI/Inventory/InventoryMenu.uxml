@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+  <Style src="InventoryMenu.uss" />
+  <ui:VisualElement name="inventory-root">
+    <ui:Label text="인벤토리" class="title" />
+    <ui:VisualElement name="grid-container">
+      <!-- 16개의 슬롯 -->
+      <ui:VisualElement class="slot" name="slot-0" />
+      <ui:VisualElement class="slot" name="slot-1" />
+      <ui:VisualElement class="slot" name="slot-2" />
+      <ui:VisualElement class="slot" name="slot-3" />
+      <ui:VisualElement class="slot" name="slot-4" />
+      <ui:VisualElement class="slot" name="slot-5" />
+      <ui:VisualElement class="slot" name="slot-6" />
+      <ui:VisualElement class="slot" name="slot-7" />
+      <ui:VisualElement class="slot" name="slot-8" />
+      <ui:VisualElement class="slot" name="slot-9" />
+      <ui:VisualElement class="slot" name="slot-10" />
+      <ui:VisualElement class="slot" name="slot-11" />
+      <ui:VisualElement class="slot" name="slot-12" />
+      <ui:VisualElement class="slot" name="slot-13" />
+      <ui:VisualElement class="slot" name="slot-14" />
+      <ui:VisualElement class="slot" name="slot-15" />
+    </ui:VisualElement>
+  </ui:VisualElement>
+</ui:UXML>

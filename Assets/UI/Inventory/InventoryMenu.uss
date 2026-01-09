@@ -1,0 +1,36 @@
+#inventory-root {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgba(20, 20, 20, 0.9);
+    border-radius: 12px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+}
+
+.title {
+    color: white;
+    font-size: 24px;
+    unity-text-align: center;
+    margin-bottom: 10px;
+}
+
+#grid-container {
+    width: 400px;
+    height: 400px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    display: flex;
+}
+
+.slot {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(80, 80, 80, 0.85);
+    border: 2px solid rgba(150, 150, 150, 0.4);
+    border-radius: 6px;
+}

@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="SoundSettingsMenu.uss" />
+
+    <ui:VisualElement name="sound-root">
+
+        <ui:Label text="음량" class="title" />
+
+        <ui:VisualElement class="volume-row">
+            <ui:Label text="배경음:" class="label" name="bgm-label" />
+            <ui:Label text="100%" class="percent" name="bgm-percent" />
+            <ui:Slider name="bgm-slider" low-value="0" high-value="1" value="1.0" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="volume-row">
+            <ui:Label text="효과음:" class="label" name="sfx-label" />
+            <ui:Label text="100%" class="percent" name="sfx-percent" />
+            <ui:Slider name="sfx-slider" low-value="0" high-value="1" value="1.0" />
+        </ui:VisualElement>
+
+        <ui:Button name="back-button" text="뒤로가기" class="back-button" />
+    </ui:VisualElement>
+</ui:UXML>

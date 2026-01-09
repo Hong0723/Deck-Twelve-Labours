@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="OptionsMenu.uss" />
+    <ui:VisualElement name="options-root">
+        <ui:Label text="옵션" class="title" />
+
+        <ui:Button name="continue-button" text="계속하기" class="menu-button" />
+        <ui:Button name="sound-button" text="소리 설정" class="menu-button" />
+        <ui:Button name="video-button" text="비디오 설정" class="menu-button" />
+        <ui:Button name="quit-button" text="종료하기" class="menu-button" />
+    </ui:VisualElement>
+</ui:UXML>

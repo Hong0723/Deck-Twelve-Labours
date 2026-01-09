@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="VideoSettingsMenu.uss" />
+
+    <ui:VisualElement name="video-root">
+
+        <ui:Label text="비디오 설정" class="title" />
+
+        <ui:Button name="fullscreen-toggle" class="menu-button" text="창모드 (현재 상태)" />
+        <ui:Button name="resolution-button" class="menu-button" text="해상도: 1280x800" />
+
+        <ui:Button name="back-button" class="back-button" text="뒤로가기" />
+    </ui:VisualElement>
+</ui:UXML>
