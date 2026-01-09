@@ -44,7 +44,13 @@ public class BattleManager : MonoBehaviour
         // 테스트용 공격
         if (state == BattleState.PlayerTurn && Input.GetKeyDown(KeyCode.Space))
         {
+
+            
+            player.SetDefensed(false);
+            player.Attack1Animation();
+
             enemy.TakeHitFromPlayer(10);
+            
         }
     }
 

@@ -23,11 +23,25 @@ public class Enemy : MonoBehaviour
     public EnemyActionType nextAction;
     public HPBar hpBar;
 
+    public Animator animator;
+
     void Start()
-    {
+    {        
         currentHP = maxHP;
         shield = 0;
         isDefending = false;
+
+        if (DeliverBattleData.MonsterInfo)
+        {
+            //스크립터블 오브젝트에서 몬스터 정보를 가져옵니다
+            MonsterType monsterInfo = DeliverBattleData.MonsterInfo;
+            maxHP = monsterInfo.maxHP;
+            currentHP = maxHP;
+            shield = monsterInfo.shield;
+            defenseReduce = monsterInfo.defenseReduce;
+            counterDamage = monsterInfo.counterDamage;
+            //-----
+        }
 
         DecideNextAction();
         UpdateHPBar();
@@ -66,18 +80,23 @@ public class Enemy : MonoBehaviour
         switch (nextAction)
         {
             case EnemyActionType.Attack:
+                Attack1Animation();
                 BattleManager.Instance.player.TakeDamage(8);
+                BattleManager.Instance.player.HurtedAnimation();//플레이어 피격애니메이션                
                 break;
 
             case EnemyActionType.Shield:
                 shield += 6;
+                SpecialAnimation();//시전애니메이션
                 break;
 
             case EnemyActionType.Heal:
                 currentHP = Mathf.Min(maxHP, currentHP + 5);
+                SpecialAnimation();//시전애니메이션
                 break;
 
             case EnemyActionType.Defense:
+                SpecialAnimation();//시전애니메이션
                 // 실행 없음 (상태용)
                 break;
         }
@@ -97,6 +116,10 @@ public class Enemy : MonoBehaviour
             finalDamage = Mathf.Max(damage - defenseReduce, 0);
             BattleManager.Instance.player.TakeDamage(counterDamage);
             Debug.Log("Defense 반격 발동");
+            
+            BattleManager.Instance.player.SetDefensed(true);
+            //BattleManager.Instance.player.resetHurtedTrigger();
+            //BattleManager.Instance.player.resetAttakcTrigger();            
         }
 
         int absorbed = Mathf.Min(shield, finalDamage);
@@ -105,6 +128,7 @@ public class Enemy : MonoBehaviour
 
         currentHP = Mathf.Max(currentHP - finalDamage, 0);
         UpdateHPBar();
+        HurtedAnimation();
     }
 
     // =========================
@@ -129,5 +153,20 @@ public class Enemy : MonoBehaviour
     {
         if (hpBar)
             hpBar.Set(currentHP, maxHP, shield);
+    }
+
+    public void Attack1Animation()
+    {
+
+        animator.SetTrigger("Attack1");
+    }
+
+    public void SpecialAnimation()
+    {
+        animator.SetTrigger("Special");
+    }
+    public void HurtedAnimation()
+    {        
+        animator.SetTrigger("Hurted");     
     }
 }

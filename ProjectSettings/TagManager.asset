@@ -12,8 +12,8 @@ TagManager:
   - Enemy
   - Water
   - UI
-  - 
-  - 
+  - Ground1
+  - Ground2
   - 
   - 
   - 
@@ -50,6 +50,12 @@ TagManager:
     locked: 0
   - name: Props
     uniqueID: 3643866449
+    locked: 0
+  - name: Ground1
+    uniqueID: 1197162843
+    locked: 0
+  - name: Ground2
+    uniqueID: 3745249941
     locked: 0
   - name: Ui
     uniqueID: 551253721
