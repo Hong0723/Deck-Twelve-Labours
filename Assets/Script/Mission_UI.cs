@@ -35,10 +35,6 @@ public class CharacterManager : MonoBehaviour
         {
 
             c.position = offscreenPosition;
-<<<<<<< HEAD
-
-=======
->>>>>>> 299f1c3cceb54b517fcc3ec8e22e163acc86f5fc
         }
     }
 
@@ -67,32 +63,18 @@ public class CharacterManager : MonoBehaviour
             case 0 :
                 characters[0].position = cameraPosition;
                 text_box.position = textPosition;
-<<<<<<< HEAD
                 text.text = "헤라클레스.\n네가 저지른 죄는 아직 끝나지 않았다.";
                 break;
             case 1 :
                 text.text = "신들은 너에게 자비를 주지 않는다.\n오직 시련을 통한 속죄만이 허락된다.!";
-=======
-                text.text = "hello!";
-                break;
-            case 1 :
-                text.text = "world!";
->>>>>>> 299f1c3cceb54b517fcc3ec8e22e163acc86f5fc
                 break;
             case 2 :
                 characters[0].position = offscreenPosition;
                 characters[1].position = cameraPosition;
-<<<<<<< HEAD
                 text.text = "이것이 네가 짊어질 운명이다.\n열두 가지 시련을 모두 완수하라.";
                 break;
             case 3 :
                 text.text = "하나라도 거부하거나 실패한다면,\n신들은 너를 영원히 버릴 것이다.";
-=======
-                text.text = "labouls!";
-                break;
-            case 3 :
-                text.text = "let's go!";
->>>>>>> 299f1c3cceb54b517fcc3ec8e22e163acc86f5fc
                 break;
             case 4 :
                 SceneManager.LoadScene("Game Scene");
