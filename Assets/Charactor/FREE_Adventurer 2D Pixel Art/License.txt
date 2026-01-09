@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 ##################### LICENSE #####################
 
 - You can use this asset in any game project, personal or commercial.
 - DO NOT resell or redistribute AS A GAME ASSET, it has to be part of a project.
 - Credit is not required but it is appreciated.
 - Modify to suit your needs.
+=======
+##################### LICENSE #####################
+
+- You can use this asset in any game project, personal or commercial.
+- DO NOT resell or redistribute AS A GAME ASSET, it has to be part of a project.
+- Credit is not required but it is appreciated.
+- Modify to suit your needs.
+>>>>>>> 299f1c3cceb54b517fcc3ec8e22e163acc86f5fc
 - You are NOT allowed to turn any of my assets to an NFT.
