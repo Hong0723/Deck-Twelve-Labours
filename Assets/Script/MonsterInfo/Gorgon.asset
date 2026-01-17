@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1027d43f5c656443a92857efc9aa266, type: 3}
   m_Name: Gorgon
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
+  monsterName: Gorgon
   maxHP: 40
   shield: 0
   defenseReduce: 40
   counterDamage: 4
+  block: 0
