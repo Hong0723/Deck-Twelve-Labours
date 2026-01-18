@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour //추상클래스 Singleton CardViewCreator 에서 쓸거임
 {
     
-    public static T Instance {get; private set; }
+    public static T Instance {get; private set; } 
 
     protected virtual void Awake()
     {

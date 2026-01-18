@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cardsView
   title: {fileID: 4777923693844627653}
-  damage: {fileID: 7043533170270479801}
+  description: {fileID: 0}
   mana: {fileID: 5438329140721049024}
-  img: {fileID: 411810973369790359}
+  imageSR: {fileID: 0}
   wrapper: {fileID: 7006241017599111750}
 --- !u!1 &607870562992508276
 GameObject:
