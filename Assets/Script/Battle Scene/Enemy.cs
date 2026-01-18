@@ -23,10 +23,10 @@ public class Enemy : MonoBehaviour
     public EnemyActionType nextAction;
     public HPBar hpBar;
 
-    public Animator animator;
+    public Animator animator;    
 
     void Start()
-    {        
+    {
         currentHP = maxHP;
         shield = 0;
         isDefending = false;
@@ -40,6 +40,8 @@ public class Enemy : MonoBehaviour
             shield = monsterInfo.shield;
             defenseReduce = monsterInfo.defenseReduce;
             counterDamage = monsterInfo.counterDamage;
+            GameObject monsterObj = FindByTagAndName("Monster", monsterInfo.name);
+            ReplaceVisual(this.gameObject, monsterObj);
             //-----
         }
 
@@ -116,7 +118,7 @@ public class Enemy : MonoBehaviour
             finalDamage = Mathf.Max(damage - defenseReduce, 0);
             BattleManager.Instance.player.TakeDamage(counterDamage);
             Debug.Log("Defense 반격 발동");
-            
+
             BattleManager.Instance.player.SetDefensed(true);
             //BattleManager.Instance.player.resetHurtedTrigger();
             //BattleManager.Instance.player.resetAttakcTrigger();            
@@ -166,7 +168,65 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Special");
     }
     public void HurtedAnimation()
-    {        
-        animator.SetTrigger("Hurted");     
+    {
+        animator.SetTrigger("Hurted");
+    }
+
+    //EnemyWaitingRoom에 있는 몬스터 오브젝트 서치(Tag(Monster)->이름 순으로 찾음)
+    GameObject FindByTagAndName(string tag, string name)
+    {
+        //Debug.Log($"[FindByTagAndName] 검색 시작 | tag: {tag}, name: {name}");
+
+        GameObject[] objs;// = GameObject.FindGameObjectsWithTag(tag);
+        try
+        {
+            objs = GameObject.FindGameObjectsWithTag(tag);
+        }
+        catch
+        {
+            //Debug.LogError($"[FindByTagAndName] 존재하지 않는 Tag: {tag}");
+            return null;
+        }
+        foreach (GameObject obj in objs)
+        {
+            if (obj.name == name)
+            {
+                //Debug.Log($"[FindByTagAndName] 발견: {obj.name}");
+                return obj;
+            }
+        }
+
+        //Debug.LogWarning($"[FindByTagAndName] 해당 이름을 가진 오브젝트 없음 | name: {name}");
+        return null;
+    }
+
+
+    //Enemy오브젝트 자식으로 알맞은 적이 생성됨
+    public void ReplaceVisual(GameObject target, GameObject visualSource)
+    {
+        if (!target || !visualSource)
+            return;
+
+        Transform old = target.transform.Find("VisualRoot");
+        if (old) Object.Destroy(old.gameObject);
+
+        GameObject newVisual = Object.Instantiate(visualSource, target.transform);
+        newVisual.name = "VisualRoot";
+        
+        newVisual.transform.localPosition = Vector3.zero;
+        newVisual.transform.localRotation = Quaternion.identity;
+
+        Vector3 srcWorldScale = visualSource.transform.lossyScale;
+        Vector3 parentWorldScale = target.transform.lossyScale;
+
+        newVisual.transform.localScale = new Vector3(
+            srcWorldScale.x / parentWorldScale.x,
+            srcWorldScale.y / parentWorldScale.y,
+            srcWorldScale.z / parentWorldScale.z
+        );
+
+        //Debug.Log($"[ReplaceVisual] world scale matched: {srcWorldScale}");
+        animator = newVisual.GetComponent<Animator>();
     }
 }
+

@@ -10986,7 +10986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
-  MonsterInfo: {fileID: 0}
+  MonsterInfo: {fileID: 11400000, guid: 24bc05f1f9cace645b7abf61179ee02e, type: 2}
 --- !u!61 &392014438
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14625,7 +14625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
-  MonsterInfo: {fileID: 0}
+  MonsterInfo: {fileID: 11400000, guid: c09f04fd0135b9a4683da97ca963e3dd, type: 2}
 --- !u!61 &638127321
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15399,7 +15399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
-  MonsterInfo: {fileID: 0}
+  MonsterInfo: {fileID: 11400000, guid: 7997184f97353ef48bbc63ce56a1bd9e, type: 2}
 --- !u!61 &693300788
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20144,7 +20144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
-  MonsterInfo: {fileID: 0}
+  MonsterInfo: {fileID: 11400000, guid: d9593200b288839428130e91516da09d, type: 2}
 --- !u!61 &1087435057
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20969,7 +20969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
-  MonsterInfo: {fileID: 0}
+  MonsterInfo: {fileID: 11400000, guid: 1109d5e4dfeb3f84f87bc444b1cd4512, type: 2}
 --- !u!61 &1157502352
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36041,7 +36041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
-  MonsterInfo: {fileID: 0}
+  MonsterInfo: {fileID: 11400000, guid: 1124b3af3bd4a854eb668848a365fecc, type: 2}
 --- !u!61 &1925427033
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37342,7 +37342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
-  MonsterInfo: {fileID: 0}
+  MonsterInfo: {fileID: 11400000, guid: f2d8795341e17ea4489b3686a9f03b13, type: 2}
 --- !u!61 &2045085436
 BoxCollider2D:
   m_ObjectHideFlags: 0

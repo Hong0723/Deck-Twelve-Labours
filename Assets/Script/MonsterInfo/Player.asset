@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1027d43f5c656443a92857efc9aa266, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
+  monsterName: Player
   maxHP: 30
   shield: 0
   defenseReduce: 0
-  counterDamage: 0
+  counterDamage: 4
   block: 0
