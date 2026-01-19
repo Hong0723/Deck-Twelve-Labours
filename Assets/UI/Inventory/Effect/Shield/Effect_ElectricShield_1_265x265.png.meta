@@ -1,0 +1,1658 @@
+fileFormatVersion: 2
+guid: 5bf788bda9ad3a147b2c4acc7ddc9d17
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1597
+        width: 240
+        height: 257
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6561d3fcac15bd143b4b4228de784bb5
+      internalID: -1098370138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_1
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1600
+        width: 229
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb1005b8c90564a4e9a4a1378341fe2b
+      internalID: 586761213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_2
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 1596
+        width: 222
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5535c007e2b9c346bca191cf99e92df
+      internalID: -2041106699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_3
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1844
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77312a26898f07845b994127a6312d35
+      internalID: -717579600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_4
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1596
+        width: 230
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 144a56994bc736d43a5320b2b48ccb62
+      internalID: -244837627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_5
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 1836
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1999c93413f78849a90567d9fed6fff
+      internalID: -513080188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_7
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1588
+        width: 231
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4006db0a9fd2bef4c804ae1326bd2be3
+      internalID: 1185194947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_8
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 1589
+        width: 237
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca320956e97e94f42ba223128959ac42
+      internalID: -788000272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_10
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 1584
+        width: 246
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0129518c664c14e9d1f986e842441f
+      internalID: 665181323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_12
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 1585
+        width: 256
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3950282b541890646a2aeb4bc39a8a63
+      internalID: 303160448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_14
+      rect:
+        serializedVersion: 2
+        x: 2141
+        y: 1589
+        width: 244
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64c0450c2c9caa841a7e1f875fc1711a
+      internalID: -1380172244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_24
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1336
+        width: 250
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e9354f1ef68954e98f93d7649e6fbf
+      internalID: 1424374786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_26
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1340
+        width: 241
+        height: 226
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97bd01b23d3fd3440a4ca33e69e61a4c
+      internalID: 1215674960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_28
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 1345
+        width: 232
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1024d0a9a59101c40939470b827eaa21
+      internalID: -165491177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_29
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 1345
+        width: 230
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea4d08c764cd714eb1241b9c8deef43
+      internalID: 871028277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_30
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 1349
+        width: 222
+        height: 221
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0ca723c71124a344be3840ad33bf288
+      internalID: -410412457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_31
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 1359
+        width: 223
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5093b2ee6862e2744a2ce9360d10e9a8
+      internalID: 1099461603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_32
+      rect:
+        serializedVersion: 2
+        x: 1603
+        y: 1355
+        width: 214
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6f02e22d08defe40991a99076ffdeaa
+      internalID: -1148818893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_33
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 1355
+        width: 219
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c385605a2d1409742841f46162877005
+      internalID: 749809618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_34
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 1350
+        width: 224
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bb2391f356089749bb3f1bd72803514
+      internalID: -1543801988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_40
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1086
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 779370d252061e8428c838e4ad77accc
+      internalID: 1212060574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_41
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1086
+        width: 230
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff2d7391581aa34a8acb32051c37081
+      internalID: 2116869733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_42
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 1081
+        width: 231
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0021441a4a09e9a418ce551ef687197e
+      internalID: -1881338306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_43
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 1081
+        width: 236
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c92f41e7a16744db5480b3b9ae18af
+      internalID: -2122723275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_44
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 1078
+        width: 234
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e708e7d2ec05fe4ea70afc47222c4fa
+      internalID: 796543122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_45
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 1078
+        width: 242
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a7040e52733414793764c10e7811d2
+      internalID: -1103843540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_46
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1078
+        width: 244
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0924fb7a05a8d404d9d12f87865c370c
+      internalID: 986918929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_47
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1073
+        width: 242
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b63c57bfc8fb6e40bf2c57f9cee4fd2
+      internalID: -785061664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_49
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 1073
+        width: 239
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e244322d8fc0e0c4593a7504909266e1
+      internalID: -1330245650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_50
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 809
+        width: 235
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8c37eeffa3ec8e48859ecb753c1a503
+      internalID: -1653794223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_51
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 804
+        width: 230
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a34d82943f06e340b0c82533cf793b4
+      internalID: -1880951758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_52
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 804
+        width: 218
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 392f89673b0c59b4abfe68d93b332cbe
+      internalID: 869141445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_53
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 801
+        width: 219
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f8efbea79b9094ca30e6676bc79759
+      internalID: 1480075628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_54
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 801
+        width: 222
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dba68198d7031c41b48ecf6c6ac8058
+      internalID: 694689688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_55
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 801
+        width: 224
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f7975b29ff82142acf52612dd84cea
+      internalID: -816318528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_58
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 884
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bcdc3dabcfd75a47aa2bbfe0e4cf7d7
+      internalID: 446001829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_59
+      rect:
+        serializedVersion: 2
+        x: 1618
+        y: 798
+        width: 238
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bdb3d7a2992dcc4381ab5647e0b43f8
+      internalID: -701219842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_60
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 793
+        width: 233
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eeccca381e13d040b23fc04bc7bc074
+      internalID: -1140579977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_62
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 790
+        width: 236
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6887b525eeef7947b328fc05f926193
+      internalID: -752929345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_66
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 530
+        width: 239
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4508e090f3745ff4cb244000907004d1
+      internalID: -1103930706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_68
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 529
+        width: 247
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7409b2d4733c24b4799038beea217221
+      internalID: -121757823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_70
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 529
+        width: 245
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4109a4a32aa9c846a53a7ee4601172d
+      internalID: 1130980464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_71
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 537
+        width: 243
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b266cdae116208844bc29c262d195ca5
+      internalID: -1479265736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_72
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 542
+        width: 246
+        height: 228
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61a9f4221dc56654f970957e7a5066e2
+      internalID: -1343004085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_73
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 547
+        width: 221
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8128aaa22da3ff42aa558be1436538a
+      internalID: 1020915592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_74
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 543
+        width: 226
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fe9b05db087dd2459be47cccebb4627
+      internalID: -1977857283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_75
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 552
+        width: 231
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d42a8f36800248b41973aab238897baa
+      internalID: 1911513679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_76
+      rect:
+        serializedVersion: 2
+        x: 2133
+        y: 550
+        width: 233
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52f668201137334498b4b9f96294d09c
+      internalID: -1787183549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_92
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 295
+        width: 216
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6957125d6dd607646b068d8624249457
+      internalID: -884226108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_93
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 295
+        width: 219
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb198b59b3bb10e438deffb67eb96aa1
+      internalID: -1661932948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_94
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 291
+        width: 222
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e0976b8be4f1d648878157b0392223e
+      internalID: -69630362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_95
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 291
+        width: 226
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f00172a19352140ad14292f6e5a639
+      internalID: 1823302925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_96
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 291
+        width: 231
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec98168da0e0c25469d5603bc2827893
+      internalID: -525509314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_97
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 287
+        width: 231
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ec51eb2b9581047bd168c717373774
+      internalID: 1023435222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_98
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 287
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180fc015089aab0418c4c1f0ea73366d
+      internalID: 1225034406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_99
+      rect:
+        serializedVersion: 2
+        x: 1859
+        y: 282
+        width: 235
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363931b7eb4415e46b33e1ff265149b5
+      internalID: -1190183083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_100
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 282
+        width: 243
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e68c740f899e7b499ea18e546f3241a
+      internalID: 188324587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_101
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 18
+        width: 242
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9244f829fa7a040bb825a43b940dae
+      internalID: -242927331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_102
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 13
+        width: 242
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e34f2645d0337f48a2c70261b283a89
+      internalID: 689652852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_103
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 110
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb57dd4c3d1ec3409d9c5774de5dccd
+      internalID: 550731327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_104
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 13
+        width: 235
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de6b3edbab51ab640964122f587b1a8c
+      internalID: 895486430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_105
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 13
+        width: 235
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec6318eae3e80f24f9b182c6a19f774f
+      internalID: -2061109423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_106
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 10
+        width: 224
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7c3e8fd67230d0479153980acdff453
+      internalID: -1887713424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_107
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 10
+        width: 219
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c97678a0bbcff45a05727dab47458b
+      internalID: -281991263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_ElectricShield_1_265x265_108
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 94
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af1656b20a9efc44e889b1d241cd1750
+      internalID: -2035454208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: da872e1cb621f4443861f5dda9713c47
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Effect_ElectricShield_1_265x265_0: -1098370138
+      Effect_ElectricShield_1_265x265_1: 586761213
+      Effect_ElectricShield_1_265x265_10: 665181323
+      Effect_ElectricShield_1_265x265_100: 188324587
+      Effect_ElectricShield_1_265x265_101: -242927331
+      Effect_ElectricShield_1_265x265_102: 689652852
+      Effect_ElectricShield_1_265x265_103: 550731327
+      Effect_ElectricShield_1_265x265_104: 895486430
+      Effect_ElectricShield_1_265x265_105: -2061109423
+      Effect_ElectricShield_1_265x265_106: -1887713424
+      Effect_ElectricShield_1_265x265_107: -281991263
+      Effect_ElectricShield_1_265x265_108: -2035454208
+      Effect_ElectricShield_1_265x265_11: 1468102160
+      Effect_ElectricShield_1_265x265_12: 303160448
+      Effect_ElectricShield_1_265x265_13: -476658179
+      Effect_ElectricShield_1_265x265_14: -1380172244
+      Effect_ElectricShield_1_265x265_15: 524122205
+      Effect_ElectricShield_1_265x265_16: -2070425568
+      Effect_ElectricShield_1_265x265_17: -2115024346
+      Effect_ElectricShield_1_265x265_18: 1126944368
+      Effect_ElectricShield_1_265x265_19: -1769283069
+      Effect_ElectricShield_1_265x265_2: -2041106699
+      Effect_ElectricShield_1_265x265_20: 591047994
+      Effect_ElectricShield_1_265x265_21: -1658186842
+      Effect_ElectricShield_1_265x265_22: -561275726
+      Effect_ElectricShield_1_265x265_23: -1579239094
+      Effect_ElectricShield_1_265x265_24: 1424374786
+      Effect_ElectricShield_1_265x265_25: 1096161017
+      Effect_ElectricShield_1_265x265_26: 1215674960
+      Effect_ElectricShield_1_265x265_27: -315769684
+      Effect_ElectricShield_1_265x265_28: -165491177
+      Effect_ElectricShield_1_265x265_29: 871028277
+      Effect_ElectricShield_1_265x265_3: -717579600
+      Effect_ElectricShield_1_265x265_30: -410412457
+      Effect_ElectricShield_1_265x265_31: 1099461603
+      Effect_ElectricShield_1_265x265_32: -1148818893
+      Effect_ElectricShield_1_265x265_33: 749809618
+      Effect_ElectricShield_1_265x265_34: -1543801988
+      Effect_ElectricShield_1_265x265_35: -318772597
+      Effect_ElectricShield_1_265x265_36: 1886075906
+      Effect_ElectricShield_1_265x265_37: 1078409177
+      Effect_ElectricShield_1_265x265_38: 1638581877
+      Effect_ElectricShield_1_265x265_39: -2136973083
+      Effect_ElectricShield_1_265x265_4: -244837627
+      Effect_ElectricShield_1_265x265_40: 1212060574
+      Effect_ElectricShield_1_265x265_41: 2116869733
+      Effect_ElectricShield_1_265x265_42: -1881338306
+      Effect_ElectricShield_1_265x265_43: -2122723275
+      Effect_ElectricShield_1_265x265_44: 796543122
+      Effect_ElectricShield_1_265x265_45: -1103843540
+      Effect_ElectricShield_1_265x265_46: 986918929
+      Effect_ElectricShield_1_265x265_47: -785061664
+      Effect_ElectricShield_1_265x265_48: 1447233962
+      Effect_ElectricShield_1_265x265_49: -1330245650
+      Effect_ElectricShield_1_265x265_5: -513080188
+      Effect_ElectricShield_1_265x265_50: -1653794223
+      Effect_ElectricShield_1_265x265_51: -1880951758
+      Effect_ElectricShield_1_265x265_52: 869141445
+      Effect_ElectricShield_1_265x265_53: 1480075628
+      Effect_ElectricShield_1_265x265_54: 694689688
+      Effect_ElectricShield_1_265x265_55: -816318528
+      Effect_ElectricShield_1_265x265_56: -1047573728
+      Effect_ElectricShield_1_265x265_57: -578423030
+      Effect_ElectricShield_1_265x265_58: 446001829
+      Effect_ElectricShield_1_265x265_59: -701219842
+      Effect_ElectricShield_1_265x265_6: -1319833934
+      Effect_ElectricShield_1_265x265_60: -1140579977
+      Effect_ElectricShield_1_265x265_61: -539750097
+      Effect_ElectricShield_1_265x265_62: -752929345
+      Effect_ElectricShield_1_265x265_63: -153828969
+      Effect_ElectricShield_1_265x265_64: 256773845
+      Effect_ElectricShield_1_265x265_65: 1331867510
+      Effect_ElectricShield_1_265x265_66: -1103930706
+      Effect_ElectricShield_1_265x265_67: -875315380
+      Effect_ElectricShield_1_265x265_68: -121757823
+      Effect_ElectricShield_1_265x265_69: -812483935
+      Effect_ElectricShield_1_265x265_7: 1185194947
+      Effect_ElectricShield_1_265x265_70: 1130980464
+      Effect_ElectricShield_1_265x265_71: -1479265736
+      Effect_ElectricShield_1_265x265_72: -1343004085
+      Effect_ElectricShield_1_265x265_73: 1020915592
+      Effect_ElectricShield_1_265x265_74: -1977857283
+      Effect_ElectricShield_1_265x265_75: 1911513679
+      Effect_ElectricShield_1_265x265_76: -1787183549
+      Effect_ElectricShield_1_265x265_77: -1220934922
+      Effect_ElectricShield_1_265x265_78: -1151669311
+      Effect_ElectricShield_1_265x265_79: 134804172
+      Effect_ElectricShield_1_265x265_8: -788000272
+      Effect_ElectricShield_1_265x265_80: 2092107857
+      Effect_ElectricShield_1_265x265_81: 1506893586
+      Effect_ElectricShield_1_265x265_82: 560009376
+      Effect_ElectricShield_1_265x265_83: 1509277400
+      Effect_ElectricShield_1_265x265_84: -1060738450
+      Effect_ElectricShield_1_265x265_85: -1826718439
+      Effect_ElectricShield_1_265x265_86: 344179067
+      Effect_ElectricShield_1_265x265_87: 1977753496
+      Effect_ElectricShield_1_265x265_88: -230520036
+      Effect_ElectricShield_1_265x265_89: -53951658
+      Effect_ElectricShield_1_265x265_9: 1704847920
+      Effect_ElectricShield_1_265x265_90: -1077377462
+      Effect_ElectricShield_1_265x265_91: 789676083
+      Effect_ElectricShield_1_265x265_92: -884226108
+      Effect_ElectricShield_1_265x265_93: -1661932948
+      Effect_ElectricShield_1_265x265_94: -69630362
+      Effect_ElectricShield_1_265x265_95: 1823302925
+      Effect_ElectricShield_1_265x265_96: -525509314
+      Effect_ElectricShield_1_265x265_97: 1023435222
+      Effect_ElectricShield_1_265x265_98: 1225034406
+      Effect_ElectricShield_1_265x265_99: -1190183083
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

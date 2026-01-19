@@ -23,13 +23,17 @@ public class Enemy : MonoBehaviour
     public EnemyActionType nextAction;
     public HPBar hpBar;
 
-    public Animator animator;    
+    public Animator animator;
+    
 
+    private EffectAccure effectScript;
+    
     void Start()
     {
         currentHP = maxHP;
         shield = 0;
         isDefending = false;
+        
 
         if (DeliverBattleData.MonsterInfo)
         {
@@ -42,8 +46,12 @@ public class Enemy : MonoBehaviour
             counterDamage = monsterInfo.counterDamage;
             GameObject monsterObj = FindByTagAndName("Monster", monsterInfo.name);
             ReplaceVisual(this.gameObject, monsterObj);
+
+            Transform effectStartPos = transform.Find("EffectStartPos");
+            effectScript = effectStartPos.GetComponent<EffectAccure>();
             //-----
         }
+        
 
         DecideNextAction();
         UpdateHPBar();
@@ -94,11 +102,11 @@ public class Enemy : MonoBehaviour
 
             case EnemyActionType.Heal:
                 currentHP = Mathf.Min(maxHP, currentHP + 5);
-                SpecialAnimation();//시전애니메이션
+                HealAnimation();//시전애니메이션
                 break;
 
             case EnemyActionType.Defense:
-                SpecialAnimation();//시전애니메이션
+                DefenseAnimation();//시전애니메이션
                 // 실행 없음 (상태용)
                 break;
         }
@@ -159,12 +167,23 @@ public class Enemy : MonoBehaviour
 
     public void Attack1Animation()
     {
-
+        effectScript.ActiveBrash();//히드라만 구현
         animator.SetTrigger("Attack1");
     }
 
     public void SpecialAnimation()
     {
+        effectScript.ActiveShield();
+        animator.SetTrigger("Special");
+    }
+    public void HealAnimation()
+    {
+        effectScript.ActiveHeal();
+        animator.SetTrigger("Special");
+    }    
+    public void DefenseAnimation()
+    {
+        effectScript.ActiveDefense();
         animator.SetTrigger("Special");
     }
     public void HurtedAnimation()

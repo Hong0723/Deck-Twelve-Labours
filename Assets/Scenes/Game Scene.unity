@@ -12166,7 +12166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
-  MonsterInfo: {fileID: 0}
+  MonsterInfo: {fileID: 11400000, guid: d8239ff533c9b33449f2014190dae9da, type: 2}
 --- !u!61 &465247456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29570,7 +29570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSceneOnHitpt
   sceneName: Battle Scene
-  MonsterInfo: {fileID: 0}
+  MonsterInfo: {fileID: 11400000, guid: 7ab7994765fa42a4fb3c5470af6a6073, type: 2}
 --- !u!61 &1405533747
 BoxCollider2D:
   m_ObjectHideFlags: 0
