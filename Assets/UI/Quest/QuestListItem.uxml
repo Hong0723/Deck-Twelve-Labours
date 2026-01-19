@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="QuestListItem.uss" />
+
+    <ui:Button name="item-btn" class="quest-item">
+        <ui:VisualElement class="quest-item-row">
+            <ui:Label name="item-title" text="Quest Title" class="quest-item-title" />
+            <ui:Label name="item-state" text="(완료)" class="quest-item-state" />
+        </ui:VisualElement>
+    </ui:Button>
+</ui:UXML>

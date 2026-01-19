@@ -1,0 +1,11 @@
+.obj-row {
+    height: 28px;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.obj-text {
+    color: rgb(220,220,220);
+    white-space: normal;
+    font-size: 13px;
+}

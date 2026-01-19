@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="ObjectiveRow.uss" />
+
+    <ui:VisualElement class="obj-row">
+        <ui:Label name="obj-text" text="Kill 0/5" class="obj-text" />
+    </ui:VisualElement>
+</ui:UXML>

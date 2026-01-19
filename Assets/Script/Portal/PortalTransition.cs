@@ -71,7 +71,10 @@ public class PortalTransition : MonoBehaviour
 
     private Transform FindSpawnPoint(string targetSpawnId)
     {
-        var spawns = GameObject.FindObjectsOfType<SpawnPoint>();
+        var spawns = Object.FindObjectsByType<SpawnPoint>(
+            FindObjectsSortMode.None
+        );
+
         foreach (var s in spawns)
         {
             if (s.SpawnId == targetSpawnId)

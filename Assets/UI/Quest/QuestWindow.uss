@@ -1,0 +1,169 @@
+/* ===== 오버레이(전체 화면) ===== */
+.quest-root {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+
+    display: none; /* 기본 숨김 */
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+/* ===== 중앙 모달 창 (화면 60%) ===== */
+.quest-window {
+    width: 60%;
+    height: 60%;
+
+    min-width: 700px;
+    min-height: 420px;
+    max-width: 1100px;
+    max-height: 720px;
+
+    background-color: rgba(10, 10, 10, 0.92);
+    border-radius: 12px;
+
+    padding: 12px;
+
+    flex-direction: column;
+}
+
+/* ===== 헤더 ===== */
+.quest-header {
+    height: 40px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quest-header-title {
+    color: white;
+    font-size: 18px;
+    unity-font-style: bold;
+}
+
+/* X 버튼 (목록 버튼과 통일 톤) */
+.quest-close-btn {
+    width: 36px;
+    height: 30px;
+
+    background-color: rgb(28, 28, 28);
+    color: rgb(240, 240, 240);
+
+    border-radius: 10px;
+
+    border-width: 1px;
+    border-color: rgba(255,255,255,0.10);
+
+    unity-font-style: bold;
+    font-size: 14px;
+}
+
+.quest-close-btn:hover { background-color: rgb(40, 40, 40); }
+.quest-close-btn:active { background-color: rgb(55, 55, 55); }
+
+/* ===== 본문(좌우) ===== */
+.quest-body {
+    margin-top: 10px;
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+/* 좌측 목록 패널 */
+.quest-left {
+    width: 35%;
+    margin-right: 10px;
+
+    background-color: rgba(25, 25, 25, 0.85);
+    border-radius: 10px;
+    padding: 8px;
+
+    flex-direction: column;
+}
+
+.quest-list {
+    flex-grow: 1;
+    padding-right: 4px;
+}
+
+/* 우측 상세 패널 */
+.quest-right {
+    flex-grow: 1;
+
+    background-color: rgba(25, 25, 25, 0.85);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.section-title {
+    color: rgb(220,220,220);
+    margin-top: 8px;
+    margin-bottom: 6px;
+    unity-font-style: bold;
+}
+
+.quest-title {
+    color: white;
+    font-size: 20px;
+    unity-font-style: bold;
+    margin-bottom: 8px;
+}
+
+.quest-desc {
+    color: rgb(210, 210, 210);
+    white-space: normal;
+    margin-bottom: 10px;
+}
+
+.objectives-root {
+    margin-top: 4px;
+}
+
+/* =====================================================
+   Scrollbar 숨김 (스크롤 기능 유지 / Unity 6 안정형)
+   - 화살표는 제거
+   - 스크롤러는 "존재"하되, 폭/투명도로 안 보이게
+   ===================================================== */
+
+/* 화살표(증감 버튼)만 제거 */
+.hide-scrollbar .unity-scroller__increment-button,
+.hide-scrollbar .unity-scroller__decrement-button,
+.hide-scrollbar .unity-scrollbar__increment-button,
+.hide-scrollbar .unity-scrollbar__decrement-button {
+    display: none;
+}
+
+/* 스크롤러 자체를 display:none 하지 말고 "숨김" 처리 */
+.hide-scrollbar .unity-scroll-view__vertical-scroller,
+.hide-scrollbar .unity-scrollbar--vertical,
+.hide-scrollbar .unity-scroller--vertical {
+    opacity: 0;
+    width: 0px;
+    min-width: 0px;
+    margin: 0px;
+    padding: 0px;
+
+    /* 스크롤바 영역이 클릭을 가로채지 않게 */
+    pointer-events: none;
+}
+
+/* 수평도 동일 */
+.hide-scrollbar .unity-scroll-view__horizontal-scroller,
+.hide-scrollbar .unity-scrollbar--horizontal,
+.hide-scrollbar .unity-scroller--horizontal {
+    opacity: 0;
+    height: 0px;
+    min-height: 0px;
+    margin: 0px;
+    padding: 0px;
+    pointer-events: none;
+}
+
+/* 트랙/드래거도 안 보이게 (display:none은 피함) */
+.hide-scrollbar .unity-base-slider__track,
+.hide-scrollbar .unity-base-slider__dragger {
+    opacity: 0;
+    pointer-events: none;
+}
+

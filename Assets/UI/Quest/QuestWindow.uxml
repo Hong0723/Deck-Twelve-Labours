@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="QuestWindow.uss" />
+
+    <!-- 전체 화면 오버레이 -->
+    <ui:VisualElement name="quest-root" class="quest-root">
+        <!-- 중앙 모달 창 -->
+        <ui:VisualElement class="quest-window">
+
+            <ui:VisualElement class="quest-header">
+                <ui:Label text="Quest" class="quest-header-title" />
+                <ui:Button name="quest-close-btn" text="X" class="quest-close-btn" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="quest-body">
+                <!-- 좌측: 목록 -->
+                <ui:VisualElement class="quest-left">
+                    <ui:ScrollView name="quest-list" class="quest-list" />
+                </ui:VisualElement>
+
+                <!-- 우측: 상세 -->
+                <ui:VisualElement class="quest-right">
+                    <ui:Label name="quest-title" text="Select a quest" class="quest-title" />
+                    <ui:Label name="quest-desc" text="" class="quest-desc" />
+                    <ui:Label text="Objectives" class="section-title" />
+                    <ui:VisualElement name="objectives-root" class="objectives-root" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
