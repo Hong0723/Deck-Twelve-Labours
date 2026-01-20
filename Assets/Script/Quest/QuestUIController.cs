@@ -11,7 +11,7 @@ public class QuestUIController : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private KeyCode toggleKey = KeyCode.J;
-
+    public static QuestUIController Instance { get; private set; }
     private UIDocument doc;
 
     private VisualElement questRoot;
@@ -26,6 +26,13 @@ public class QuestUIController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
         doc = GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
 
@@ -139,152 +146,70 @@ public class QuestUIController : MonoBehaviour
             objectivesRoot.Add(row);
         }
     }
+    public void NotifyEnemyDefeated(string enemyId, int amount = 1)
+    {
+        if (string.IsNullOrEmpty(enemyId)) return;
+
+        bool anyChanged = false;
+
+        foreach (var q in quests)
+        {
+            if (q.completed) continue;
+
+            foreach (var obj in q.objectives)
+            {
+                // targetEnemyId가 비어있으면 “특정 적” 목표가 아닌 것으로 취급 (원하면 반대로 바꿔도 됨)
+                if (string.IsNullOrEmpty(obj.targetEnemyId)) continue;
+
+                if (obj.targetEnemyId == enemyId)
+                {
+                    obj.current = Mathf.Min(obj.current + amount, obj.required);
+                    anyChanged = true;
+                }
+            }
+
+            // 퀘스트 완료 판정: 모든 objective가 required 충족이면 완료
+            bool allDone = true;
+            foreach (var obj in q.objectives)
+            {
+                if (obj.current < obj.required)
+                {
+                    allDone = false;
+                    break;
+                }
+            }
+
+            if (allDone)
+            {
+                q.completed = true;
+                anyChanged = true;
+            }
+        }
+
+        if (!anyChanged) return;
+
+        RefreshList();
+        if (selected != null)
+            ShowDetail(selected);
+    }
 
     private void SeedDemo()
     {
         quests.Clear();
-
-        // q1~q12: 예시 12개
         quests.Add(new QuestModel {
             id = "q1",
-            title = "초원 정찰",
-            description = "마을 주변을 정찰하고 위협 요소를 보고하라.",
+            title = "기초 훈련",
+            description = "앞에 있는 몬스터를 처치하고 보상을 획득하자.",
             completed = false,
             objectives = new List<QuestObjective>
             {
-                new QuestObjective { text="주변 지역 방문", current=1, required=3 },
-                new QuestObjective { text="보고서 제출", current=0, required=1 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q2",
-            title = "슬라임 퇴치",
-            description = "슬라임을 처치해 마을을 안전하게 만들어라.",
-            completed = true,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="슬라임 처치", current=5, required=5 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q3",
-            title = "부서진 울타리 수리",
-            description = "마을 외곽의 부서진 울타리를 수리해야 한다.",
-            completed = false,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="나무 판자 수집", current=2, required=5 },
-                new QuestObjective { text="울타리 수리", current=0, required=1 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q4",
-            title = "잃어버린 반지",
-            description = "마을 주민이 잃어버린 반지를 찾아 돌려주자.",
-            completed = false,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="우물 주변 조사", current=0, required=1 },
-                new QuestObjective { text="반지 회수", current=0, required=1 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q5",
-            title = "고블린 흔적 추적",
-            description = "숲에서 발견된 고블린의 흔적을 추적하라.",
-            completed = false,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="발자국 조사", current=1, required=3 },
-                new QuestObjective { text="고블린 처치", current=0, required=2 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q6",
-            title = "약초 채집",
-            description = "치료용 약초를 채집해 연금술사에게 가져가자.",
-            completed = true,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="약초 채집", current=5, required=5 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q7",
-            title = "버려진 창고 조사",
-            description = "마을 북쪽의 버려진 창고를 조사하라.",
-            completed = false,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="창고 내부 진입", current=0, required=1 },
-                new QuestObjective { text="의심스러운 물건 확인", current=0, required=3 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q8",
-            title = "야간 경비",
-            description = "밤 동안 마을을 순찰하며 이상 징후를 확인하라.",
-            completed = false,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="동쪽 구역 순찰", current=0, required=1 },
-                new QuestObjective { text="서쪽 구역 순찰", current=0, required=1 },
-                new QuestObjective { text="보고 완료", current=0, required=1 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q9",
-            title = "도적의 은신처",
-            description = "도적들이 숨어 있는 은신처를 찾아내 제거하라.",
-            completed = false,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="은신처 발견", current=0, required=1 },
-                new QuestObjective { text="도적 처치", current=1, required=4 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q10",
-            title = "부상자 치료",
-            description = "전투로 부상당한 주민을 치료하라.",
-            completed = true,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="붕대 사용", current=1, required=1 },
-                new QuestObjective { text="치료 확인", current=1, required=1 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q11",
-            title = "고대 석판 해독",
-            description = "유적에서 발견된 고대 석판을 해독하라.",
-            completed = false,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="석판 조사", current=0, required=1 },
-                new QuestObjective { text="문자 해독", current=0, required=2 }
-            }
-        });
-
-        quests.Add(new QuestModel {
-            id = "q12",
-            title = "마을 회의 참석",
-            description = "중요한 안건이 논의되는 마을 회의에 참석하라.",
-            completed = false,
-            objectives = new List<QuestObjective>
-            {
-                new QuestObjective { text="회의장 도착", current=0, required=1 },
-                new QuestObjective { text="회의 종료까지 대기", current=0, required=1 }
+                new QuestObjective
+                {
+                    text = "Lernaean Hydra 처치하기",
+                    targetEnemyId = "Lernaean Hydra",
+                    current = 0,
+                    required = 1
+                }
             }
         });
     }

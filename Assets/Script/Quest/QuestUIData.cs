@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class QuestObjective
 {
     public string text;
+    public string targetEnemyId;
     public int current;
     public int required;
 }
