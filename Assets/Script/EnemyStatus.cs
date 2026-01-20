@@ -3,7 +3,8 @@ using UnityEngine;
 public class EnemyStatus : MonoBehaviour
 {
     public HPBar hpBar;
-    public GameOverHandler gameOverHandler; // 추가: 직접 드래그해서 연결할 칸
+    public GameOverHandler handler;
+    public PlayerStatus player; // 공격 대상인 플레이어를 연결
     public int maxHP = 100;
     private int currentHP;
 
@@ -13,26 +14,28 @@ public class EnemyStatus : MonoBehaviour
         if (hpBar != null) hpBar.Set(currentHP, maxHP, 0);
     }
 
+    void Update()
+    {
+        // [주의] 적 스크립트에서는 절대로 KeyCode.Space를 사용하지 마세요!
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (player != null)
+            {
+                player.TakeDamage(20);
+            }
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
         if (hpBar != null) hpBar.Set(currentHP, maxHP, 0);
 
-        if (currentHP <= 0) Die();
-    }
-
-    void Die()
-    {
-        // 직접 연결된 핸들러에게 승리창을 띄우라고 명령
-        if (gameOverHandler != null)
+        if (currentHP <= 0)
         {
-            gameOverHandler.DisplayVictory();
+            if (handler != null) handler.DisplayVictory();
+            gameObject.SetActive(false); // 적 파괴/비활성화
         }
-        gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L)) TakeDamage(20);
     }
 }
