@@ -11,13 +11,17 @@ public class Player : MonoBehaviour
 
     public Animator animator;  
     private Coroutine attackCoroutine;//실행중인 공격애니메이션
+    private PlayerSkill effectScript;
+
+    
 
     void Start()
     {
         
         currentHP = maxHP;
         block = 0;
-
+        
+        effectScript = GetComponent<PlayerSkill>();       
         //스크립터블 오브젝트에서 플레이어 정보를 가져옵니다
         if (DeliverBattleData.PlayerInfo)
         {
@@ -61,6 +65,8 @@ public class Player : MonoBehaviour
     public void Attack1Animation()
     {
         //animator.SetTrigger("Attack1");
+        effectScript.EffectAttack();
+        
         attackCoroutine = StartCoroutine(Attack1Coroutine());
     }
 

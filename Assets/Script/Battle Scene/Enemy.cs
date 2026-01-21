@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public enum EnemyActionType
 {
@@ -26,8 +27,10 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     
 
-    private EffectAccure effectScript;
-    
+    private MonsterSkill effectScript;
+    private GameObject newVisual;//화면밖에 적을 복제
+
+
     void Start()
     {
         currentHP = maxHP;
@@ -46,9 +49,12 @@ public class Enemy : MonoBehaviour
             counterDamage = monsterInfo.counterDamage;
             GameObject monsterObj = FindByTagAndName("Monster", monsterInfo.name);
             ReplaceVisual(this.gameObject, monsterObj);
-
+            /*
             Transform effectStartPos = transform.Find("EffectStartPos");
-            effectScript = effectStartPos.GetComponent<EffectAccure>();
+            effectScript = effectStartPos.GetComponent<MonsterSkill>();
+            */
+            //effectScript = GetComponentInChildren<MonsterSkill>();
+            effectScript = newVisual.GetComponent<MonsterSkill>();
             //-----
         }
         
@@ -167,23 +173,23 @@ public class Enemy : MonoBehaviour
 
     public void Attack1Animation()
     {
-        effectScript.ActiveBrash();//히드라만 구현
+        effectScript.EffectAttack();//히드라만 구현
         animator.SetTrigger("Attack1");
     }
 
     public void SpecialAnimation()
     {
-        effectScript.ActiveShield();
+        effectScript.EffectShield();
         animator.SetTrigger("Special");
     }
     public void HealAnimation()
     {
-        effectScript.ActiveHeal();
+        effectScript.EffectHeal();
         animator.SetTrigger("Special");
     }    
     public void DefenseAnimation()
     {
-        effectScript.ActiveDefense();
+        effectScript.EffectDefense();
         animator.SetTrigger("Special");
     }
     public void HurtedAnimation()
@@ -229,7 +235,7 @@ public class Enemy : MonoBehaviour
         Transform old = target.transform.Find("VisualRoot");
         if (old) Object.Destroy(old.gameObject);
 
-        GameObject newVisual = Object.Instantiate(visualSource, target.transform);
+        newVisual = Object.Instantiate(visualSource, target.transform);
         newVisual.name = "VisualRoot";
         
         newVisual.transform.localPosition = Vector3.zero;
@@ -246,6 +252,11 @@ public class Enemy : MonoBehaviour
 
         //Debug.Log($"[ReplaceVisual] world scale matched: {srcWorldScale}");
         animator = newVisual.GetComponent<Animator>();
+    }
+
+    public GameObject GetnewVisualObj()
+    {
+        return newVisual;
     }
 }
 

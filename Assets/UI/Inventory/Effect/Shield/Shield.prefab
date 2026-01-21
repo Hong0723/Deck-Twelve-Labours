@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3670627983531416443}
   - component: {fileID: 192122687302649790}
   - component: {fileID: 5059156622428459994}
+  - component: {fileID: -6671223230715907499}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -113,3 +114,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-6671223230715907499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216770361250678684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6d8c27b7692ca4483459f530b5b94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlarmEndEffect
+  effectAccureObj: {fileID: 0}
+  PlayerEffectAccureObj: {fileID: 0}

@@ -1,42 +1,60 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AlarmEndEffect : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject effectAccureObj;
-    private EffectAccure effectAccureScript;
+    private GameObject enemyObj;    
+    private MonsterSkill effectAccureScript;
+
+    [SerializeField]
+    private GameObject playerObj;
+    private PlayerSkill playerEffectAccureScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        effectAccureScript = effectAccureObj.GetComponent<EffectAccure>();
+        Enemy ensc = enemyObj.GetComponent<Enemy>();
+        GameObject visualObj = ensc.GetnewVisualObj();
+        effectAccureScript = visualObj.GetComponent<MonsterSkill>();
+
+        playerEffectAccureScript=playerObj.GetComponent<PlayerSkill>();
+    }    
+    
+
+
+    public void EndEffectAttackImpact()
+    {
+
+        effectAccureScript.EndEffectAttackImpact();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EndEffectShield()
     {
         
+        effectAccureScript.EndEffectShield();
     }
 
-    public void EndExplode()
+    public void EndEffectHeal()
     {
-        
-        effectAccureScript.EndExplode();
+        effectAccureScript.EndEffectHeal();
     }
 
-    public void EndShield()
+    public void EndEffectDefense()
     {
-        
-        effectAccureScript.EndShield();
+        effectAccureScript.EndEffectDefense();
     }
 
-    public void EndHeal()
+
+
+    //플레이어용
+    public void EndEffectAttackPlayer()
     {
-        effectAccureScript.EndHeal();
+        playerEffectAccureScript.EndEffectAttack();
     }
 
-    public void EndDefense()
+    public void EndEffectAttackImpactPlayer()
     {
-        effectAccureScript.EndDefense();
+        playerEffectAccureScript.EndEffectAttackImpact();
     }
 }
