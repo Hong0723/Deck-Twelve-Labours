@@ -23,7 +23,11 @@ public class MonsterSkill : MonoBehaviour
     private Dictionary<string, GameObject> effectMapRef; // 생성된 인스턴스
 
 
-    public GameObject skillStartPos;//스킬 시작점
+    //public GameObject skillStartPos;//스킬 시작점
+    public GameObject attackSocket;//스킬 시작점
+    public GameObject healSocket;//스킬 시작점
+    public GameObject defenseSocket;//스킬 시작점
+    public GameObject shieldSocket;//스킬 시작점
     public GameObject skillEndPos;//플레이어가 스킬 맞는 지점
     private bool isMoveAble;
     public float speed;
@@ -53,6 +57,11 @@ public class MonsterSkill : MonoBehaviour
     {
         if (isMoveAble)
         {
+            if (!effectMapRef["Attack"])
+            {
+                return;
+            }
+
             effectMapRef["Attack"].transform.position = Vector3.Lerp(effectMapRef["Attack"].transform.position, skillEndPos.transform.position, Time.deltaTime * speed);
 
             if (Vector3.Distance(effectMapRef["Attack"].transform.position, skillEndPos.transform.position) < 0.5f)
@@ -68,14 +77,14 @@ public class MonsterSkill : MonoBehaviour
         if (effectMap["Attack"].haveImpaact)
         {//플레이어가 스킬에 대한 피격애니메이션이 있을때
             Debug.Log("Attack 생성");
-            effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, skillStartPos.transform.position, Quaternion.identity);
+            effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, attackSocket.transform.position, Quaternion.identity);
             Animator animator = effectMapRef["Attack"].GetComponent<Animator>();
             animator.SetBool("Effect", true);
             isMoveAble = true;
         }
         else
         {//없을때
-            effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, skillStartPos.transform.position, Quaternion.identity);
+            effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, attackSocket.transform.position, Quaternion.identity);
             Animator animator = effectMapRef["Attack"].GetComponent<Animator>();
             animator.SetTrigger("Effect");
         }            
@@ -99,7 +108,7 @@ public class MonsterSkill : MonoBehaviour
     public void EffectShield()
     {
         Vector3 offset2 = new Vector3(0, 0, -20);
-        effectMapRef["Shield"] = Instantiate(effectMap["Shield"].prefab, skillStartPos.transform.position, Quaternion.identity);
+        effectMapRef["Shield"] = Instantiate(effectMap["Shield"].prefab, shieldSocket.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["Shield"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
 
@@ -108,16 +117,21 @@ public class MonsterSkill : MonoBehaviour
     public void EffectHeal()
     {
         Vector3 offset2 = new Vector3(0, 0, -20);
-        effectMapRef["Heal"] = Instantiate(effectMap["Heal"].prefab, skillStartPos.transform.position, Quaternion.identity);
+        effectMapRef["Heal"] = Instantiate(effectMap["Heal"].prefab, healSocket.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["Heal"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
     }
     public void EffectDefense()
     {
         Vector3 offset2 = new Vector3(0, 0, -20);
-        effectMapRef["Defense"] = Instantiate(effectMap["Defense"].prefab, skillStartPos.transform.position, Quaternion.identity);
+        effectMapRef["Defense"] = Instantiate(effectMap["Defense"].prefab, defenseSocket.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["Defense"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
+    }
+
+    public void EndEffectAttack()
+    {
+        Destroy(effectMapRef["Attack"]);
     }
 
     public void EndEffectAttackImpact()

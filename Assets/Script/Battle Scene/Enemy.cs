@@ -162,7 +162,7 @@ public class Enemy : MonoBehaviour
         if (currentHP < maxHP * 0.8f)
             pool.Add(EnemyActionType.Heal);
 
-        nextAction = pool[Random.Range(0, pool.Count)];
+        nextAction = pool[Random.Range(0, pool.Count)];        
     }
 
     void UpdateHPBar()

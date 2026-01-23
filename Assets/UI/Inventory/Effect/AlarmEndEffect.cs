@@ -19,9 +19,13 @@ public class AlarmEndEffect : MonoBehaviour
         effectAccureScript = visualObj.GetComponent<MonsterSkill>();
 
         playerEffectAccureScript=playerObj.GetComponent<PlayerSkill>();
-    }    
-    
+    }
 
+    public void EndEffectAttack()
+    {
+
+        effectAccureScript.EndEffectAttack();
+    }
 
     public void EndEffectAttackImpact()
     {
