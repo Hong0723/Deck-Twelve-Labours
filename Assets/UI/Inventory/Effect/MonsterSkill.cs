@@ -32,6 +32,10 @@ public class MonsterSkill : MonoBehaviour
     private bool isMoveAble;
     public float speed;
 
+    //몬스터마다 크기가 다르니까 HP바 위치 재설정
+    public GameObject head;    
+    Camera cam;
+    public GameObject hpBar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,6 +54,12 @@ public class MonsterSkill : MonoBehaviour
         {
             Debug.Log("등록된 키: " + key);
         }*/
+        cam = Camera.main;
+        Vector3 offset = new Vector3(0,10,0);        // 머리 위 보정
+        Vector3 worldPos = head.transform.position + offset;
+        Vector3 screenPos = cam.WorldToScreenPoint(worldPos);
+        hpBar.transform.position = screenPos;
+
     }
 
     // Update is called once per frame
