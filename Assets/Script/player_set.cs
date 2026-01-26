@@ -27,6 +27,13 @@ public class player_set : MonoBehaviour
 
         //static에 값 저장
         DeliverBattleData.PlayerInfo = PlayerInfo;
+
+        // 전역 HP 최초 초기화(씬 이동 시에도 유지)
+        if (PlayerInfo != null)
+        {
+            GlobalPlayerHP.InitializeIfNeeded(PlayerInfo.maxHP);
+            GlobalPlayerHP.UpdateMaxHP(PlayerInfo.maxHP);
+        }
     }
 
     void Update()
