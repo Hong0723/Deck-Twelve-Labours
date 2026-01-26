@@ -14,10 +14,6 @@ public class AlarmEndEffect : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Enemy ensc = enemyObj.GetComponent<Enemy>();
-        GameObject visualObj = ensc.GetnewVisualObj();
-        effectAccureScript = visualObj.GetComponent<MonsterSkill>();
-
         playerEffectAccureScript=playerObj.GetComponent<PlayerSkill>();
     }
 

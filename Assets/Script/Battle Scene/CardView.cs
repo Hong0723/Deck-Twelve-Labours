@@ -2,7 +2,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class cardsView : MonoBehaviour
+public class CardView : MonoBehaviour
 {
     [SerializeField] private TMP_Text title;
 

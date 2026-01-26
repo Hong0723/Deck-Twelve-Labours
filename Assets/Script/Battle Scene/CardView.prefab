@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4818672429680233038}
   - component: {fileID: 5350720183417844362}
   - component: {fileID: 6467194130181912322}
-  - component: {fileID: 7051922960945284719}
   m_Layer: 0
   m_Name: CardView
   m_TagString: Untagged
@@ -68,23 +67,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.6, y: 4.8, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7051922960945284719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140507769399362508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56f7069ce853a486ab491c711eac4e83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::cardsView
-  title: {fileID: 5042807271913065088}
-  description: {fileID: 3366771705389015503}
-  mana: {fileID: 2892209332939501340}
-  imageSR: {fileID: 8778335382599542923}
-  wrapper: {fileID: 4827097258766960776}
 --- !u!1 &4827097258766960776
 GameObject:
   m_ObjectHideFlags: 0

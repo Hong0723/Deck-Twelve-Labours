@@ -4,7 +4,7 @@ using SerializeReferenceEditor;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/Card")]
-public class CardData2 : ScriptableObject
+public class CardData : ScriptableObject
 {
     [field: SerializeField] public string Description {get; private set;}
 

@@ -3,17 +3,33 @@ using UnityEngine.Splines;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 public class HandView : MonoBehaviour
 {
     [SerializeField] private SplineContainer splineContainer;   //spline 저장
 
-    private readonly List<cardsView> cards = new();             //cardsView 리스트 생성
+    private readonly List<CardView> cards = new();             //cardsView 리스트 생성
 
-    public IEnumerator AddCard(cardsView cardView)              //카드 추가 함수 코루틴 실행
+    public IEnumerator AddCard(CardView cardView)              //카드 추가 함수 코루틴 실행
     {
         cards.Add(cardView);                                    //cards 리스트에 카드 추가
         yield return UpdateCardPositions(0.15f);                //함수 실행하고 함수가 끝나면 이 함수도 끝
     } 
+
+    public CardView RemoveCard(Card card)
+    {
+        CardView cardView = GetCardView(card);
+        if (cardView == null) return null;
+        cards.Remove(cardView);
+        StartCoroutine(UpdateCardPositions(0.15f));
+        return cardView;
+    }
+
+    private CardView GetCardView(Card card)
+    {
+        return cards.Where(GetCardView => GetCardView.Card == card).FirstOrDefault();
+    }
 
     private IEnumerator UpdateCardPositions(float duration) //duration 동안 이동 애니매이션 진행
     {

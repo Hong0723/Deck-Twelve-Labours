@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CardViewHoverSystem : Singleton<CardViewHoverSystem>
 {
-    [SerializeField] private cardsView cardViewHover;
+    [SerializeField] private CardView cardViewHover;
 
     public void Show(Card card, Vector3 position)
     {

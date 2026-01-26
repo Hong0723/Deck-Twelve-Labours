@@ -1,55 +1,103 @@
+using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
-public class CardSystem : MonoBehaviour
+public class CardSystem : Singleton<CardSystem>
 {
-    [SerializeField] private List<CardData> initialDeck = new();
+    [SerializeField] private HandView handView;
+    [SerializeField] private Transform drawPilePoint;
+    [SerializeField] private Transform discardPilePoint;
 
-    [Header("Runtime piles")]
-    public List<CardData> drawPile = new();     
-    public List<CardData> hand = new();         
-    public List<CardData> discardPile = new();  
+    private readonly List<Card> drawPile = new();
+    private readonly List<Card> discardPile = new();
+    private readonly List<Card> hand = new();
 
-    public void Init()
+    private void OnEnable()
     {
-        drawPile.Clear();
-        hand.Clear();
-        discardPile.Clear();
-
-        drawPile.AddRange(initialDeck);
-        Shuffle(drawPile);
+        ActionSystem.AttachPerformer<DrawCardsGA>(DrawCardsPerformer);
+        ActionSystem.AttachPerformer<DiscardAllCardsGA>(DiscardAllCardsPerformer);
+        ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPreReaction, ReactionTiming.PRE);
+        ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
     }
 
-    public void Draw(int count)
+    void OnDisable()
     {
-        for (int i = 0; i < count; i++)
+        ActionSystem.DetachPerformer<DrawCardsGA>();
+        ActionSystem.DetachPerformer<DiscardAllCardsGA>();
+        ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPreReaction, ReactionTiming.PRE);
+        ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
+    }
+
+    public void Setup(List<CardData> deckData)
+    {
+        foreach(var cardData in deckData)
         {
-            if (drawPile.Count == 0)
+            Card card = new(cardData);
+            drawPile.Add(card);
+        }
+    }
+
+    private IEnumerator DrawCardsPerformer(DrawCardsGA drawCardsGA)
+    {
+        int actualAmount = Mathf.Min(drawCardsGA.Amount, drawPile.Count);
+        int notDrawnAmount = drawCardsGA.Amount - actualAmount;
+        for(int i = 0; i < actualAmount; i++)
+        {
+            yield return DrawCard();
+        }
+        if(notDrawnAmount > 0)
+        {
+            RefillDeck();
+            for(int i = 0; i < notDrawnAmount; i++)
             {
-                if (discardPile.Count == 0) return;
-                drawPile.AddRange(discardPile);
-                discardPile.Clear();
-                Shuffle(drawPile);
+                yield return DrawCard();
             }
-
-            CardData top = drawPile[drawPile.Count - 1];
-            drawPile.RemoveAt(drawPile.Count - 1);
-            hand.Add(top);
         }
     }
 
-    public void DiscardFromHand(CardData card)
+    private IEnumerator DiscardAllCardsPerformer(DiscardAllCardsGA discardAllCardsGA)
     {
-        if (hand.Remove(card))
-            discardPile.Add(card);
-    }
-
-    private void Shuffle(List<CardData> list)
-    {
-        for (int i = 0; i < list.Count; i++)
+        foreach (var card in hand)
         {
-            int r = Random.Range(i, list.Count);
-            (list[i], list[r]) = (list[r], list[i]);
+            discardPile.Add(card);
+            CardView cardView = handView.RemoveCard(card);
+            yield return DiscardCard(cardView);
         }
+        hand.Clear();
+    }
+
+    private void EnemyTurnPreReaction(EnemyTurnGA enemyTurnGA)
+    {
+        DiscardAllCardsGA discardAllCardsGA = new();
+        ActionSystem.Instance.AddReaction(discardAllCardsGA);
+    }
+
+    private void EnemyTurnPostReaction(EnemyTurnGA enemyTurnGA)
+    {
+        DrawCardsGA drawCardsGA = new(5);
+        ActionSystem.Instance.AddReaction(drawCardsGA);
+    }
+
+    private IEnumerator DrawCard()
+    {
+        Card card = drawPile.Draw();
+        hand.Add(card);
+        CardView cardView = CardViewCreator.Instance.CreateCardView(card, drawPilePoint.position, drawPilePoint.rotation);
+        yield return handView.AddCard(cardView);
+    }
+
+    private void RefillDeck()
+    {
+        drawPile.AddRange(discardPile);
+        discardPile.Clear();
+    }
+
+    private IEnumerator DiscardCard(CardView cardView)
+    {
+        cardView.transform.DOScale(Vector3.zero, 0.15f);
+        Tween tween = cardView.transform.DOMove(discardPilePoint.position, 0.15f);
+        yield return tween.WaitForCompletion();
+        Destroy(cardView.gameObject);
     }
 }
