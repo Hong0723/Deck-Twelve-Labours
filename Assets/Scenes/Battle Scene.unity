@@ -4123,6 +4123,7 @@ Transform:
   m_Children:
   - {fileID: 1328601130}
   - {fileID: 613954530}
+  - {fileID: 1397854737}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &664434935
@@ -9044,6 +9045,51 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1397854736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397854737}
+  - component: {fileID: 1397854738}
+  m_Layer: 0
+  m_Name: CardViewHoverSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1397854737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397854736}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 657180188}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1397854738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397854736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84fc2228e6dc3f47b7914f27d113009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardViewHoverSystem
+  cardViewHover: {fileID: 5581344249978633580}
 --- !u!1 &1407339040
 GameObject:
   m_ObjectHideFlags: 0
@@ -14346,6 +14392,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardView
       objectReference: {fileID: 0}
+    - target: {fileID: 2140507769399362508, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818672429680233038, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818672429680233038, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4818672429680233038, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14390,19 +14448,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5350720183417844362, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
+      propertyPath: m_SortingOrder
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467194130181912322, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7226036201372367588, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6798225137966967159, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6172224614380390120, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
 --- !u!212 &1963096880431384643
 SpriteRenderer:
@@ -14534,6 +14591,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4818672429680233038, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
   m_PrefabInstance: {fileID: 1837388969241106020}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5581344249978633580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7051922960945284719, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
+  m_PrefabInstance: {fileID: 1837388969241106020}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f7069ce853a486ab491c711eac4e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::cardsView
 --- !u!4 &5599499308624056554
 Transform:
   m_ObjectHideFlags: 0
