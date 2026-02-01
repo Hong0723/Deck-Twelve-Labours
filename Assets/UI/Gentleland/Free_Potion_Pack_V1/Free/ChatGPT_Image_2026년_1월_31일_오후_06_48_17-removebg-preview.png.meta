@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26206207d7028a84ca5ec7b88646172e
+guid: c2d8362c85bd8114e87e9e8b909f2bb5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Helm3t_Potion_pack_0
+      name: "ChatGPT_Image_2026\uB144_1\uC6D4_31\uC77C_\uC624\uD6C4_06_48_17-removebg-preview_0"
       rect:
         serializedVersion: 2
-        x: 7
-        y: 2
-        width: 18
-        height: 27
+        x: 88
+        y: 105
+        width: 127
+        height: 194
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c7af48d764d04e49b4da021448dc45a
-      internalID: 1116330084
+      spriteID: e74bba2fd64f6c94fa5bcf950caeea84
+      internalID: 207780832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helm3t_Potion_pack_1
+      name: "ChatGPT_Image_2026\uB144_1\uC6D4_31\uC77C_\uC624\uD6C4_06_48_17-removebg-preview_1"
       rect:
         serializedVersion: 2
-        x: 36
-        y: 4
-        width: 24
-        height: 24
+        x: 380
+        y: 126
+        width: 167
+        height: 159
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,8 +134,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6bfdad84da94414b8155da2222a010d
-      internalID: -1606685278
+      spriteID: ba11274a8d24a6240bef773d05b6681d
+      internalID: -518389329
       vertices: []
       indices: 
       edges: []
@@ -144,7 +144,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c4a862df28c305844843d11cd5b9a02b
+    spriteID: de874ca3ae189264dae404b7ca9f7369
     internalID: 0
     vertices: []
     indices: 
@@ -156,8 +156,8 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Helm3t_Potion_pack_0: 1116330084
-      Helm3t_Potion_pack_1: -1606685278
+      "ChatGPT_Image_2026\uB144_1\uC6D4_31\uC77C_\uC624\uD6C4_06_48_17-removebg-preview_0": 207780832
+      "ChatGPT_Image_2026\uB144_1\uC6D4_31\uC77C_\uC624\uD6C4_06_48_17-removebg-preview_1": -518389329
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

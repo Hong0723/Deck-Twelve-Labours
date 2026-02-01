@@ -32,7 +32,10 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GameObject slotPrefab;
     public GameObject Content;
-    
+
+    [SerializeField]
+    private GraphicRaycaster fogRaycaster;//이거때매 인벤토리가 안눌려서 i눌렀을때 온오프
+
     void Awake()
     {
         //싱글톤
@@ -52,14 +55,22 @@ public class Inventory : MonoBehaviour
 
         grid = new List<List<ItemSlot>>();
         grid.Add(new List<ItemSlot>(4));
-        
+
+        //초기화후 바로 비활성화
+        myInventory.gameObject.SetActive(true);
+        StartCoroutine(LateSort());
+        myInventory.gameObject.SetActive(false);
     }
 
 
     void Update()
     {
-
-        myInventory.transform.position = mainCamera.transform.position;
+        //임시로
+        if(myInventory != null)
+        {
+            myInventory.transform.position = mainCamera.transform.position;
+        }
+        
         //인벤토리 켜기끄기
         if (Input.GetKeyDown(KeyCode.I))
         {            
@@ -67,11 +78,13 @@ public class Inventory : MonoBehaviour
             {                
                 myInventory.gameObject.SetActive(false);
                 isWatchInventory = false;
+                fogRaycaster.enabled = true;
             }
             else
             {
                 myInventory.gameObject.SetActive(true);
                 isWatchInventory = true;
+                fogRaycaster.enabled = false;
             }
 
             //인벤토리가 켜져있고 정렬을 해야한다면
@@ -214,7 +227,7 @@ public class Inventory : MonoBehaviour
         }
 
         //Debug.Log($"{itemIndex}");
-        //Debug.Log($"{itemslots.Count}");
+        Debug.Log($"{itemslots.Count}");
         GameObject itembackground = itemslots[itemIndex].obj;
         // itemedge 찾기
         Transform itemedge = itembackground.transform.Find("itemedge");
@@ -267,7 +280,13 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        itemManager.itemData = itemComponent.GetItemBase();        
+        itemManager.itemData = itemComponent.GetItemBase();
+
+        //스크립터블오브젝트의 이름가져오기위해
+        ItemBase ItemScriptable = itemComponent.GetItemBase();
+        GetComponent<PlayerDataToJson>().UpdateItemData(ItemScriptable.itemName, 1);
+        
+
 
         Destroy(gameObject);
 

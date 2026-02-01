@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26206207d7028a84ca5ec7b88646172e
+guid: 49d068ebcf222834b87a02bfd84b93d6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Helm3t_Potion_pack_0
+      name: Death 1_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 2
-        width: 18
-        height: 27
+        x: 205
+        y: 49
+        width: 37
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c7af48d764d04e49b4da021448dc45a
-      internalID: 1116330084
+      spriteID: 6999491fd7499794a983c2031d42d3e9
+      internalID: 1733617832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helm3t_Potion_pack_1
+      name: Death 1_1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 4
-        width: 24
-        height: 24
+        x: 355
+        y: 50
+        width: 35
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6bfdad84da94414b8155da2222a010d
-      internalID: -1606685278
+      spriteID: 35ace54bb31bb7247b481dcae9c219f5
+      internalID: -876150351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death 1_2
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 65
+        width: 43
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47af130b5c3408b418f484dc4b835cfb
+      internalID: -286353400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Death 1_3
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 49
+        width: 51
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47ad59d32b296845b54d263560dc094
+      internalID: 666643920
       vertices: []
       indices: 
       edges: []
@@ -144,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c4a862df28c305844843d11cd5b9a02b
+    spriteID: a6a537f58277b194a82020ee26bdb2b9
     internalID: 0
     vertices: []
     indices: 
@@ -156,8 +200,10 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Helm3t_Potion_pack_0: 1116330084
-      Helm3t_Potion_pack_1: -1606685278
+      Death 1_0: 1733617832
+      Death 1_1: -876150351
+      Death 1_2: -286353400
+      Death 1_3: 666643920
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

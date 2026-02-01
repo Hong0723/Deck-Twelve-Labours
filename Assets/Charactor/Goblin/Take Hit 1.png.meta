@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26206207d7028a84ca5ec7b88646172e
+guid: 3124c73a3830254488ab435b4d80ad02
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Helm3t_Potion_pack_0
+      name: Take Hit 1_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 2
-        width: 18
-        height: 27
+        x: 57
+        y: 49
+        width: 35
+        height: 37
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c7af48d764d04e49b4da021448dc45a
-      internalID: 1116330084
+      spriteID: b68a174b69bb1a24eba4ffb6e521e6e1
+      internalID: 906932865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Helm3t_Potion_pack_1
+      name: Take Hit 1_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 4
-        width: 24
-        height: 24
+        x: 204
+        y: 49
+        width: 38
+        height: 37
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6bfdad84da94414b8155da2222a010d
-      internalID: -1606685278
+      spriteID: 2ddc9c559c7d23247acd0813e7ff82f2
+      internalID: 205575390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Take Hit 1_4
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 49
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5b888dbaa198614e97ddc62e63ed1e1
+      internalID: -696814447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Take Hit 1_5
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 49
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2c410ff7c631945a6759e65e8b845f
+      internalID: 415524711
       vertices: []
       indices: 
       edges: []
@@ -144,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c4a862df28c305844843d11cd5b9a02b
+    spriteID: 0a234d0e964d742429e5c71eb84012bb
     internalID: 0
     vertices: []
     indices: 
@@ -156,8 +200,12 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Helm3t_Potion_pack_0: 1116330084
-      Helm3t_Potion_pack_1: -1606685278
+      Take Hit 1_0: 906932865
+      Take Hit 1_1: -261141514
+      Take Hit 1_2: 205575390
+      Take Hit 1_3: 994464461
+      Take Hit 1_4: -696814447
+      Take Hit 1_5: 415524711
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
