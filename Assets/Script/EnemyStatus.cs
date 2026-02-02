@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyStatus : MonoBehaviour
+public class EnemyStatus : MonoBehaviour, IDamageable
 {
     public HPBar hpBar;
     public GameOverHandler handler;
