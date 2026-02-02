@@ -108,14 +108,28 @@ public class PlayerDataToJson : MonoBehaviour
     public void UpdateItemData(string name, int count)
     {
         PlayerData data = LoadPlayerDataFromJsonCall();
+        bool NotHaveItem = true;
         foreach (var itemDiff in data.items)
         {
             if (itemDiff.name == name)
             {
                 itemDiff.count += count;
+                NotHaveItem = false;
                 break;
             }
         }
+
+        //새로운 아이템이라면
+        if (NotHaveItem)
+        {
+            data.items.Add(new ItemData
+            {
+                name = name,
+                count = count,
+                value = 0 // 기본값 임시
+            });
+        }
+
         SavePlayerDataToJsonCall(data);
     }
 }
@@ -129,7 +143,8 @@ public class PlayerData
     public int age;
     public int level;
     public bool isDead;
-    public ItemData[] items;
+    //public ItemData[] items;
+    public List<ItemData> items = new List<ItemData>();
 }
 
 [System.Serializable]

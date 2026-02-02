@@ -1,10 +1,12 @@
-﻿using NUnit.Framework.Internal.Execution;
+﻿using NUnit.Framework.Interfaces;
+using NUnit.Framework.Internal.Execution;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
@@ -19,8 +21,8 @@ public class ItemSlot {
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField]
-    private Camera mainCamera;
+    //[SerializeField]
+    public Camera mainCamera;
     public Canvas myInventory;//인벤토리 canvas
     public bool isWatchInventory;//인벤토리 껏다켰다 filpflop
     public List<ItemSlot> itemslots;//아이템 슬롯(itembackground)의 게임오브젝트 리스트
@@ -60,8 +62,28 @@ public class Inventory : MonoBehaviour
         myInventory.gameObject.SetActive(true);
         StartCoroutine(LateSort());
         myInventory.gameObject.SetActive(false);
+
+               
+    }
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        mainCamera = Camera.main;
+    }
+
+    public Camera GetMainCamera()
+    {
+        return mainCamera;
+    }
 
     void Update()
     {
@@ -251,17 +273,7 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        // Sprite 변경
-        //지금은 맥주잔이지만 나중에 투명이미지로 바꿔서
-        //아이템이 들어오면 sprite만 바꾸는 형식으로 구현
-        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
-        if (sr == null)
-        {
-            Debug.LogError("월드 아이템에 SpriteRenderer가 없습니다.");
-            return;
-        }
-
-        itemImage.sprite = sr.sprite;
+                
 
         //ItemBase(스크립터블 오브젝트 설정
         GameObject itemGO = itemedge.Find("Item").gameObject;
@@ -280,12 +292,18 @@ public class Inventory : MonoBehaviour
             return;
         }
 
+        //스크립터블 오브젝트교체
         itemManager.itemData = itemComponent.GetItemBase();
+        // Sprite 변경
+        //지금은 맥주잔이지만 나중에 투명이미지로 바꿔서
+        //아이템이 들어오면 sprite만 바꾸는 형식으로 구현
+        itemImage.sprite = itemComponent.GetItemBase().icon;
+
+
 
         //스크립터블오브젝트의 이름가져오기위해
         ItemBase ItemScriptable = itemComponent.GetItemBase();
-        GetComponent<PlayerDataToJson>().UpdateItemData(ItemScriptable.itemName, 1);
-        
+        GetComponent<PlayerDataToJson>().UpdateItemData(ItemScriptable.itemName, 1);       
 
 
         Destroy(gameObject);
@@ -293,6 +311,14 @@ public class Inventory : MonoBehaviour
         //아이템 창없으면 파괴하지말아야할듯 추후
         //슬롯 상태 갱신 추후 수정예정
         itemslots[itemIndex].contained = true;        
+    }
+
+    public void AddItem(ItemBase scriptableobject)
+    {
+        GameObject obj = new GameObject();
+        Item comp = obj.AddComponent<Item>();
+        comp.myBase = scriptableobject; // ScriptableObject 참조만 연결
+        AddItem(obj);
     }
 
     //itemslots리스트 내용을 서로 바꾸는 swap

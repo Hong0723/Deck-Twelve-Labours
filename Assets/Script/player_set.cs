@@ -12,7 +12,7 @@ public class player_set : MonoBehaviour
     private Vector2 lastMoveDirection;
 
     //GameScene에서 BattleScene으로 넘어갈때 필요한 현재 플레이어 정보(스크립터블 오브젝트)
-    [SerializeField] private MonsterType PlayerInfo;
+    [SerializeField] private MonsterType PlayerInfo;    
     void Start()
     {
         // 필요한 컴포넌트들을 미리 가져옵니다.
@@ -33,7 +33,7 @@ public class player_set : MonoBehaviour
         {
             GlobalPlayerHP.InitializeIfNeeded(PlayerInfo.maxHP);
             GlobalPlayerHP.UpdateMaxHP(PlayerInfo.maxHP);
-        }
+        }        
     }
 
     void Update()
@@ -43,8 +43,7 @@ public class player_set : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");   // -1 (S), 1 (W)
 
         // 2. 애니메이터 상태 업데이트
-        UpdateAnimationState();
-        
+        UpdateAnimationState();              
     }
 
     void FixedUpdate()

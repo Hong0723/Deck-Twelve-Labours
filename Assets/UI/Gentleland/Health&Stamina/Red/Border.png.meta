@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38c191d68457b024c94eff1eed785bc2
+guid: 1fefa9dda1475304d85384f02bbc7457
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: manabar_dots_0
+      name: Border_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 45
-        height: 45
+        x: 95
+        y: 371
+        width: 50
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01ee028e3c41b594bb0a3b6a8063c96f
-      internalID: 1508878676
+      spriteID: 1db68b57983936b408bd353a9879e0dc
+      internalID: 1721293757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: manabar_dots_1
+      name: Border_1
       rect:
         serializedVersion: 2
-        x: 58
-        y: 0
-        width: 46
-        height: 45
+        x: 95
+        y: 355
+        width: 50
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +134,218 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 362c92f1fa7f37a4396f91645730b4f6
-      internalID: -312727766
+      spriteID: 9e996274fa268a24589a1b15bf163c0e
+      internalID: 1220817584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: manabar_dots_2
+      name: Border_2
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 339
+        width: 51
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 666ca3a8d5a1d0848b32130923d9fb48
+      internalID: -637520751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_3
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 323
+        width: 51
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21ed534069f7e344eb669708c0828178
+      internalID: 1648508742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 53
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efdbe25a5db72fe4fb8e16acf89ad5c8
+      internalID: 482654471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_5
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 256
+        width: 61
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8b0e60b4af3c1240ad09fcfe994d0e6
+      internalID: 176914753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 176
+        width: 58
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f2c0fd16158834896d3211587ab0a7
+      internalID: -793279608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 163
+        width: 48
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33adec0bfac8efa4f9c2220691add214
+      internalID: 257879170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_8
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 147
+        width: 44
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9e0f652b7087864ca13ecd830ffc543
+      internalID: -2040433946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_9
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 132
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b9d42e5166f60e4094c1c7f02b82a5c
+      internalID: 1888640765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_10
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 132
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b80b5993fb45540accf913d33288bd
+      internalID: 1621423999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Border_11
       rect:
         serializedVersion: 2
         x: 116
-        y: 0
-        width: 46
-        height: 45
+        y: 132
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +354,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 544c78637e0f7204c9d5b1592ee613bd
-      internalID: -546606744
+      spriteID: e9de84544215d2e47bdd798b488ca648
+      internalID: -1700225363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: manabar_dots_3
+      name: Border_12
       rect:
         serializedVersion: 2
-        x: 174
-        y: 0
-        width: 46
-        height: 45
+        x: 127
+        y: 132
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,20 +376,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bb4bf2d2afc7e447875b10df7bb34f3
-      internalID: 604288656
+      spriteID: c3356cdac21f9df40a2494c590ff39bf
+      internalID: -611111159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: manabar_dots_4
+      name: Border_13
       rect:
         serializedVersion: 2
-        x: 232
-        y: 0
-        width: 46
-        height: 45
+        x: 138
+        y: 132
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +398,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85fd5986699392242b1d7df1eb99b709
-      internalID: -1953568278
+      spriteID: 4c6c7268a9ec57c479f8e2d92d1740b0
+      internalID: -571292065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: manabar_dots_5
+      name: Border_14
       rect:
         serializedVersion: 2
-        x: 291
-        y: 0
-        width: 46
-        height: 45
+        x: 96
+        y: 42
+        width: 48
+        height: 86
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,20 +420,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96d8377764b6c2e46bf15fb11438b359
-      internalID: 1818284940
+      spriteID: eadf96c5a87dc14418aaf63ab489885e
+      internalID: -912561534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: manabar_dots_6
+      name: Border_15
       rect:
         serializedVersion: 2
-        x: 349
-        y: 0
-        width: 46
-        height: 45
+        x: 96
+        y: 10
+        width: 48
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,74 +442,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5168682bed7490340864115e3e3e0fad
-      internalID: -1117365692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: manabar_dots_7
-      rect:
-        serializedVersion: 2
-        x: 407
-        y: 0
-        width: 46
-        height: 45
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86c4f8149f739914eb29e01937c88ab2
-      internalID: 1766731796
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: manabar_dots_8
-      rect:
-        serializedVersion: 2
-        x: 465
-        y: 0
-        width: 46
-        height: 45
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdd3b6d5c52a9ec4aaf1cac34627df32
-      internalID: 1180480566
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: manabar_dots_9
-      rect:
-        serializedVersion: 2
-        x: 524
-        y: 0
-        width: 45
-        height: 45
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b10ad426cd4e9b4d8d01b3be7e639c8
-      internalID: -2106438795
+      spriteID: b731839fda2ecc946ae1bc837d50ef80
+      internalID: 1018046475
       vertices: []
       indices: 
       edges: []
@@ -320,7 +452,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1c77312b136cdb74ca4c9811f1bffe95
+    spriteID: 6f5fc5e13789d7540b878e5fc2f246e7
     internalID: 0
     vertices: []
     indices: 
@@ -332,16 +464,22 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      manabar_dots_0: 1508878676
-      manabar_dots_1: -312727766
-      manabar_dots_2: -546606744
-      manabar_dots_3: 604288656
-      manabar_dots_4: -1953568278
-      manabar_dots_5: 1818284940
-      manabar_dots_6: -1117365692
-      manabar_dots_7: 1766731796
-      manabar_dots_8: 1180480566
-      manabar_dots_9: -2106438795
+      Border_0: 1721293757
+      Border_1: 1220817584
+      Border_10: 1621423999
+      Border_11: -1700225363
+      Border_12: -611111159
+      Border_13: -571292065
+      Border_14: -912561534
+      Border_15: 1018046475
+      Border_2: -637520751
+      Border_3: 1648508742
+      Border_4: 482654471
+      Border_5: 176914753
+      Border_6: -793279608
+      Border_7: 257879170
+      Border_8: -2040433946
+      Border_9: 1888640765
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
