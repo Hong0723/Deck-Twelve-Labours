@@ -4,6 +4,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.Rendering;
 
 public class HandView : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class HandView : MonoBehaviour
         Spline spline = splineContainer.Spline;     //spline 객체 생성
         for(int i = 0; i < cards.Count; i++)        //손에있는 모든 카드를 0번부터 끝까지 순회
         {
+            // 2. Sorting Group의 번호를 순서대로(i) 매겨줍니다.
+            // 이렇게 하면 i가 클수록(오른쪽 카드일수록) 위에 그려집니다.
+            if (cards[i].TryGetComponent<SortingGroup>(out var sg))
+            {
+                sg.sortingOrder = i;
+            }
             float p = firstCardPosition + i * cardSpacing; //놓일 위치 파라미터 p 계산
             Vector3 splinePosition = spline.EvaluatePosition(p);    //spline p 지점의 스플라인 기준 로컬좌표
             Vector3 forward = spline.EvaluateTangent(p);            //그 지점의 진행 방향
