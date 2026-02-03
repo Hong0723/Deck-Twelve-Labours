@@ -38,3 +38,10 @@
     background-color: rgb(50, 50, 50);
     border-color: rgba(255,255,255,0.22);
 }
+
+/* 버튼 클릭 안정화: 자식들이 클릭을 가로채지 않게 */
+.quest-item-row,
+.quest-item-title,
+.quest-item-state {
+    picking-mode: ignore;
+}

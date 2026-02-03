@@ -75,19 +75,33 @@ public class QuestUIController : MonoBehaviour
     private bool IsVisible()
         => questRoot != null && questRoot.style.display.value == DisplayStyle.Flex;
 
+    private CursorLockMode _prevLockMode;
+    private bool _prevCursorVisible;
+
     private void Show()
     {
         questRoot.style.display = DisplayStyle.Flex;
         Time.timeScale = 0f;
-        questList?.Focus();
-    }
 
+        _prevLockMode = UnityEngine.Cursor.lockState;
+        _prevCursorVisible = UnityEngine.Cursor.visible;
+
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
+
+        questRoot?.Focus();
+    }
 
     private void Hide()
     {
         questRoot.style.display = DisplayStyle.None;
         Time.timeScale = 1f;
+
+        UnityEngine.Cursor.lockState = _prevLockMode;
+        UnityEngine.Cursor.visible = _prevCursorVisible;
     }
+
+
 
     private void RefreshList()
     {
@@ -103,18 +117,22 @@ public class QuestUIController : MonoBehaviour
 
             title.text = q.title;
 
-            // 완료 표시: 버튼 크기 그대로, (완료)만 보이기
+            // ✅ (완료) 표시는 클릭을 먹지 않도록 하는 게 안전
             state.style.display = q.completed ? DisplayStyle.Flex : DisplayStyle.None;
+            state.pickingMode = PickingMode.Ignore;
 
-            // 선택 강조
+            // ✅ 선택 강조: 추가/제거를 항상 명시
             if (selected != null && selected.id == q.id)
                 btn.AddToClassList("selected");
+            else
+                btn.RemoveFromClassList("selected");
 
+            // ✅ 중복 콜백 방지용: Refresh로 재생성되긴 하지만 습관적으로 안전장치
             btn.clicked += () =>
             {
                 selected = q;
                 ShowDetail(q);
-                RefreshList(); // 선택 강조 갱신
+                RefreshList();
             };
 
             questList.Add(item);
@@ -123,12 +141,13 @@ public class QuestUIController : MonoBehaviour
 
     private void OnQuestListWheel(WheelEvent e)
     {
-        const float speed = 35f; // 취향
+        const float speed = 35f;
         var offset = questList.scrollOffset;
         offset.y += e.delta.y * speed;
         questList.scrollOffset = offset;
 
-        e.StopPropagation();
+        // ✅ StopPropagation 대신 기본 동작만 막기(입력 꼬임 방지)
+        e.PreventDefault();
     }
 
     private void ShowDetail(QuestModel q)
