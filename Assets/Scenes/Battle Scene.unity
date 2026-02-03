@@ -15815,6 +15815,50 @@ MonoBehaviour:
   speed: 5
   head: {fileID: 1854782673}
   hpBar: {fileID: 1217435875}
+--- !u!1 &1966450765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1966450767}
+  - component: {fileID: 1966450768}
+  m_Layer: 0
+  m_Name: BattleBGMStarter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1966450767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966450765}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 78.449, y: 73.44518, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1966450768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966450765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfda7ae2a81f164884c747888c1ce8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleBGMStarter
 --- !u!1 &1966699489
 GameObject:
   m_ObjectHideFlags: 0
@@ -16774,6 +16818,12 @@ MonoBehaviour:
   handView: {fileID: 14643998}
   drawPilePoint: {fileID: 1634822042}
   discardPilePoint: {fileID: 1132956090}
+  drawCardSFX: {fileID: 8300000, guid: 80f2236857e9bfb4e9ebf4fb342e6eb5, type: 3}
+  drawCardVolume: 0.6
+  discardCardSFX: {fileID: 8300000, guid: 69906e1186d32b2408c4988a8cd9e2ff, type: 3}
+  discardCardVolume: 0.55
+  reshuffleSFX: {fileID: 8300000, guid: 6f3a478dd7dfd064e8a6e325e2449263, type: 3}
+  reshuffleVolume: 0.7
 --- !u!1 &2032242133
 GameObject:
   m_ObjectHideFlags: 0
@@ -18504,16 +18554,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8988640031495091719, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6080150834014809439, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 3328013947956602515, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
 --- !u!212 &7204726264153493170
 SpriteRenderer:
@@ -18753,3 +18794,4 @@ SceneRoots:
   - {fileID: 1580190186}
   - {fileID: 240682524}
   - {fileID: 1392854691}
+  - {fileID: 1966450767}

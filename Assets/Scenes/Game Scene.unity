@@ -939,6 +939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
   myBase: {fileID: 11400000, guid: d3675bd9d61dffc4f8889ffff8524550, type: 2}
+  pickupSFX: {fileID: 8300000, guid: 86c7de71853196d4cbde0c359e3dd10e, type: 3}
+  pickupVolume: 0.7
 --- !u!58 &88823110
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12205,6 +12207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
   myBase: {fileID: 11400000, guid: 2a30d48f154d2204f92755869985eb06, type: 2}
+  pickupSFX: {fileID: 0}
+  pickupVolume: 0.7
 --- !u!58 &413906374
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -13572,6 +13576,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
   myBase: {fileID: 11400000, guid: 22d90a2e61dde2a4f8a07ec8dd2f111a, type: 2}
+  pickupSFX: {fileID: 8300000, guid: 86c7de71853196d4cbde0c359e3dd10e, type: 3}
+  pickupVolume: 0.7
 --- !u!58 &487818013
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -30831,6 +30837,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
   myBase: {fileID: 11400000, guid: 808d7bd222a6f6847a4a0ca39684889f, type: 2}
+  pickupSFX: {fileID: 8300000, guid: 86c7de71853196d4cbde0c359e3dd10e, type: 3}
+  pickupVolume: 0.7
 --- !u!1 &1325657823
 GameObject:
   m_ObjectHideFlags: 0
@@ -34827,6 +34835,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_set
   moveSpeed: 5
+  footstepClips:
+  - {fileID: 8300000, guid: 8f2635ba1a3a608449b844cf5a9061f2, type: 3}
+  stepInterval: 0.4
   PlayerInfo: {fileID: 11400000, guid: 9797e299aa406cd4b95dbc94665ddc41, type: 2}
 --- !u!114 &1622224649
 MonoBehaviour:

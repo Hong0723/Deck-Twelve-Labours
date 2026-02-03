@@ -18375,6 +18375,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_set
   moveSpeed: 5
+  footstepClips:
+  - {fileID: 8300000, guid: 2c265b31ae12d4145b7e1f680270bb06, type: 3}
+  stepInterval: 0.4
   PlayerInfo: {fileID: 11400000, guid: 9797e299aa406cd4b95dbc94665ddc41, type: 2}
 --- !u!70 &560831841
 CapsuleCollider2D:
@@ -34865,7 +34868,10 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.6474665, y: -11.646791}
+  - {x: -1.6474665, y: -13.060478}
+  - {x: -1.6090578, y: -11.576772}
+  - {x: -1.9674168, y: -11.57118}
+  - {x: -1.9773911, y: -11.667048}
   - {x: -2.4529219, y: -11.681669}
   - {x: -3.3432934, y: -10.669701}
   - {x: -10.281263, y: -10.626012}
@@ -34878,7 +34884,10 @@ EdgeCollider2D:
   - {x: 8.005766, y: -10.645943}
   - {x: 1.2460659, y: -10.688773}
   - {x: 0.34132326, y: -11.670556}
-  - {x: -0.48225057, y: -11.612877}
+  - {x: -0.22445816, y: -11.714355}
+  - {x: -0.22182757, y: -11.537268}
+  - {x: -0.5897139, y: -11.551863}
+  - {x: -0.5555528, y: -13.099865}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -36162,7 +36171,7 @@ Transform:
   m_GameObject: {fileID: 1095541580}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.15697, y: -2.05158, z: 0}
+  m_LocalPosition: {x: -5.15697, y: -1.94842, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
