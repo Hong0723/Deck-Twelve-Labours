@@ -18200,6 +18200,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2140507769399362508, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5581344249978633580}
+    - targetCorrespondingSourceObject: {fileID: 7226036201372367588, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6798225137966967159, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6172224614380390120, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ce46735dd9cd843f8ab4f66bfc85a4db, type: 3}
 --- !u!212 &1837388969241106021 stripped
 SpriteRenderer:

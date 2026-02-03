@@ -36,6 +36,8 @@ public class CharacterManager : MonoBehaviour
 
             c.position = offscreenPosition;
         }
+        characters[0].position = cameraPosition;
+        text_box.position = textPosition;
     }
 
     void Update()
