@@ -8,7 +8,7 @@
         <ui:VisualElement class="quest-window">
 
             <ui:VisualElement class="quest-header">
-                <ui:Label text="Quest" class="quest-header-title" />
+                <ui:Label text="퀘스트" class="quest-header-title" />
                 <ui:Button name="quest-close-btn" text="X" class="quest-close-btn" />
             </ui:VisualElement>
 
@@ -19,10 +19,13 @@
                 </ui:VisualElement>
 
                 <!-- 우측: 상세 -->
-                <ui:VisualElement class="quest-right">
-                    <ui:Label name="quest-title" text="Select a quest" class="quest-title" />
+                <ui:VisualElement name="quest-right" class="quest-right">
+                    <ui:Label name="quest-title" text="" class="quest-title" />
                     <ui:Label name="quest-desc" text="" class="quest-desc" />
-                    <ui:Label text="Objectives" class="section-title" />
+
+                    <!-- 이름 추가 + 문구 변경 -->
+                    <ui:Label name="objectives-title" text="퀘스트 목표" class="section-title" />
+
                     <ui:VisualElement name="objectives-root" class="objectives-root" />
                 </ui:VisualElement>
             </ui:VisualElement>

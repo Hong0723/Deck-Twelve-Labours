@@ -11,14 +11,20 @@ public class QuestUIController : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private KeyCode toggleKey = KeyCode.J;
+
     public static QuestUIController Instance { get; private set; }
+
     private UIDocument doc;
 
     private VisualElement questRoot;
     private Button closeBtn;
     private ScrollView questList;
+
+    // Right panel (detail)
+    private VisualElement questRight;
     private Label questTitle;
     private Label questDesc;
+    private Label objectivesTitle;
     private VisualElement objectivesRoot;
 
     private readonly List<QuestModel> quests = new();
@@ -39,16 +45,25 @@ public class QuestUIController : MonoBehaviour
         questRoot = root.Q<VisualElement>("quest-root");
         closeBtn = root.Q<Button>("quest-close-btn");
         questList = root.Q<ScrollView>("quest-list");
+
+        // Detail side: quest-right에 name을 부여했기 때문에 name으로 안전하게 찾음
+        questRight = root.Q<VisualElement>("quest-right");
         questTitle = root.Q<Label>("quest-title");
         questDesc = root.Q<Label>("quest-desc");
+        objectivesTitle = root.Q<Label>("objectives-title");
         objectivesRoot = root.Q<VisualElement>("objectives-root");
 
+        // ScrollView 설정
         questList.verticalScrollerVisibility = ScrollerVisibility.Hidden;
         questList.horizontalScrollerVisibility = ScrollerVisibility.Hidden;
         questList.contentContainer.style.flexDirection = FlexDirection.Column;
         questList.RegisterCallback<WheelEvent>(OnQuestListWheel, TrickleDown.TrickleDown);
 
         closeBtn.clicked += Hide;
+
+        // 초기: 상세 영역 숨김 + 섹션 타이틀 문구 설정
+        if (objectivesTitle != null) objectivesTitle.text = "퀘스트 목표";
+        HideDetail();
 
         Hide();
         SeedDemo();
@@ -69,39 +84,45 @@ public class QuestUIController : MonoBehaviour
         }
     }
 
-
     public bool IsOpen => IsVisible();
 
     private bool IsVisible()
         => questRoot != null && questRoot.style.display.value == DisplayStyle.Flex;
 
-    private CursorLockMode _prevLockMode;
-    private bool _prevCursorVisible;
-
     private void Show()
     {
         questRoot.style.display = DisplayStyle.Flex;
+
+        // ✅ 더블클릭 이슈 해결: Root에 포커스
+        questRoot.Focus();
+
+        // 선택이 없으면 상세 숨김 유지
+        if (selected == null) HideDetail();
+
         Time.timeScale = 0f;
-
-        _prevLockMode = UnityEngine.Cursor.lockState;
-        _prevCursorVisible = UnityEngine.Cursor.visible;
-
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-        UnityEngine.Cursor.visible = true;
-
-        questRoot?.Focus();
     }
 
     private void Hide()
     {
         questRoot.style.display = DisplayStyle.None;
         Time.timeScale = 1f;
-
-        UnityEngine.Cursor.lockState = _prevLockMode;
-        UnityEngine.Cursor.visible = _prevCursorVisible;
     }
 
+    private void HideDetail()
+    {
+        if (questTitle != null) questTitle.style.display = DisplayStyle.None;
+        if (questDesc != null) questDesc.style.display = DisplayStyle.None;
+        if (objectivesTitle != null) objectivesTitle.style.display = DisplayStyle.None;
+        if (objectivesRoot != null) objectivesRoot.style.display = DisplayStyle.None;
+    }
 
+    private void ShowDetailUI()
+    {
+        if (questTitle != null) questTitle.style.display = DisplayStyle.Flex;
+        if (questDesc != null) questDesc.style.display = DisplayStyle.Flex;
+        if (objectivesTitle != null) objectivesTitle.style.display = DisplayStyle.Flex;
+        if (objectivesRoot != null) objectivesRoot.style.display = DisplayStyle.Flex;
+    }
 
     private void RefreshList()
     {
@@ -117,17 +138,14 @@ public class QuestUIController : MonoBehaviour
 
             title.text = q.title;
 
-            // ✅ (완료) 표시는 클릭을 먹지 않도록 하는 게 안전
             state.style.display = q.completed ? DisplayStyle.Flex : DisplayStyle.None;
             state.pickingMode = PickingMode.Ignore;
 
-            // ✅ 선택 강조: 추가/제거를 항상 명시
             if (selected != null && selected.id == q.id)
                 btn.AddToClassList("selected");
             else
                 btn.RemoveFromClassList("selected");
 
-            // ✅ 중복 콜백 방지용: Refresh로 재생성되긴 하지만 습관적으로 안전장치
             btn.clicked += () =>
             {
                 selected = q;
@@ -146,16 +164,24 @@ public class QuestUIController : MonoBehaviour
         offset.y += e.delta.y * speed;
         questList.scrollOffset = offset;
 
-        // ✅ StopPropagation 대신 기본 동작만 막기(입력 꼬임 방지)
         e.PreventDefault();
     }
 
     private void ShowDetail(QuestModel q)
     {
-        questTitle.text = q.title;
-        questDesc.text = q.description;
+        if (q == null)
+        {
+            HideDetail();
+            return;
+        }
 
-        objectivesRoot.Clear();
+        ShowDetailUI();
+
+        if (questTitle != null) questTitle.text = q.title;
+        if (questDesc != null) questDesc.text = q.description;
+        if (objectivesTitle != null) objectivesTitle.text = "퀘스트 목표";
+
+        objectivesRoot?.Clear();
 
         foreach (var obj in q.objectives)
         {
@@ -165,6 +191,7 @@ public class QuestUIController : MonoBehaviour
             objectivesRoot.Add(row);
         }
     }
+
     public void NotifyEnemyDefeated(string enemyId, int amount = 1)
     {
         if (string.IsNullOrEmpty(enemyId)) return;
@@ -177,7 +204,6 @@ public class QuestUIController : MonoBehaviour
 
             foreach (var obj in q.objectives)
             {
-                // targetEnemyId가 비어있으면 “특정 적” 목표가 아닌 것으로 취급 (원하면 반대로 바꿔도 됨)
                 if (string.IsNullOrEmpty(obj.targetEnemyId)) continue;
 
                 if (obj.targetEnemyId == enemyId)
@@ -187,7 +213,6 @@ public class QuestUIController : MonoBehaviour
                 }
             }
 
-            // 퀘스트 완료 판정: 모든 objective가 required 충족이면 완료
             bool allDone = true;
             foreach (var obj in q.objectives)
             {
@@ -215,21 +240,27 @@ public class QuestUIController : MonoBehaviour
     private void SeedDemo()
     {
         quests.Clear();
-        quests.Add(new QuestModel {
-            id = "q1",
-            title = "기초 훈련",
-            description = "앞에 있는 몬스터를 처치하고 보상을 획득하자.",
-            completed = false,
-            objectives = new List<QuestObjective>
+
+        for (int i = 1; i <= 12; i++)
+        {
+            quests.Add(new QuestModel
             {
-                new QuestObjective
+                id = $"chapter{i}",
+                title = $"Chapter{i}.",
+                description = $"스테이지 {i}를 클리어하기 위해 적을 처치하자.",
+                completed = false,
+                objectives = new List<QuestObjective>
                 {
-                    text = "Lernaean Hydra 처치하기",
-                    targetEnemyId = "Lernaean Hydra",
-                    current = 0,
-                    required = 1
+                    new QuestObjective
+                    {
+                        text = $"Test{i} 처치",
+                        targetEnemyId = $"Test{i}",
+                        current = 0,
+                        required = 1
+                    }
                 }
-            }
-        });
+            });
+        }
     }
+
 }
