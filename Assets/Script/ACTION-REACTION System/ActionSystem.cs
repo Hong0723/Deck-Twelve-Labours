@@ -9,7 +9,12 @@ using UnityEngine;
 public class ActionSystem : Singleton<ActionSystem>
 {
     private List<GameAction> reactions = null;
-    public bool IsPerforming { get; private set; } = false;
+    [SerializeField] private bool isPerformingDebug;
+    public bool IsPerforming 
+    { 
+        get => isPerformingDebug; 
+        private set => isPerformingDebug = value; 
+    }
     private static Dictionary<Type, List<Action<GameAction>>> preSubs = new();
     private static Dictionary<Type, List<Action<GameAction>>> postSubs = new();
     private static Dictionary<Type, Func<GameAction, IEnumerator>> performers = new();
