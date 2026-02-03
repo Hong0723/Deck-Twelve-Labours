@@ -98,7 +98,7 @@
 
 .section-title {
     color: rgb(220,220,220);
-    margin-top: 8px;
+    margin-top: 18px;
     margin-bottom: 6px;
     unity-font-style: bold;
 }
