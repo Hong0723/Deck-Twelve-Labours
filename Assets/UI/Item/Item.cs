@@ -2,19 +2,27 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    //½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ®
+    //ï¿½ï¿½Å©ï¿½ï¿½ï¿½Íºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     public ItemBase myBase;
+    [Header("Pickup SFX")]
+    [SerializeField] private AudioClip pickupSFX;
+    [SerializeField] private float pickupVolume = 0.7f;
 
-    //¾ÆÀÌÅÛ È¹µæ
+
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¹ï¿½ï¿½
     public void ItemToInventory()
     {
+        if (pickupSFX != null && SFXManager.Instance != null)
+        {
+        SFXManager.Instance.PlaySFX(pickupSFX, pickupVolume);
+        }
         if (Inventory.Instance != null)
         {
             Inventory.Instance.AddItem(gameObject);
         }
         else
         {
-            Debug.LogError("Inventory.Instance°¡ nullÀÔ´Ï´Ù!");
+            Debug.LogError("Inventory.Instanceï¿½ï¿½ nullï¿½Ô´Ï´ï¿½!");
         }
     }
 

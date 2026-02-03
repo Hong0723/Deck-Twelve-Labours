@@ -11,6 +11,13 @@ public class player_set : MonoBehaviour
     // 마지막으로 입력한 방향을 저장할 변수 (Idle 상태를 위해)
     private Vector2 lastMoveDirection;
 
+    // ===== Footstep =====
+    [Header("Footstep SFX")]
+    [SerializeField] private AudioClip[] footstepClips;
+    [SerializeField] private float stepInterval = 0.4f;
+
+    private float stepTimer;
+
     //GameScene에서 BattleScene으로 넘어갈때 필요한 현재 플레이어 정보(스크립터블 오브젝트)
     [SerializeField] private MonsterType PlayerInfo;    
     void Start()
@@ -43,7 +50,10 @@ public class player_set : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");   // -1 (S), 1 (W)
 
         // 2. 애니메이터 상태 업데이트
-        UpdateAnimationState();              
+        UpdateAnimationState();    
+
+        // 3. 발걸음 사운드
+        HandleFootsteps();         
     }
 
     void FixedUpdate()
@@ -89,4 +99,33 @@ public class player_set : MonoBehaviour
             //   기억하고, 알맞은 'stand' (대기) 애니메이션을 재생합니다.
         }
     }
+
+    void HandleFootsteps()
+    {
+    // 실제 이동 입력이 있을 때만
+    if (movement.magnitude > 0.1f)
+    {
+        stepTimer -= Time.deltaTime;
+
+        if (stepTimer <= 0f)
+        {
+            PlayFootstep();
+            stepTimer = stepInterval;
+        }
+    }
+    else
+    {
+        // 멈추면 타이머 리셋
+        stepTimer = 0f;
+    }
+    }
+
+    void PlayFootstep()
+    {
+    if (footstepClips == null || footstepClips.Length == 0) return;
+
+    int index = Random.Range(0, footstepClips.Length);
+    SFXManager.Instance.PlaySFX(footstepClips[index], 0.45f);
+    }
+
 }

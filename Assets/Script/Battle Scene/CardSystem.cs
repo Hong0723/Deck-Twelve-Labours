@@ -13,6 +13,14 @@ public class CardSystem : Singleton<CardSystem>
     private readonly List<Card> discardPile = new();
     private readonly List<Card> hand = new();
 
+    [Header("Card SFX")]
+    [SerializeField] private AudioClip drawCardSFX; 
+    [SerializeField] private float drawCardVolume = 0.6f;
+    [SerializeField] private AudioClip discardCardSFX;  
+    [SerializeField] private float discardCardVolume = 0.55f;
+    [SerializeField] private AudioClip reshuffleSFX;    
+    [SerializeField] private float reshuffleVolume = 0.7f;
+
     private void OnEnable()
     {
         ActionSystem.AttachPerformer<DrawCardsGA>(DrawCardsPerformer);
@@ -97,18 +105,29 @@ public class CardSystem : Singleton<CardSystem>
     {
         Card card = drawPile.Draw();
         hand.Add(card);
+        if (SFXManager.Instance != null)
+        SFXManager.Instance.PlaySFX(drawCardSFX, drawCardVolume);
         CardView cardView = CardViewCreator.Instance.CreateCardView(card, drawPilePoint.position, drawPilePoint.rotation);
         yield return handView.AddCard(cardView);
     }
 
     private void RefillDeck()
     {
+        
+        if (discardPile.Count > 0)
+    {
+        // 🔊 셔플 사운드
+        if (SFXManager.Instance != null)
+            SFXManager.Instance.PlaySFX(reshuffleSFX, reshuffleVolume);
+    }
         drawPile.AddRange(discardPile);
         discardPile.Clear();
     }
 
     private IEnumerator DiscardCard(CardView cardView)
     {
+        if (SFXManager.Instance != null)
+        SFXManager.Instance.PlaySFX(discardCardSFX, discardCardVolume);
         cardView.transform.DOScale(Vector3.zero, 0.15f);
         Tween tween = cardView.transform.DOMove(discardPilePoint.position, 0.15f);
         yield return tween.WaitForCompletion();
