@@ -40,6 +40,10 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
+        //게임 오버 창 실행하는 코드가 PlayerStatus.cs부분에 존재하여 
+        //중복 로직 실행..
+        GetComponent<PlayerStatus>().TakeDamage(dmg);        
+       
         int absorbed = Mathf.Min(block, dmg);
         block -= absorbed;
         dmg -= absorbed;
@@ -47,7 +51,7 @@ public class Player : MonoBehaviour
         GlobalPlayerHP.Damage(dmg);
 
         SyncFromGlobal();
-        UpdateHPBar();
+        UpdateHPBar();        
     }
 
     public void Heal(int amount)

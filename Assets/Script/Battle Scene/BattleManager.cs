@@ -11,12 +11,19 @@ public class BattleManager : MonoBehaviour
         Victory,
         Defeat
     }
+    
+    public static BattleManager Instance;
 
     [Header("Scene References")]
     [SerializeField] private GameObject enemyObject;   // Enemy 타입 의존 완전 제거
-    [SerializeField] private Player player;
+    [SerializeField] public Player player; //EnemyLoad에서 접근하기위해 public으로 바꿔놨습니다. 김동주
 
     private BattleState state;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
