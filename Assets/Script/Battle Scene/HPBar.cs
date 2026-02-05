@@ -13,9 +13,9 @@ public class HPBar : MonoBehaviour
 
     RectTransform barRect;
     float barWidth;
-    
 
-    void Awake()
+
+    protected void Awake()
     {
         barRect = GetComponent<RectTransform>();
         barWidth = barRect.rect.width;

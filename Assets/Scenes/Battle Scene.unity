@@ -766,7 +766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemydie
   hpBar: {fileID: 1217435879}
   handler: {fileID: 1087812433}
-  player: {fileID: 269354714}
+  player: {fileID: 269354710}
   maxHP: 100
 --- !u!114 &60189829
 MonoBehaviour:
@@ -786,6 +786,7 @@ MonoBehaviour:
   isDefending: 0
   defenseReduce: 40
   counterDamage: 4
+  attackDamge: 0
   nextAction: 0
   hpBar: {fileID: 1217435879}
   animator: {fileID: 0}
@@ -2486,6 +2487,7 @@ MonoBehaviour:
   maxHP: 40
   currentHP: 0
   block: 0
+  attackDamge: 0
   hpBar: {fileID: 451762756}
   animator: {fileID: 269354713}
 --- !u!4 &269354711
@@ -2598,7 +2600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatus
   hpBar: {fileID: 451762756}
   handler: {fileID: 1087812433}
-  enemy: {fileID: 60189828}
+  enemy: {fileID: 60189829}
   maxHP: 100
 --- !u!114 &269354715
 MonoBehaviour:

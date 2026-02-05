@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     public int maxHP = 30;
     public int currentHP;
     public int block;
+    public int attackDamge;//공격력
 
     public HPBar hpBar;
 
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
             GlobalPlayerHP.UpdateMaxHP(playerInfo.maxHP);
 
             block = playerInfo.block;
+            attackDamge = playerInfo.AttackDamage;
         }
         else
         {

@@ -4,7 +4,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 {
     public HPBar hpBar;
     public GameOverHandler handler;
-    public PlayerStatus player; // 공격 대상인 플레이어를 연결
+    public Player player; // 공격 대상인 플레이어를 연결
     public int maxHP = 100;
     private int currentHP;
 
@@ -22,7 +22,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         {
             if (player != null)
             {
-                player.TakeDamage(20);
+                player.TakeDamage(GetComponent<Enemy>().attackDamge);
             }
         }
     }
@@ -34,9 +34,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         //관리하는 걸로 해놨습니다. 다만 밑에 currentHp가 0이하일때 발생하는 부분은
         //Enemy.cs부분에 없어서 currentHp가 0이하일때 발생하는 부분은 사용합니다.
         //더 좋은 생각 있으시면 Enemy.cs 로직을 감안해서 여기에 구현 하셔도 됩니다
-        Enemy enemy = GetComponent<Enemy>();
-        enemy.TakeHitFromPlayer(damage);
-
+        
         //--
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);

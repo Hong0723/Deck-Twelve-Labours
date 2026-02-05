@@ -65,6 +65,8 @@ public class Inventory : MonoBehaviour
 
                
     }
+
+    //---비활성화 상태에서는 Awake가 실행이 안되어서 빠르게 열고 닫기
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -146,13 +148,13 @@ public class Inventory : MonoBehaviour
     public bool CheckImagePosition(PointerEventData eventData, GameObject gameobject)
     {
         // 현재 아이템이 들어있는 슬롯 인덱스 찾기      
-        ItemManager manager = gameobject.GetComponent<ItemManager>();
-        int remainIndex = manager.GetMyItemslotsIndex();
+        ItemManager ToItemManager = gameobject.GetComponent<ItemManager>();
+        int ToItemSlotIndex = ToItemManager.GetMyItemslotsIndex();
         //Debug.Log($"현재 아이템이 들어있는위치 {remainIndex}");
-        if (remainIndex < 0)
+        if (ToItemSlotIndex < 0)
         {
             
-            Debug.LogError($"인덱스 {remainIndex} 기존 슬롯을 찾지 못함");
+            Debug.LogError($"인덱스 {ToItemSlotIndex} 기존 슬롯을 찾지 못함");
             return false;
         }
         //Debug.Log($"리스트 개수 {itemslots.Count}");
@@ -164,7 +166,7 @@ public class Inventory : MonoBehaviour
                 continue;
            
             // 같은 슬롯이면 무시
-            if (i == remainIndex)
+            if (i == ToItemSlotIndex)
                 continue;
             
 
@@ -178,36 +180,36 @@ public class Inventory : MonoBehaviour
                 eventData.pressEventCamera))
             {
                 // 대상 슬롯에 이미 아이템이 있는지 확인
-                GameObject remainItem = FindChildWithTag(slot.transform, "Item");
-                ItemManager remainmanager = remainItem.GetComponent<ItemManager>(); 
+                GameObject FromItem = FindChildWithTag(slot.transform, "Item");
+                ItemManager FromItemManager = FromItem.GetComponent<ItemManager>(); 
 
                 //Debug.Log($"옮길 자리 {i}");
                 // 이미 아이템이 있고, 그게 자기 자신이 아니면
                 // 여기 추후 수정해야할듯
-                if (remainItem != null && remainItem != gameobject)
+                if (FromItem != null && FromItem != gameobject)
                 {
-                    GameObject remainSlot = itemslots[remainIndex].obj;
-                    Transform edge2 = remainSlot.transform.Find("itemedge");
-                    if (edge2 != null)
+                    GameObject remainSlot = itemslots[ToItemSlotIndex].obj;//드래그 시작지점 itembackground
+                    Transform FromitemEdgeTransform = remainSlot.transform.Find("itemedge");
+                    if (FromitemEdgeTransform != null)
                     {
-                        RectTransform rect2 = remainItem.GetComponent<RectTransform>();                        
-                        rect2.SetParent(edge2, true);
-                        rect2.anchoredPosition = Vector2.zero;               
+                        RectTransform FromitemTrasform = FromItem.GetComponent<RectTransform>();                        
+                        FromitemTrasform.SetParent(FromitemEdgeTransform, true);
+                        FromitemTrasform.anchoredPosition = Vector2.zero;               
                                                 
                     }
                 }
                 // 현재 아이템을 새 슬롯으로 이동
-                RectTransform rect = gameobject.GetComponent<RectTransform>();
-                Transform edge = slot.transform.Find("itemedge");
-                if (edge != null)
+                RectTransform ToItemTrasform = gameobject.GetComponent<RectTransform>();
+                Transform ToitemedgeTransform = slot.transform.Find("itemedge");
+                if (ToitemedgeTransform != null)
                 {
-                    rect.SetParent(edge, true);
-                    rect.anchoredPosition = Vector2.zero;
+                    ToItemTrasform.SetParent(ToitemedgeTransform, true);
+                    ToItemTrasform.anchoredPosition = Vector2.zero;
                 }
 
-                SwapItemSlots(i, remainIndex, remainmanager, manager);
-                manager.SetMyItemslotsIndex(i);
-                remainmanager.SetMyItemslotsIndex(remainIndex);
+                SwapItemSlots(i, ToItemSlotIndex, FromItemManager, ToItemManager);
+                ToItemManager.SetMyItemslotsIndex(i);
+                FromItemManager.SetMyItemslotsIndex(ToItemSlotIndex);
                 return true;
             }
         }        
@@ -216,7 +218,7 @@ public class Inventory : MonoBehaviour
     }
 
 
-    public void AddItem(GameObject gameObject)
+    public void AddItem(GameObject NewItemObject)
     {
 
         //아이템창이 비어있는 최좌상단 아이템 슬롯
@@ -250,24 +252,24 @@ public class Inventory : MonoBehaviour
 
         //Debug.Log($"{itemIndex}");
         Debug.Log($"{itemslots.Count}");
-        GameObject itembackground = itemslots[itemIndex].obj;
+        GameObject ToItembackground = itemslots[itemIndex].obj;
         // itemedge 찾기
-        Transform itemedge = itembackground.transform.Find("itemedge");
-        if (itemedge == null)
+        Transform ToItemEdge = ToItembackground.transform.Find("itemedge");
+        if (ToItemEdge == null)
         {
             Debug.LogError("itemedge를 찾을 수 없습니다.");
             return;
         }
         // item 찾기
-        Transform item = itemedge.transform.Find("Item");
-        if (item == null)
+        Transform ToItem = ToItemEdge.transform.Find("Item");
+        if (ToItem == null)
         {
             Debug.LogError("오브젝트를 찾을 수 없습니다.");
             return;
         }
         // Image 컴포넌트 가져오기
-        Image itemImage = item.GetComponent<Image>();
-        if (itemImage == null)
+        Image BackgroundImage = ToItem.GetComponent<Image>();
+        if (BackgroundImage == null)
         {
             Debug.LogError("오브젝트에 Image 컴포넌트가 없습니다.");
             return;
@@ -276,49 +278,51 @@ public class Inventory : MonoBehaviour
                 
 
         //ItemBase(스크립터블 오브젝트 설정
-        GameObject itemGO = itemedge.Find("Item").gameObject;
+        GameObject FromItemObj = ToItemEdge.Find("Item").gameObject;
 
-        if (itemGO == null)
+        if (FromItemObj == null)
         {
             Debug.LogError("Item GameObject를 찾을 수 없습니다.");
             return;
         }
-        ItemManager itemManager = itemGO.GetComponent<ItemManager>();
+        ItemManager FromItemManager = FromItemObj.GetComponent<ItemManager>();
 
-        Item itemComponent = gameObject.GetComponent<Item>();
-        if (itemComponent == null)
+        Item ItemInfoScriptableObj = NewItemObject.GetComponent<Item>();
+        if (ItemInfoScriptableObj == null)
         {
             Debug.LogError("월드 아이템에 Item 컴포넌트가 없습니다.");
             return;
         }
 
         //스크립터블 오브젝트교체
-        itemManager.itemData = itemComponent.GetItemBase();
+        FromItemManager.itemData = ItemInfoScriptableObj.GetItemBase();
         // Sprite 변경
         //지금은 맥주잔이지만 나중에 투명이미지로 바꿔서
         //아이템이 들어오면 sprite만 바꾸는 형식으로 구현
-        itemImage.sprite = itemComponent.GetItemBase().icon;
+        BackgroundImage.sprite = ItemInfoScriptableObj.GetItemBase().icon;
 
 
 
         //스크립터블오브젝트의 이름가져오기위해
-        ItemBase ItemScriptable = itemComponent.GetItemBase();
+        ItemBase ItemScriptable = ItemInfoScriptableObj.GetItemBase();
         GetComponent<PlayerDataToJson>().UpdateItemData(ItemScriptable.itemName, 1);       
 
 
-        Destroy(gameObject);
+        Destroy(NewItemObject);
 
         //아이템 창없으면 파괴하지말아야할듯 추후
         //슬롯 상태 갱신 추후 수정예정
         itemslots[itemIndex].contained = true;        
     }
 
+    //인벤토리에 아이템 등록하려고 할때 스크립터블 오브젝트만 넘겨서 쓰는코드
     public void AddItem(ItemBase scriptableobject)
     {
         GameObject obj = new GameObject();
         Item comp = obj.AddComponent<Item>();
         comp.myBase = scriptableobject; // ScriptableObject 참조만 연결
         AddItem(obj);
+        Destroy(obj);
     }
 
     //itemslots리스트 내용을 서로 바꾸는 swap
@@ -333,6 +337,7 @@ public class Inventory : MonoBehaviour
         BManager.SetMyItemslotsIndex(indexA);
     }
 
+    //parent transform 하위의 오브젝트 중에 tag검색
     GameObject FindChildWithTag(Transform parent, string tag)
     {
         foreach (Transform child in parent.GetComponentsInChildren<Transform>(true))
@@ -369,8 +374,8 @@ public class Inventory : MonoBehaviour
         //현재 여기 itemslots리스트에 속한 인덱스를 저장합니다
         for (int i = 0; i < itemslots.Count; i++)
         {
-            ItemManager item = itemslots[i].obj.GetComponentInChildren<ItemManager>();
-            item.SetMyItemslotsIndex(i);
+            ItemManager itemManager = itemslots[i].obj.GetComponentInChildren<ItemManager>();
+            itemManager.SetMyItemslotsIndex(i);
         }
     }
 
@@ -407,6 +412,7 @@ public class Inventory : MonoBehaviour
     //content y 좌표가 -150에서 150
     //처음 30 띄우고 시작 간격 50씩
     //x좌표는 -90 ~90 처음 20띄우고 간격 47씩
+    //사과아이템을 위한 함수(인벤토리 확장 아이템)
     public void AddInventorySlot(int amount)//생성할 개수
     {
         if (!firstSort)
@@ -423,6 +429,7 @@ public class Inventory : MonoBehaviour
         {
 
             Debug.Log(grid[grid.Count - 1].Count);
+            //한 행에 4개씩 아이템 슬롯을 배치할건데 현재 행에 슬롯이 4개보다 작은경우
             if (grid[grid.Count - 1].Count >= 4)
             {
                 
@@ -433,21 +440,21 @@ public class Inventory : MonoBehaviour
                 Debug.Log("xpos = " + xpos + ", ypos = " + (ypos+50));
 
                 // 1️ 위치 없이 생성 (UI는 위치 나중에 세팅)
-                GameObject slot = Instantiate(slotPrefab, Content.transform);
+                GameObject slotObj = Instantiate(slotPrefab, Content.transform);
                 
                 // 2️ RectTransform 가져오기
-                RectTransform rt = slot.GetComponent<RectTransform>();
+                RectTransform slotTransform = slotObj.GetComponent<RectTransform>();
 
                 // 3️ anchoredPosition으로 위치 지정
-                rt.anchoredPosition = new Vector2(xpos, ypos);
+                slotTransform.anchoredPosition = new Vector2(xpos, ypos);
 
                 // 생성되는 효과발생
-                Itemslot EffectSlot = slot.GetComponent<Itemslot>();
+                Itemslot EffectSlot = slotObj.GetComponent<Itemslot>();
                 EffectSlot.SetItemEdgeAlpha(0);
                 EffectSlot.CreateEffectActivate();
 
-                grid[grid.Count - 1].Add(CreateItemSlotObj(slot, (int)xpos, (int)ypos, false));
-                Debug.Log("xpos = " + xpos + ", ypos = " + ypos + ", spawnPos = " + rt.anchoredPosition);
+                grid[grid.Count - 1].Add(CreateItemSlotObj(slotObj, (int)xpos, (int)ypos, false));
+                Debug.Log("xpos = " + xpos + ", ypos = " + ypos + ", spawnPos = " + slotTransform.anchoredPosition);
                 //index++;
                 //디버그
                 for (int r = 0; r < grid.Count; r++)
@@ -496,7 +503,7 @@ public class Inventory : MonoBehaviour
                 //디버그
             }
         }
-
+        //sort호출용
         isChangeSlot = true;
 
     }
