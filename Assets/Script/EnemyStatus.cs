@@ -17,14 +17,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
     void Update()
     {
-        // [주의] 적 스크립트에서는 절대로 KeyCode.Space를 사용하지 마세요!
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            if (player != null)
-            {
-                player.TakeDamage(20);
-            }
-        }
+
     }
 
     public void TakeDamage(int damage)
