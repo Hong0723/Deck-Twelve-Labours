@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     public int block;
     public int attackDamge;//공격력
 
-    public HPBar hpBar;
+    //public HPBar hpBar;
+    public ItemUseManager hpBar;
 
     public Animator animator;
     private Coroutine attackCoroutine; // 실행중인 공격애니메이션

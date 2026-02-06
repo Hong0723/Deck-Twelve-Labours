@@ -24,6 +24,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
             if (enemy != null)
             {
                 enemy.TakeHitFromPlayer(GetComponent<Player>().attackDamge);
+                Debug.Log("AttackEnemy");
             }
         }
     }

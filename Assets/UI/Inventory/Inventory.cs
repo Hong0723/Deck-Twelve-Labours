@@ -38,6 +38,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GraphicRaycaster fogRaycaster;//이거때매 인벤토리가 안눌려서 i눌렀을때 온오프
 
+    public Dictionary<string, ItemBase> StandHaveItem;
     void Awake()
     {
         //싱글톤
@@ -63,7 +64,7 @@ public class Inventory : MonoBehaviour
         StartCoroutine(LateSort());
         myInventory.gameObject.SetActive(false);
 
-               
+        StandHaveItem = new();
     }
 
     //---비활성화 상태에서는 Awake가 실행이 안되어서 빠르게 열고 닫기
@@ -250,7 +251,7 @@ public class Inventory : MonoBehaviour
             
         }
 
-        //Debug.Log($"{itemIndex}");
+        Debug.Log($"{itemIndex}");
         Debug.Log($"{itemslots.Count}");
         GameObject ToItembackground = itemslots[itemIndex].obj;
         // itemedge 찾기
@@ -295,7 +296,8 @@ public class Inventory : MonoBehaviour
         }
 
         //스크립터블 오브젝트교체
-        FromItemManager.itemData = ItemInfoScriptableObj.GetItemBase();
+        //FromItemManager.itemData = ItemInfoScriptableObj.GetItemBase();               
+        FromItemManager.SetItemData(ItemInfoScriptableObj.GetItemBase());
         // Sprite 변경
         //지금은 맥주잔이지만 나중에 투명이미지로 바꿔서
         //아이템이 들어오면 sprite만 바꾸는 형식으로 구현
@@ -331,7 +333,42 @@ public class Inventory : MonoBehaviour
         Itemslot Aslot = itemslots[indexA].obj.GetComponent<Itemslot>();
         Aslot.SetItemManager(BManager);
         Itemslot Bslot = itemslots[indexB].obj.GetComponent<Itemslot>();
-        Bslot.SetItemManager(AManager);             
+        Bslot.SetItemManager(AManager);
+
+        BattleSceneItem InStandItem = Aslot.GetComponentInChildren<BattleSceneItem>();
+        if (InStandItem != null)
+        {
+            ItemBase itemData = AManager.itemData;
+            Debug.Log(
+        $"[Item 전달]\n" +
+        $"이름: {itemData.itemName}\n" +
+        $"설명: {itemData.description}\n" +
+        $"아이콘: {itemData.icon}\n" +
+        $"타입: {itemData.itemType}\n" +
+        $"스택가능: {itemData.isStackable}\n" +
+        $"최대스택: {itemData.maxStack}\n" +
+        $"사용액션: {(itemData.useAction != null ? itemData.useAction.name : "없음")}"
+    );
+            InStandItem.SetStaticItemData(itemData);
+        }
+            BattleSceneItem InStandItem2 = Bslot.GetComponentInChildren<BattleSceneItem>();
+            if (InStandItem2 != null)
+            {
+                ItemBase itemData2 = BManager.itemData;
+                Debug.Log(
+            $"[Item 전달]\n" +
+            $"이름: {itemData2.itemName}\n" +
+            $"설명: {itemData2.description}\n" +
+            $"아이콘: {itemData2.icon}\n" +
+            $"타입: {itemData2.itemType}\n" +
+            $"스택가능: {itemData2.isStackable}\n" +
+            $"최대스택: {itemData2.maxStack}\n" +
+            $"사용액션: {(itemData2.useAction != null ? itemData2.useAction.name : "없음")}"
+        );
+
+                InStandItem2.SetStaticItemData(itemData2);
+        }
+
 
         AManager.SetMyItemslotsIndex(indexB);
         BManager.SetMyItemslotsIndex(indexA);
