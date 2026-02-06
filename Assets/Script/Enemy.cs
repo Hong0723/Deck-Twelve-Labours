@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     public int defenseReduce = 40;
     public int counterDamage = 4;
+    public int attackDamge;//°ø°Ý·Â
 
     public EnemyActionType nextAction;
     public HPBar hpBar;
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
             shield = monsterInfo.shield;
             defenseReduce = monsterInfo.defenseReduce;
             counterDamage = monsterInfo.counterDamage;
+            attackDamge = monsterInfo.AttackDamage;
             GameObject monsterObj = FindByTagAndName("Monster", monsterInfo.name);
             ReplaceVisual(this.gameObject, monsterObj);            
             effectScript = newVisual.GetComponent<MonsterSkill>();
@@ -121,6 +123,8 @@ public class Enemy : MonoBehaviour
     // =========================
     public void TakeHitFromPlayer(int damage)
     {
+        GetComponent<EnemyStatus>().TakeDamage(damage);
+
         int finalDamage = damage;
 
         if (isDefending)

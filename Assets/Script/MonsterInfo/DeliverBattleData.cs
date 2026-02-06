@@ -5,4 +5,7 @@ public static class DeliverBattleData
 {
     public static MonsterType MonsterInfo;//Enemy.cs에서 쓸거
     public static MonsterType PlayerInfo;//Player.cs에서 쓸거
+    // Battle Scene 좌상단 아이템 3칸
+    public static ItemBase[] BattleSceneItems = new ItemBase[3];
+
 }

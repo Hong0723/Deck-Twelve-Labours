@@ -40,7 +40,9 @@ public class player_set : MonoBehaviour
         {
             GlobalPlayerHP.InitializeIfNeeded(PlayerInfo.maxHP);
             GlobalPlayerHP.UpdateMaxHP(PlayerInfo.maxHP);
-        }        
+        }
+
+        PlayerInfo.AttackDamage = 20;//Battel Scene->GameScene 초기화
     }
 
     void Update()

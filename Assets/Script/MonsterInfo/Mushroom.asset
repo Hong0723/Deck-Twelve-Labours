@@ -18,3 +18,4 @@ MonoBehaviour:
   defenseReduce: 40
   counterDamage: 4
   block: 0
+  AttackDamage: 10

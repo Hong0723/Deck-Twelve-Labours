@@ -36,7 +36,7 @@ public class CardView : MonoBehaviour
     {
         if (!Interactions.Instance.PlayerCanHover()) return;
         wrapper.SetActive(false);
-        Vector3 pos = new(transform.position.x, -2, 0);
+        Vector3 pos = new(0, 0, 0);
         CardViewHoverSystem.Instance.Show(Card, pos);
     }
 
@@ -55,14 +55,15 @@ public class CardView : MonoBehaviour
         dragStartPosition = transform.position;
         dragStartRotation = transform.rotation;
         transform.rotation = Quaternion.Euler(0, 0, 0);
-        transform.position = MouseUtil.GetMousePositionInWorldSpace(-1);
+        Vector3 mousePos = MouseUtil.GetMousePositionInWorldSpace(dragStartPosition.z); // 원래 깊이 유지
+        transform.position = mousePos;
     }
 
 
     void OnMouseDrag()
     {
     if (!Interactions.Instance.PlayerCanInteract()) return;
-    transform.position = MouseUtil.GetMousePositionInWorldSpace(-1);
+        transform.position = MouseUtil.GetMousePositionInWorldSpace(dragStartPosition.z);
     }
 
     void OnMouseUp()

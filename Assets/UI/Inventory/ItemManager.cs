@@ -22,6 +22,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private CanvasGroup canvasGroup;
     private int myItemslotsIndex;
 
+    //public BattleSceneItem InStandItem;
     void Awake()
     {
         Image img = GetComponent<Image>();
@@ -185,7 +186,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 return;
             }
 
-            //아이템 사용
+            //아이템 사용 gameObject이거 왜 넣어놨지..?
             itemData.useAction.Execute(gameObject);
 
             //아이템 사용후 슬롯 재정비 미구현
@@ -203,6 +204,9 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void SetMyItemslotsIndex(int index)
     {
         myItemslotsIndex = index;
+
+        
+
     }
 
     public int GetMyItemslotsIndex()
@@ -210,5 +214,11 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         return myItemslotsIndex;
     }
 
-    
+    public void SetItemData(ItemBase itemScriptableObject)
+    {
+        itemData = itemScriptableObject;
+
+
+        
+    }
 }

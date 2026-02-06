@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -38,6 +39,8 @@ public class Itemslot : MonoBehaviour
     public void SetItemManager(ItemManager itemManager)
     {
         item = itemManager;
+
+       
     }
 
     public void CreateEffectActivate()

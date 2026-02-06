@@ -19,3 +19,4 @@ MonoBehaviour:
   itemType: 1
   isStackable: 0
   maxStack: 1
+  useAction: {fileID: 11400000, guid: e4b0333a94e9c91468fd66f306255602, type: 2}

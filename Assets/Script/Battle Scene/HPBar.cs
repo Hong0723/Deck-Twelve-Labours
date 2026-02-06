@@ -13,13 +13,19 @@ public class HPBar : MonoBehaviour
 
     RectTransform barRect;
     float barWidth;
-    
 
-    void Awake()
+
+    protected void Awake()
     {
         barRect = GetComponent<RectTransform>();
         barWidth = barRect.rect.width;
         updateBar = false;
+        
+        hpFill = transform.Find("Hp Fill").GetComponentInChildren<RectTransform>();
+        shieldFill = transform.Find("Shield Fill").GetComponentInChildren<RectTransform>();
+        TrailFill = transform.Find("Trail Fill").GetComponentInChildren<RectTransform>();
+        
+        Debug.Log("HPBar on: " + gameObject.name);
     }
     void Update()
     {
@@ -52,11 +58,20 @@ public class HPBar : MonoBehaviour
         TrailRatio = Mathf.Clamp01((float)currentHP / maxHP);
 
         float hpWidth = barWidth * hpRatio;
+        if (hpFill == null)
+        {
+            Debug.Log("hpfill null");
+            return;
+        }
         hpFill.sizeDelta = new Vector2(hpWidth, hpFill.sizeDelta.y);
 
         float shWidth = barWidth * shieldRatio;
+        if (shieldFill == null)
+        {
+            Debug.Log("shieldfill null");
+            return;
+        }
         shieldFill.sizeDelta = new Vector2(shWidth, shieldFill.sizeDelta.y);
-
         shieldFill.anchoredPosition = new Vector2(hpWidth, 0);
         shieldFill.gameObject.SetActive(shield > 0);
 

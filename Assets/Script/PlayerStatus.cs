@@ -4,7 +4,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 {
     public HPBar hpBar;
     public GameOverHandler handler;
-    public EnemyStatus enemy; // 공격 대상인 적을 연결 (테스트용)
+    public Enemy enemy; // 공격 대상인 적을 연결 (테스트용)
     public int maxHP = 100;
 
     private void Start()
@@ -23,7 +23,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         {
             if (enemy != null)
             {
-                enemy.TakeDamage(20);
+                enemy.TakeHitFromPlayer(GetComponent<Player>().attackDamge);
+                Debug.Log("AttackEnemy");
             }
         }
     }
