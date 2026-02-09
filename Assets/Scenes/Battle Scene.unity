@@ -669,15 +669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8053078ebd87742ba4a5357d838b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  maxHP: 40
-  currentHP: 0
-  shield: 0
-  isDefending: 0
-  defenseReduce: 40
-  counterDamage: 4
-  nextAction: 0
-  hpBar: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!4 &60189825
 Transform:
   m_ObjectHideFlags: 0
@@ -18033,15 +18024,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 178618946936699816, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 178618946936699816, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 178618946936699816, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.24
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 178618946936699816, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
       propertyPath: m_LocalPosition.x
