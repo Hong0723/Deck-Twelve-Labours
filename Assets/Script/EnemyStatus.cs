@@ -11,20 +11,13 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     
     void Start()
     {
+        maxHP= DeliverBattleData.MonsterInfo.maxHP;//스크립터블 오브젝트로 몬스터 체력 관리
         currentHP = maxHP;
         if (hpBar != null) hpBar.Set(currentHP, maxHP, 0);        
     }
 
     void Update()
     {
-        // [주의] 적 스크립트에서는 절대로 KeyCode.Space를 사용하지 마세요!
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            if (player != null)
-            {
-                player.TakeDamage(GetComponent<Enemy>().attackDamge);
-            }
-        }
     }
 
     public void TakeDamage(int damage)
@@ -38,6 +31,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         //--
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        Debug.Log("CurrentHP: " + currentHP);
         //if (hpBar != null) hpBar.Set(currentHP, maxHP, 0);Enemy.cs에서 관리
 
         //이부분은 사용합니다.

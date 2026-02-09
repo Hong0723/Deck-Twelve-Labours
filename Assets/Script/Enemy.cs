@@ -122,8 +122,7 @@ public class Enemy : MonoBehaviour
     // Player 공격 대응
     // =========================
     public void TakeHitFromPlayer(int damage)
-    {
-        GetComponent<EnemyStatus>().TakeDamage(damage);
+    {       
 
         int finalDamage = damage;
 
@@ -140,6 +139,8 @@ public class Enemy : MonoBehaviour
         int absorbed = Mathf.Min(shield, finalDamage);
         shield -= absorbed;
         finalDamage -= absorbed;
+
+        GetComponent<EnemyStatus>().TakeDamage(finalDamage);//쉴드있을경우 반영해서 계산
 
         currentHP = Mathf.Max(currentHP - finalDamage, 0);
         UpdateHPBar();

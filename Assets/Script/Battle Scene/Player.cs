@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     public int block;
     public int attackDamge;//공격력
 
-    public HPBar hpBar;
+    //public HPBar hpBar;
+    public ItemUseManager hpBar;
 
     public Animator animator;
     private Coroutine attackCoroutine; // 실행중인 공격애니메이션
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
         UpdateHPBar();
     }
 
+    
     public void TakeDamage(int dmg)
     {
         //게임 오버 창 실행하는 코드가 PlayerStatus.cs부분에 존재하여 
