@@ -11,6 +11,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     
     void Start()
     {
+        maxHP= DeliverBattleData.MonsterInfo.maxHP;//스크립터블 오브젝트로 몬스터 체력 관리
         currentHP = maxHP;
         if (hpBar != null) hpBar.Set(currentHP, maxHP, 0);        
     }
@@ -30,6 +31,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         //--
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        Debug.Log("CurrentHP: " + currentHP);
         //if (hpBar != null) hpBar.Set(currentHP, maxHP, 0);Enemy.cs에서 관리
 
         //이부분은 사용합니다.

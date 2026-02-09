@@ -1609,10 +1609,9 @@ GameObject:
   - component: {fileID: 140505184}
   - component: {fileID: 140505183}
   - component: {fileID: 140505182}
-  - component: {fileID: 140505181}
   - component: {fileID: 140505185}
   m_Layer: 5
-  m_Name: PowerPotionButton
+  m_Name: ItemButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1638,22 +1637,6 @@ RectTransform:
   m_AnchoredPosition: {x: -934.6, y: 484}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &140505181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140505179}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687dfc9d14a484e449236e6249f15283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Portion
-  usePortionImage: {fileID: -2094492961, guid: bbc7a0d958194604396403d843e19569, type: 3}
-  itemCount: {fileID: 967072580}
-  button: {fileID: 140505182}
-  itemName: "\uC804\uD22C\uB825\uD5A5\uC0C1\uD3EC\uC158"
 --- !u!114 &140505182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2606,6 +2589,7 @@ MonoBehaviour:
   hpBar: {fileID: 451762756}
   handler: {fileID: 1087812433}
   enemy: {fileID: 60189829}
+  player: {fileID: 269354710}
   maxHP: 100
 --- !u!114 &269354715
 MonoBehaviour:
@@ -6322,8 +6306,8 @@ RectTransform:
   - {fileID: 1217435876}
   - {fileID: 1977747464}
   - {fileID: 1966699490}
-  - {fileID: 1725331588}
   - {fileID: 140505180}
+  - {fileID: 1725331588}
   - {fileID: 1550533421}
   - {fileID: 746600789}
   m_Father: {fileID: 0}
@@ -12225,10 +12209,9 @@ GameObject:
   - component: {fileID: 1550533425}
   - component: {fileID: 1550533424}
   - component: {fileID: 1550533423}
-  - component: {fileID: 1550533422}
   - component: {fileID: 1550533426}
   m_Layer: 5
-  m_Name: PortionButton (1)
+  m_Name: ItemButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12254,22 +12237,6 @@ RectTransform:
   m_AnchoredPosition: {x: -738.1, y: 484}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1550533422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550533420}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687dfc9d14a484e449236e6249f15283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Portion
-  usePortionImage: {fileID: -2094492961, guid: bbc7a0d958194604396403d843e19569, type: 3}
-  itemCount: {fileID: 306913417}
-  button: {fileID: 1550533423}
-  itemName: "\uCCB4\uB825\uD3EC\uC158"
 --- !u!114 &1550533423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13903,10 +13870,9 @@ GameObject:
   - component: {fileID: 1725331591}
   - component: {fileID: 1725331590}
   - component: {fileID: 1725331589}
-  - component: {fileID: 1725331592}
   - component: {fileID: 1725331593}
   m_Layer: 5
-  m_Name: PortionButton
+  m_Name: ItemButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14014,22 +13980,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725331587}
   m_CullTransparentMesh: 1
---- !u!114 &1725331592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725331587}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 687dfc9d14a484e449236e6249f15283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Portion
-  usePortionImage: {fileID: -2094492961, guid: bbc7a0d958194604396403d843e19569, type: 3}
-  itemCount: {fileID: 1082722682}
-  button: {fileID: 1725331589}
-  itemName: "\uCCB4\uB825\uD3EC\uC158"
 --- !u!114 &1725331593
 MonoBehaviour:
   m_ObjectHideFlags: 0
