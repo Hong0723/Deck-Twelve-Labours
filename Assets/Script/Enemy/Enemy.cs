@@ -16,40 +16,33 @@ public class Enemy : MonoBehaviour
     public int maxHP = 40;
     public int currentHP;
     public int shield;
-
-    public bool isDefending;
-
+    public bool CounterReady;
     public int defenseReduce = 40;
     public int counterDamage = 4;
-    public int attackDamge;//°ø°İ·Â
-
+    public int attackDamage;
     public EnemyActionType nextAction;
     public HPBar hpBar;
-
     public Animator animator;
-
-
     private MonsterSkill effectScript;
-    private GameObject newVisual;//È­¸é¹Û¿¡ ÀûÀ» º¹Á¦
-
+    private GameObject newVisual;
+    [SerializeField] private IntentUI intentUI;
+    
     
     void Start()
     {
         currentHP = maxHP;
         shield = 0;
-        isDefending = false;
 
 
         if (DeliverBattleData.MonsterInfo)
         {
-            //½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ®¿¡¼­ ¸ó½ºÅÍ Á¤º¸¸¦ °¡Á®¿É´Ï´Ù
             MonsterType monsterInfo = DeliverBattleData.MonsterInfo;
             maxHP = monsterInfo.maxHP;
             currentHP = maxHP;
             shield = monsterInfo.shield;
             defenseReduce = monsterInfo.defenseReduce;
             counterDamage = monsterInfo.counterDamage;
-            attackDamge = monsterInfo.AttackDamage;
+            attackDamage = monsterInfo.AttackDamage;
             GameObject monsterObj = FindByTagAndName("Monster", monsterInfo.name);
             ReplaceVisual(this.gameObject, monsterObj);            
             effectScript = newVisual.GetComponent<MonsterSkill>();
@@ -61,28 +54,18 @@ public class Enemy : MonoBehaviour
         UpdateHPBar();
     }
 
-    // =========================
-    // ÅÏ ÈÅ
-    // =========================
+
     public void OnPlayerTurnStart()
     {
-        if (nextAction == EnemyActionType.Defense)
-        {
-            isDefending = true;
-            Debug.Log("Enemy ¹æ¾î ÅÂ¼¼");
-        }
     }
 
     public void OnEnemyTurnStart()
     {
         shield = 0;
-        isDefending = false;
         UpdateHPBar();
     }
 
-    // =========================
-    // Enemy Çàµ¿
-    // =========================
+
     public void TakeTurn()
     {
         ExecuteAction();
@@ -96,43 +79,39 @@ public class Enemy : MonoBehaviour
             case EnemyActionType.Attack:
                 Attack1Animation();
                 BattleManager.Instance.player.TakeDamage(8);
-                BattleManager.Instance.player.HurtedAnimation();//ÇÃ·¹ÀÌ¾î ÇÇ°İ¾Ö´Ï¸ŞÀÌ¼Ç                
+                BattleManager.Instance.player.HurtedAnimation();            
                 break;
 
             case EnemyActionType.Shield:
                 shield += 6;
-                SpecialAnimation();//½ÃÀü¾Ö´Ï¸ŞÀÌ¼Ç
+                SpecialAnimation();
                 break;
 
             case EnemyActionType.Heal:
                 currentHP = Mathf.Min(maxHP, currentHP + 5);
-                HealAnimation();//½ÃÀü¾Ö´Ï¸ŞÀÌ¼Ç
+                HealAnimation();
                 break;
 
             case EnemyActionType.Defense:
-                DefenseAnimation();//½ÃÀü¾Ö´Ï¸ŞÀÌ¼Ç
-                // ½ÇÇà ¾øÀ½ (»óÅÂ¿ë)
+                DefenseAnimation();
+                CounterReady = true;
                 break;
         }
 
         UpdateHPBar();
     }
 
-    // =========================
-    // Player °ø°İ ´ëÀÀ
-    // =========================
     public void TakeHitFromPlayer(int damage)
     {
         GetComponent<EnemyStatus>().TakeDamage(damage);
 
         int finalDamage = damage;
 
-        if (isDefending)
+        if (CounterReady)
         {
-            finalDamage = Mathf.Max(damage - defenseReduce, 0);
+            Debug.Log("Defense Counter ë°œë™");
+            finalDamage = Mathf.RoundToInt(damage * 0.5f);
             BattleManager.Instance.player.TakeDamage(counterDamage);
-            Debug.Log("Defense ¹İ°İ ¹ßµ¿");
-
             BattleManager.Instance.player.SetDefensed(true);
                    
         }
@@ -146,9 +125,6 @@ public class Enemy : MonoBehaviour
         HurtedAnimation();
     }
 
-    // =========================
-    // ÆĞÅÏ
-    // =========================
     void DecideNextAction()
     {
         List<EnemyActionType> pool = new()
@@ -162,9 +138,12 @@ public class Enemy : MonoBehaviour
             pool.Add(EnemyActionType.Heal);
 
         nextAction = pool[Random.Range(0, pool.Count)];
+        if(intentUI != null){
+         intentUI.UpdateIntent();
+        }
     }
 
-    //Ã¼·Â¹Ù °ü¸®ÇÏ´Â ºÎºĞÀÌ Áßº¹µÇ¾îÀÖ¾î¼­ EnemyStatus.cs¿¡¼­ °ü¸®ÇÏ°Ú½À´Ï´Ù
+
     void UpdateHPBar()
     {
         if (hpBar)
@@ -173,7 +152,7 @@ public class Enemy : MonoBehaviour
 
     public void Attack1Animation()
     {
-        effectScript.EffectAttack();//È÷µå¶ó¸¸ ±¸Çö
+        effectScript.EffectAttack();
         animator.SetTrigger("Attack1");
     }
 
@@ -197,10 +176,10 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Hurted");
     }
 
-    //EnemyWaitingRoom¿¡ ÀÖ´Â ¸ó½ºÅÍ ¿ÀºêÁ§Æ® ¼­Ä¡(Tag(Monster)->ÀÌ¸§ ¼øÀ¸·Î Ã£À½)
+
     GameObject FindByTagAndName(string tag, string name)
     {
-        //Debug.Log($"[FindByTagAndName] °Ë»ö ½ÃÀÛ | tag: {tag}, name: {name}");
+        //Debug.Log($"[FindByTagAndName] ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ | tag: {tag}, name: {name}");
 
         GameObject[] objs;// = GameObject.FindGameObjectsWithTag(tag);
         try
@@ -209,24 +188,24 @@ public class Enemy : MonoBehaviour
         }
         catch
         {
-            //Debug.LogError($"[FindByTagAndName] Á¸ÀçÇÏÁö ¾Ê´Â Tag: {tag}");
+            //Debug.LogError($"[FindByTagAndName] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ Tag: {tag}");
             return null;
         }
         foreach (GameObject obj in objs)
         {
             if (obj.name == name)
             {
-                //Debug.Log($"[FindByTagAndName] ¹ß°ß: {obj.name}");
+                //Debug.Log($"[FindByTagAndName] ï¿½ß°ï¿½: {obj.name}");
                 return obj;
             }
         }
 
-        //Debug.LogWarning($"[FindByTagAndName] ÇØ´ç ÀÌ¸§À» °¡Áø ¿ÀºêÁ§Æ® ¾øÀ½ | name: {name}");
+        //Debug.LogWarning($"[FindByTagAndName] ï¿½Ø´ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ | name: {name}");
         return null;
     }
 
 
-    //Enemy¿ÀºêÁ§Æ® ÀÚ½ÄÀ¸·Î ¾Ë¸ÂÀº ÀûÀÌ »ı¼ºµÊ
+    //Enemyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void ReplaceVisual(GameObject target, GameObject visualSource)
     {
         if (!target || !visualSource)
@@ -263,5 +242,26 @@ public class Enemy : MonoBehaviour
     {
         currentHP = hp; 
     }
+
+    public string GetIntentDescription() // ì  íŒ¨í„´ ì •ë³´ UI
+{
+    switch (nextAction)
+    {
+        case EnemyActionType.Attack:
+            return $" Attack : {attackDamage} Damage";
+
+        case EnemyActionType.Shield:
+            return " Shield +6";
+
+        case EnemyActionType.Heal:
+            return " Heal Hp +5";
+
+        case EnemyActionType.Defense:
+            return $" Defense Mode\n (Damage 50% decrease, counter {counterDamage})";
+
+        default:
+            return "";
+    }
+}
 }
 

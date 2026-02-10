@@ -10,13 +10,14 @@ public class BattleManager : MonoBehaviour
         EnemyTurn,
         Victory,
         Defeat
-    }
+    }   
     
     public static BattleManager Instance;
 
     [Header("Scene References")]
     [SerializeField] private GameObject enemyObject;   // Enemy 타입 의존 완전 제거
     [SerializeField] public Player player; //EnemyLoad에서 접근하기위해 public으로 바꿔놨습니다. 김동주
+    [SerializeField] private IntentUI intentUI;
 
     private BattleState state;
 
@@ -29,6 +30,8 @@ public class BattleManager : MonoBehaviour
     {
         state = BattleState.Start;
         StartCoroutine(SetupBattle());
+        Enemy enemy = enemyObject.GetComponent<Enemy>();
+        intentUI.SetEnemy(enemy);
     }
 
     private IEnumerator SetupBattle()
@@ -47,6 +50,11 @@ public class BattleManager : MonoBehaviour
     {
         if (state != BattleState.PlayerTurn)
             return;
+        // 플레이어 턴 종료 → Defense 해제
+        enemyObject?.SendMessage(
+            "OnPlayerTurnEnd",
+            SendMessageOptions.DontRequireReceiver
+        );
 
         state = BattleState.EnemyTurn;
         StartCoroutine(EnemyTurn());
