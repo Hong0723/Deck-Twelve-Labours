@@ -236,7 +236,8 @@ public class QuestUIController : MonoBehaviour
         if (selected != null)
             ShowDetail(selected);
     }
-
+    // QuestUIController.Instance?.NotifyEnemyDefeated(enemy.gameObject.name, 1);
+    // 위 코드 추가해서 적 처치시 퀘스트 완료 조건 호출
     private void SeedDemo()
     {
         quests.Clear();
