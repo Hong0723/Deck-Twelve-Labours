@@ -38,6 +38,7 @@ public class CharacterManager : MonoBehaviour
         }
         characters[0].position = cameraPosition;
         text_box.position = textPosition;
+        HandleCharacterSequence();
     }
 
     void Update()
