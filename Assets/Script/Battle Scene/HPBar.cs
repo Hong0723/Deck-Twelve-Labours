@@ -29,11 +29,7 @@ public class HPBar : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.O))
-        {
-            Set(1, 100, 0);//Å×½ºÆ®
-        }
-
+        
         if (!updateBar) return;
 
         float trailWidth = barWidth * TrailRatio;
@@ -56,7 +52,7 @@ public class HPBar : MonoBehaviour
         float hpRatio = Mathf.Clamp01((float)currentHP / maxHP);
         float shieldRatio = Mathf.Clamp01((float)shield / maxHP);
         TrailRatio = Mathf.Clamp01((float)currentHP / maxHP);
-
+        //Debug.Log("hpRatio: " + hpRatio);
         float hpWidth = barWidth * hpRatio;
         if (hpFill == null)
         {

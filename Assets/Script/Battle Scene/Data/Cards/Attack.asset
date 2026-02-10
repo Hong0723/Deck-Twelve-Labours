@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   <Description>k__BackingField: Deals 2 damage
   <Mana>k__BackingField: 1
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 789e518168d493d4396ec984b1b5bcb3, type: 3}
   <Effects>k__BackingField:
-  - rid: -2
+  - rid: 816320546062467150
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 816320546062467150
+      type: {class: AttackCardsEffect, ns: , asm: Assembly-CSharp}
+      data:
+        damageAmount: 10

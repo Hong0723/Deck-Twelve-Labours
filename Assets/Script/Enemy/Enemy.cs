@@ -11,7 +11,7 @@ public enum EnemyActionType
     Defense
 }
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     public int maxHP = 40;
     public int currentHP;
@@ -101,9 +101,14 @@ public class Enemy : MonoBehaviour
         UpdateHPBar();
     }
 
-    public void TakeHitFromPlayer(int damage)
+
+    public void TakeDamage(int damage)
     {
-        GetComponent<EnemyStatus>().TakeDamage(damage);
+        TakeHitFromPlayer(damage);
+    }
+
+    public void TakeHitFromPlayer(int damage)
+    {       
 
         int finalDamage = damage;
 
@@ -120,10 +125,18 @@ public class Enemy : MonoBehaviour
         shield -= absorbed;
         finalDamage -= absorbed;
 
+        GetComponent<EnemyStatus>().TakeDamage(finalDamage);//����������� �ݿ��ؼ� ���
+
         currentHP = Mathf.Max(currentHP - finalDamage, 0);
         UpdateHPBar();
         HurtedAnimation();
+
+        if (currentHP <= 0)
+        {
+        gameObject.SetActive(false);
+        }
     }
+
 
     void DecideNextAction()
     {

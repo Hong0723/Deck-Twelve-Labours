@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         UpdateHPBar();
     }
 
+    
     public void TakeDamage(int dmg)
     {
         //게임 오버 창 실행하는 코드가 PlayerStatus.cs부분에 존재하여 

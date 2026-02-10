@@ -5,14 +5,15 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public HPBar hpBar;
     public GameOverHandler handler;
     public Enemy enemy; // 공격 대상인 적을 연결 (테스트용)
+    public Player player; // 애니메이션이 여기있음
     public int maxHP = 100;
 
     private void Start()
     {
         // 전역 HP 초기화(이미 초기화되어 있으면 유지)
-        GlobalPlayerHP.InitializeIfNeeded(maxHP);
-        GlobalPlayerHP.UpdateMaxHP(maxHP);
-
+        //GlobalPlayerHP.InitializeIfNeeded(maxHP);
+        //GlobalPlayerHP.UpdateMaxHP(maxHP);
+        //Player.cs에서 중복초기화, 위의 코드 실행시키면 체력바가 줄어든 상태로 실행되더라고요
         RefreshHPBar();
     }
 
@@ -23,8 +24,9 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         {
             if (enemy != null)
             {
-                enemy.TakeHitFromPlayer(GetComponent<Player>().attackDamge);
+                enemy.TakeHitFromPlayer(player.attackDamge);
                 Debug.Log("AttackEnemy");
+                player.Attack1Animation(); // 공격애니메이션 재생
             }
         }
     }

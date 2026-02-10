@@ -50,19 +50,24 @@ public class CardSystem : Singleton<CardSystem>
 
     private IEnumerator DrawCardsPerformer(DrawCardsGA drawCardsGA)
     {
-        int actualAmount = Mathf.Min(drawCardsGA.Amount, drawPile.Count);
-        int notDrawnAmount = drawCardsGA.Amount - actualAmount;
-        for(int i = 0; i < actualAmount; i++)
+        for (int i = 0; i < drawCardsGA.Amount; i++)
         {
-            yield return DrawCard();
-        }
-        if(notDrawnAmount > 0)
-        {
-            RefillDeck();
-            for(int i = 0; i < notDrawnAmount; i++)
+            // 1. 만약 뽑을 카드가 없다면 덱을 다시 채움
+            if (drawPile.Count == 0)
             {
-                yield return DrawCard();
+                RefillDeck();
             }
+
+            // 2. 덱을 채웠는데도 카드가 없다면 (전체 카드가 다 손에 있거나 아예 없는 경우) 
+            // 더 이상 루프를 돌지 않고 종료
+            if (drawPile.Count == 0)
+            {
+                Debug.LogWarning("더 이상 뽑을 카드가 없습니다.");
+                yield break; // 
+            }
+
+            // 3. 카드가 있다면 한 장 뽑습니다.
+            yield return DrawCard();
         }
     }
 
@@ -80,9 +85,11 @@ public class CardSystem : Singleton<CardSystem>
     private IEnumerator PlayCardPerformer(PlayCardGA playCardGA)
     {
         hand.Remove(playCardGA.Card);
+        discardPile.Add(playCardGA.Card);
+
         CardView cardView = handView.RemoveCard(playCardGA.Card);
         yield return DiscardCard(cardView);
-
+  
         SpendManaGA spendManaGA = new(playCardGA.Card.Mana);
         ActionSystem.Instance.AddReaction(spendManaGA);
         foreach (var effect in playCardGA.Card.Effects)
@@ -125,6 +132,15 @@ public class CardSystem : Singleton<CardSystem>
     }
         drawPile.AddRange(discardPile);
         discardPile.Clear();
+
+        // 셔플 로직 추가 (List 확장 메서드나 Random 사용)
+        for (int i = 0; i < drawPile.Count; i++)
+        {
+            Card temp = drawPile[i];
+            int randomIndex = Random.Range(i, drawPile.Count);
+            drawPile[i] = drawPile[randomIndex];
+            drawPile[randomIndex] = temp;
+        }
     }
 
     private IEnumerator DiscardCard(CardView cardView)
