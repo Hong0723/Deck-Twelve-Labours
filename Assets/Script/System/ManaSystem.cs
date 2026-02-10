@@ -4,7 +4,7 @@ using UnityEngine;
 public class ManaSystem : Singleton<ManaSystem>
 {
     [SerializeField] private ManaUI manaUI;
-    private const int MAX_MANA = 3;
+    private const int MAX_MANA = 10;
     private int currentMana = MAX_MANA;
     void OnEnable()
     {

@@ -11,7 +11,7 @@ public enum EnemyActionType
     Defense
 }
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     public int maxHP = 40;
     public int currentHP;
@@ -121,6 +121,11 @@ public class Enemy : MonoBehaviour
     // =========================
     // Player 공격 대응
     // =========================
+    public void TakeDamage(int damage)
+    {
+        TakeHitFromPlayer(damage);
+    }
+
     public void TakeHitFromPlayer(int damage)
     {       
 
@@ -145,7 +150,13 @@ public class Enemy : MonoBehaviour
         currentHP = Mathf.Max(currentHP - finalDamage, 0);
         UpdateHPBar();
         HurtedAnimation();
+
+        if (currentHP <= 0)
+        {
+        gameObject.SetActive(false);
+        }
     }
+
 
     // =========================
     // 패턴
