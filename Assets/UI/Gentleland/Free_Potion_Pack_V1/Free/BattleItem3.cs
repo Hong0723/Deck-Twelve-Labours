@@ -12,6 +12,7 @@ public class BattleItem3 : MonoBehaviour, IPointerClickHandler
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GetComponent<Image>().sprite = null;
         if (DeliverBattleData.BattleSceneItems[2] != null)
         {
             portionData = PlayerDataToJson.Instance.CheckItemData(DeliverBattleData.BattleSceneItems[2].itemName);

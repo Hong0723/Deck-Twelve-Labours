@@ -55,7 +55,7 @@ public class MonsterSkill : MonoBehaviour
             Debug.Log("등록된 키: " + key);
         }*/
         cam = Camera.main;
-        Vector3 offset = new Vector3(0,10,0);        // 머리 위 보정
+        Vector3 offset = new Vector3(0,15,0);        // 머리 위 보정
         Vector3 worldPos = head.transform.position + offset;
         Vector3 screenPos = cam.WorldToScreenPoint(worldPos);
         hpBar.transform.position = screenPos;

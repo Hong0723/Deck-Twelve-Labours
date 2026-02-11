@@ -11,8 +11,9 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     private void Start()
     {
         // 전역 HP 초기화(이미 초기화되어 있으면 유지)
-        //GlobalPlayerHP.InitializeIfNeeded(maxHP);
-        //GlobalPlayerHP.UpdateMaxHP(maxHP);
+        maxHP = DeliverBattleData.PlayerInfo.maxHP;//스크립터블 오브젝트로 플레이어 체력 관리
+        GlobalPlayerHP.InitializeIfNeeded(maxHP);
+        GlobalPlayerHP.UpdateMaxHP(maxHP);
         //Player.cs에서 중복초기화, 위의 코드 실행시키면 체력바가 줄어든 상태로 실행되더라고요
         RefreshHPBar();
     }

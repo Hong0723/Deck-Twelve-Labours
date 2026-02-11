@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             case EnemyActionType.Attack:
                 Attack1Animation();
-                BattleManager.Instance.player.TakeDamage(8);
+                BattleManager.Instance.player.TakeDamage(attackDamage);
                 BattleManager.Instance.player.HurtedAnimation();            
                 break;
 
@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
             case EnemyActionType.Heal:
                 currentHP = Mathf.Min(maxHP, currentHP + 5);
+                GetComponent<EnemyStatus>().TakeDamage(-5);//체력회복
                 HealAnimation();
                 break;
 

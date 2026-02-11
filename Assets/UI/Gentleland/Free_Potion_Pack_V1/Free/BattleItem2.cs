@@ -13,6 +13,7 @@ public class BattleItem2 : MonoBehaviour, IPointerClickHandler
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GetComponent<Image>().sprite = null;
         if (DeliverBattleData.BattleSceneItems == null)
         {
             Debug.LogError("❌ BattleSceneItems 배열이 null 입니다!");

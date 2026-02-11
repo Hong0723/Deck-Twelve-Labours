@@ -52,7 +52,7 @@ public class HPBar : MonoBehaviour
         float hpRatio = Mathf.Clamp01((float)currentHP / maxHP);
         float shieldRatio = Mathf.Clamp01((float)shield / maxHP);
         TrailRatio = Mathf.Clamp01((float)currentHP / maxHP);
-        //Debug.Log("hpRatio: " + hpRatio);
+        Debug.Log("hpRatio: " + hpRatio);
         float hpWidth = barWidth * hpRatio;
         if (hpFill == null)
         {
