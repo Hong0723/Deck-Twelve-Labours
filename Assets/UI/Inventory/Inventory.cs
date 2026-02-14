@@ -2,6 +2,7 @@
 using NUnit.Framework.Internal.Execution;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -39,6 +40,9 @@ public class Inventory : MonoBehaviour
     private GraphicRaycaster fogRaycaster;//이거때매 인벤토리가 안눌려서 i눌렀을때 온오프
 
     public Dictionary<string, ItemBase> StandHaveItem;
+
+    //public TMP_Text testText;
+
     void Awake()
     {
         //싱글톤
@@ -208,9 +212,31 @@ public class Inventory : MonoBehaviour
                     ToItemTrasform.anchoredPosition = Vector2.zero;
                 }
 
+                /*
+                TMP_Text FromText = FromItemManager.GetComponentInChildren<TMP_Text>();
+                TMP_Text ToText = ToItemManager.GetComponentInChildren<TMP_Text>();
+                FromItemManager.SetItemText(ToText);
+                ToItemManager.SetItemText(FromText);
+                */
+
                 SwapItemSlots(i, ToItemSlotIndex, FromItemManager, ToItemManager);
+
+                
+
                 ToItemManager.SetMyItemslotsIndex(i);
                 FromItemManager.SetMyItemslotsIndex(ToItemSlotIndex);
+
+                if (FromItemManager.itemData.itemName == "test")
+                {
+                    itemslots[FromItemManager.GetMyItemslotsIndex()].contained = false;
+                    Debug.Log("indexA slots false");
+                }
+                else if (ToItemManager.itemData.itemName == "test")
+                {
+                    itemslots[ToItemManager.GetMyItemslotsIndex()].contained = false;
+                    Debug.Log("indexB slots false");
+                }
+
                 return true;
             }
         }        
@@ -221,9 +247,32 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(GameObject NewItemObject)
     {
+        bool isDone = false;
+
+        for (int k = 0; k < itemslots.Count; k++)
+        {
+            ItemManager manager = itemslots[k].obj.GetComponentInChildren<ItemManager>();
+            ItemBase ItemScriptableObject = manager.itemData;//기존에 있던거
+            ItemBase NewItemScriptableObject = NewItemObject.GetComponent<Item>().myBase;//새로 추가한거
+            if (ItemScriptableObject && ItemScriptableObject.itemName == NewItemScriptableObject.itemName)
+            {
+                GetComponent<PlayerDataToJson>().UpdateItemData(NewItemScriptableObject.itemName, 1);
+                //Debug.Log($"슬롯 이름: {itemslots[k].obj.name}");
+                //Debug.Log($"기존 매니저 수량: {manager.ItemAmount}");
+                manager.SetItemAmount();
+                //Debug.Log($"슬롯 이름: {itemslots[k].obj.name}");
+                //Debug.Log($"증가 후 수량: {manager.ItemAmount}");
+                //스크립터블오브젝트의 이름가져오기위해               
+
+
+                Destroy(NewItemObject);
+                return;
+            }
+
+        }
 
         //아이템창이 비어있는 최좌상단 아이템 슬롯
-        for(int k=0; k<itemslots.Count; k++)
+        for (int k=0; k<itemslots.Count; k++)
         {
             //석상에는 넣지 않습니다
             
@@ -231,9 +280,8 @@ public class Inventory : MonoBehaviour
            {
                continue;
            }
-                   
            
-
+           
            if (itemslots[k].contained)
            {
                continue;
@@ -245,14 +293,21 @@ public class Inventory : MonoBehaviour
            }
            else
            {
-               itemIndex = k;
-               break;
+                itemIndex = k;
+                Debug.Log("test = "+itemIndex);
+                break;
            }
             
         }
 
-        Debug.Log($"{itemIndex}");
-        Debug.Log($"{itemslots.Count}");
+        if (isDone)
+        {
+            isDone = false;
+            return;
+        }
+
+        //Debug.Log($"{itemIndex}");
+        //Debug.Log($"{itemslots.Count}");
         GameObject ToItembackground = itemslots[itemIndex].obj;
         // itemedge 찾기
         Transform ToItemEdge = ToItembackground.transform.Find("itemedge");
@@ -302,13 +357,21 @@ public class Inventory : MonoBehaviour
         //지금은 맥주잔이지만 나중에 투명이미지로 바꿔서
         //아이템이 들어오면 sprite만 바꾸는 형식으로 구현
         BackgroundImage.sprite = ItemInfoScriptableObj.GetItemBase().icon;
-
+        BackgroundImage.color = new Color(1, 1, 1, 1);
 
 
         //스크립터블오브젝트의 이름가져오기위해
         ItemBase ItemScriptable = ItemInfoScriptableObj.GetItemBase();
-        GetComponent<PlayerDataToJson>().UpdateItemData(ItemScriptable.itemName, 1);       
+        GetComponent<PlayerDataToJson>().UpdateItemData(ItemScriptable.itemName, 1);
+        FromItemManager.SetItemAmount();
 
+        //인벤토리에 개수 보이게 하기
+        TMP_Text ItemCountText = FromItemManager.ItemAmountText;
+        if (ItemCountText == null)
+        {
+            Debug.Log("못찾음");
+        }
+        ItemCountText.gameObject.SetActive(true);
 
         Destroy(NewItemObject);
 
@@ -330,6 +393,8 @@ public class Inventory : MonoBehaviour
     //itemslots리스트 내용을 서로 바꾸는 swap
     void SwapItemSlots(int indexA, int indexB, ItemManager AManager, ItemManager BManager)
     {
+        
+
         Itemslot Aslot = itemslots[indexA].obj.GetComponent<Itemslot>();
         Aslot.SetItemManager(BManager);
         Itemslot Bslot = itemslots[indexB].obj.GetComponent<Itemslot>();
@@ -368,10 +433,12 @@ public class Inventory : MonoBehaviour
 
                 InStandItem2.SetStaticItemData(itemData2);
         }
-
-
+        
         AManager.SetMyItemslotsIndex(indexB);
         BManager.SetMyItemslotsIndex(indexA);
+
+        //AManager.SetItemAmount();
+        //BManager.SetItemAmount();
     }
 
     //parent transform 하위의 오브젝트 중에 tag검색
@@ -545,5 +612,29 @@ public class Inventory : MonoBehaviour
 
     }
 
-    
+    public void ResetItemSlot(PointerEventData eventData)
+    {
+        // 모든 슬롯 순회
+        for (int i = 0; i < itemslots.Count; i++)
+        {
+            GameObject slot = itemslots[i].obj;
+            if (slot == null)
+                continue;
+
+
+            RectTransform slotRect = slot.GetComponent<RectTransform>();
+            if (slotRect == null) continue;
+
+            // 슬롯 영역 안에 놓였는지 체크            
+            if (RectTransformUtility.RectangleContainsScreenPoint(
+                slotRect,
+                eventData.position,
+                eventData.pressEventCamera))
+            {
+                itemslots[i].contained = false;
+                TMP_Text textCanvas = itemslots[i].obj.GetComponentInChildren<TMP_Text>();
+                textCanvas.gameObject.SetActive(false);
+            }
+        }
+    }
 }

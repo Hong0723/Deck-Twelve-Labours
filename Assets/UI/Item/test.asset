@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc6c8f386606f8e4e8cf586b770c846b, type: 3}
   m_Name: test
   m_EditorClassIdentifier: Assembly-CSharp::ItemBase
-  itemName: "\uD14C\uC2A4\uD2B8"
-  description: "\uC774\uAC8C \uBB54\uAC00\uC694?\n\n"
+  itemName: test
+  description: '
+
+'
   icon: {fileID: 21300000, guid: 8661c2c7e325a33438f06b02458fd199, type: 3}
   itemType: 1
   isStackable: 0
   maxStack: 1
+  useAction: {fileID: 0}
