@@ -7,4 +7,4 @@ public class PerformEffectGA : GameAction
     {
         Effect = effect;
     }
-}// CardSystem 이어서 수정해야 함
+}
