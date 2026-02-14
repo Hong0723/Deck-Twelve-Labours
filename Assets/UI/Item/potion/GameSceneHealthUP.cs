@@ -10,6 +10,6 @@ public class GameSceneHealthUP : ItemUseAction
         Debug.Log(
         "현재체력 " + GlobalPlayerHP.CurrentHP +
         " 최대체력 " + GlobalPlayerHP.MaxHP
-        );
+        );        
     }
 }

@@ -72,4 +72,9 @@ public class Itemslot : MonoBehaviour
 
         SetItemEdgeAlpha(1);
     }
+
+    public ItemManager GetItemManager()
+    {
+        return item;
+    }
 }

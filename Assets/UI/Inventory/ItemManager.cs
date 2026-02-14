@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,6 +22,8 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public ItemBase itemData;       
     private CanvasGroup canvasGroup;
     private int myItemslotsIndex;
+    public TMP_Text ItemAmountText;
+    
 
     //public BattleSceneItem InStandItem;
     void Awake()
@@ -32,9 +35,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         // CanvasGroup
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-
-        
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();        
     }
     void Start()
     {
@@ -45,8 +46,9 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         myRect.anchorMax = new Vector2(0.5f, 0.5f);
         myRect.pivot = new Vector2(0.5f, 0.5f);
         myRect.anchoredPosition = Vector2.zero;
-
+        
         SetSceneCamera();
+        //ItemAmountText.gameObject.SetActive(false);
     }
     
     void SetSceneCamera()
@@ -189,7 +191,17 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             //아이템 사용 gameObject이거 왜 넣어놨지..?
             itemData.useAction.Execute(gameObject);
 
+
             //아이템 사용후 슬롯 재정비 미구현
+
+            PlayerDataToJson.Instance.UpdateItemData(itemData.itemName, -1);
+            int remainCount = SetItemAmount();
+
+            if (remainCount == 0)
+            {
+                itemData = null;
+                Inventory.Instance.ResetItemSlot(eventData);
+            }
             //ConsumeItem();
 
         }
@@ -205,8 +217,8 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         myItemslotsIndex = index;
 
-        
 
+        
     }
 
     public int GetMyItemslotsIndex()
@@ -218,7 +230,30 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         itemData = itemScriptableObject;
 
-
-        
+        ItemAmountText.gameObject.SetActive(true);
+        //SetItemAmount();
     }
+
+
+
+    public int SetItemAmount()
+    {
+        PlayerData data = PlayerDataToJson.Instance.LoadPlayerDataFromJsonCall();
+        for (int i = 0; i < data.items.Count; i++)
+        {
+            if(data.items[i].name == itemData.itemName)
+            {
+                ItemAmountText.text = data.items[i].count.ToString();
+                return data.items[i].count;
+            }
+        }
+        return -1;
+    }
+
+    public void SetItemText(TMP_Text text)
+    {
+        ItemAmountText = text;
+    }
+
+   
 }
