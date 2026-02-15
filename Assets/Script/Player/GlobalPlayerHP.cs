@@ -73,4 +73,11 @@ public static class GlobalPlayerHP
         if (!IsInitialized) return;
         CurrentHP = MaxHP;
     }
+
+    public static void ResetAll()
+{
+    IsInitialized = false;
+    MaxHP = 1;
+    CurrentHP = 1;
+}
 }

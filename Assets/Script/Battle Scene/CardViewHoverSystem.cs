@@ -6,6 +6,7 @@ public class CardViewHoverSystem : Singleton<CardViewHoverSystem>
 
     public void Show(Card card, Vector3 position)
     {
+        if (BattleState.IsPaused) return;
         cardViewHover.gameObject.SetActive(true);
         cardViewHover.Setup(card);
         cardViewHover.transform.position = position;

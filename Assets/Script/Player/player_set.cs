@@ -41,7 +41,11 @@ public class player_set : MonoBehaviour
             GlobalPlayerHP.InitializeIfNeeded(PlayerInfo.maxHP);
             GlobalPlayerHP.UpdateMaxHP(PlayerInfo.maxHP);
         }
-
+        if (GlobalWorldState.hasSavedPosition)
+    {
+        transform.position = GlobalWorldState.lastPlayerPosition;
+        GlobalWorldState.hasSavedPosition = false;
+    }
         PlayerInfo.AttackDamage = 20;//Battel Scene->GameScene 초기화
     }
 

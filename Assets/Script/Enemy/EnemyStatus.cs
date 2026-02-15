@@ -37,8 +37,8 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         //이부분은 사용합니다.
         if (currentHP <= 0)
         {
-            if (handler != null) handler.DisplayVictory();
-            gameObject.SetActive(false); // 적 파괴/비활성화
+            if (handler != null)
+                handler.DisplayVictory(this.gameObject);
         }
     } 
     

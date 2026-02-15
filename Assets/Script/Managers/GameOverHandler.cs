@@ -3,48 +3,87 @@ using UnityEngine.SceneManagement;
 
 public class GameOverHandler : MonoBehaviour
 {
-    public GameObject gameOverUI; // 패배창 패널
-    public GameObject victoryUI;  // 승리창 패널
-    public string nextSceneName;  // 계속하기 누를 때 갈 씬 이름
+    public GameObject gameOverUI;   // GameOver/Panel
+    public GameObject victoryUI;    // Victory/Panel
+    public GameObject rewardUI;     // Reward/Panel
+    [SerializeField] private GameObject battleInputRoot;
+    private GameObject currentEnemy; // 제거할 몬스터 저장
 
     void Awake()
     {
-        // 시작할 때 모든 창을 끄고 시간은 정상(1)으로 설정
         if (gameOverUI != null) gameOverUI.SetActive(false);
         if (victoryUI != null) victoryUI.SetActive(false);
-        Time.timeScale = 1f; 
+        if (rewardUI != null) rewardUI.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
+    // ===== 패배 =====
     public void DisplayGameOver()
     {
-        if (gameOverUI != null) {
+        if (gameOverUI != null)
+        {
             gameOverUI.SetActive(true);
-            Time.timeScale = 0f; // 게임 멈춤
+            Time.timeScale = 0f;
         }
     }
 
-    public void DisplayVictory()
+    // ===== 승리 =====
+    public void DisplayVictory(GameObject enemy)
     {
-        if (victoryUI != null) {
+        currentEnemy = enemy;
+        if (battleInputRoot != null)
+        battleInputRoot.SetActive(false);   // 🔥 입력 전체 차단
+        if (victoryUI != null)
+        {
             victoryUI.SetActive(true);
-            Time.timeScale = 0f; // 게임 멈춤
         }
     }
 
-    public void OnClickRetry() // 다시하기 버튼용
+    // Victory → Reward 버튼
+    public void OnClickVictoryContinue()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (victoryUI != null) victoryUI.SetActive(false);
+        if (rewardUI != null) rewardUI.SetActive(true);
+        Time.timeScale = 0f;
+          Debug.Log("Reward Continue Clicked");
     }
 
-    public void OnClickContinue() // 계속하기 버튼용 (씬 이동)
+    // Reward → 게임 복귀 버튼
+    public void OnClickRewardContinue()
     {
+
+        if (battleInputRoot != null)
+        battleInputRoot.SetActive(true);
+        if (rewardUI != null) rewardUI.SetActive(false);
+
         Time.timeScale = 1f;
-        if (!string.IsNullOrEmpty(nextSceneName))
-            SceneManager.LoadScene(nextSceneName);
+
+        if (currentEnemy != null)
+            currentEnemy.SetActive(false); // 몬스터 제거
+                // 잡은 몬스터 기록
+    if (DeliverBattleData.MonsterInfo != null)
+    {
+        GlobalMonsterState.MarkAsDefeated(
+            DeliverBattleData.MonsterInfo.monsterName
+        );
     }
 
-    public void OnClickExit() // 종료 버튼용
+    SceneManager.LoadScene("Game Scene");
+      Debug.Log("Reward Continue Clicked");
+    }
+
+    // Retry 버튼
+    public void OnClickRetry()
+    {
+        Time.timeScale = 1f;
+
+    GameSessionManager.ResetAll();  
+
+    SceneManager.LoadScene("Start Scene"); 
+    }
+
+    public void OnClickExit()
     {
         Application.Quit();
     }

@@ -4,15 +4,26 @@ using UnityEngine.SceneManagement;
 public class ChangeSceneOnHitpt : MonoBehaviour
 {
     [SerializeField] private string sceneName = "Battle Scene";
-    [SerializeField] private MonsterType MonsterInfo;//¹èÆ²¾À¿¡¼­ ½Î¿ì°Ô µÉ ¸ó½ºÅÍ Á¤º¸
+    [SerializeField] private MonsterType MonsterInfo;//ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¿ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
+
+
+    void Start()
+    {
+    if (GlobalMonsterState.IsDefeated(MonsterInfo.monsterName))
+    {
+        gameObject.SetActive(false);
+    }
+    }   
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
-            //staticº¯¼ö¿¡ °ª ÀúÀå
-            DeliverBattleData.MonsterInfo = MonsterInfo;            
-            SceneManager.LoadScene(sceneName);
+        GlobalWorldState.lastPlayerPosition = collision.transform.position;
+        GlobalWorldState.hasSavedPosition = true;
+
+        DeliverBattleData.MonsterInfo = MonsterInfo;
+        SceneManager.LoadScene("Battle Scene");
         }
     }
 }
