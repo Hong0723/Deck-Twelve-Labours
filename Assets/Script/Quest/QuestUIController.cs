@@ -9,12 +9,19 @@ public class QuestUIController : MonoBehaviour
     [SerializeField] private VisualTreeAsset questListItemTemplate;
     [SerializeField] private VisualTreeAsset objectiveRowTemplate;
 
-    [Header("Input")]
+    [Header("Input (Optional)")]
+    [SerializeField] private bool useHotkeyToggle = false;
     [SerializeField] private KeyCode toggleKey = KeyCode.J;
+
+    [SerializeField] private Sprite questIconIdle;
+    [SerializeField] private Sprite questIconHover;
 
     public static QuestUIController Instance { get; private set; }
 
     private UIDocument doc;
+
+    // NEW: Open button (outside quest-root recommended)
+    private Button openBtn;
 
     private VisualElement questRoot;
     private Button closeBtn;
@@ -42,18 +49,31 @@ public class QuestUIController : MonoBehaviour
         doc = GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
 
+        // ✅ 화면 클릭으로 열기 버튼
+        openBtn = root.Q<Button>("quest-open-btn");
+        if (openBtn != null)
+        {
+            openBtn.clicked += () =>
+            {
+                if (IsVisible()) Hide();
+                else Show();
+            };
+        }
+        else
+        {
+            Debug.LogWarning("[QuestUIController] UXML에서 name='quest-open-btn' 버튼을 찾지 못했습니다. (UXML에 버튼 추가 필요)");
+        }
+
         questRoot = root.Q<VisualElement>("quest-root");
         closeBtn = root.Q<Button>("quest-close-btn");
         questList = root.Q<ScrollView>("quest-list");
 
-        // Detail side: quest-right에 name을 부여했기 때문에 name으로 안전하게 찾음
         questRight = root.Q<VisualElement>("quest-right");
         questTitle = root.Q<Label>("quest-title");
         questDesc = root.Q<Label>("quest-desc");
         objectivesTitle = root.Q<Label>("objectives-title");
         objectivesRoot = root.Q<VisualElement>("objectives-root");
 
-        // ScrollView 설정
         questList.verticalScrollerVisibility = ScrollerVisibility.Hidden;
         questList.horizontalScrollerVisibility = ScrollerVisibility.Hidden;
         questList.contentContainer.style.flexDirection = FlexDirection.Column;
@@ -61,7 +81,6 @@ public class QuestUIController : MonoBehaviour
 
         closeBtn.clicked += Hide;
 
-        // 초기: 상세 영역 숨김 + 섹션 타이틀 문구 설정
         if (objectivesTitle != null) objectivesTitle.text = "퀘스트 목표";
         HideDetail();
 
@@ -72,15 +91,24 @@ public class QuestUIController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(toggleKey))
+        // ✅ J키 토글은 옵션
+        if (useHotkeyToggle && Input.GetKeyDown(toggleKey))
         {
             if (IsVisible()) Hide();
             else Show();
         }
 
+        // ✅ ESC로 닫기는 유지(원하면 이것도 옵션화 가능)
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (IsVisible()) Hide();
+        }
+
+        // 테스트용
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("테스트: Test1 처치 호출");
+            NotifyEnemyDefeated("Test1", 1);
         }
     }
 
@@ -93,10 +121,9 @@ public class QuestUIController : MonoBehaviour
     {
         questRoot.style.display = DisplayStyle.Flex;
 
-        // ✅ 더블클릭 이슈 해결: Root에 포커스
+        // 더블클릭 이슈 해결: Root에 포커스
         questRoot.Focus();
 
-        // 선택이 없으면 상세 숨김 유지
         if (selected == null) HideDetail();
 
         Time.timeScale = 0f;
@@ -236,8 +263,7 @@ public class QuestUIController : MonoBehaviour
         if (selected != null)
             ShowDetail(selected);
     }
-    // QuestUIController.Instance?.NotifyEnemyDefeated(enemy.gameObject.name, 1);
-    // 위 코드 추가해서 적 처치시 퀘스트 완료 조건 호출
+
     private void SeedDemo()
     {
         quests.Clear();
@@ -263,5 +289,4 @@ public class QuestUIController : MonoBehaviour
             });
         }
     }
-
 }
