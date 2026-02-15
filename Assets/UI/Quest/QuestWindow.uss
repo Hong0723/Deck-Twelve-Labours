@@ -167,3 +167,23 @@
     pointer-events: none;
 }
 
+/* ===== 퀘스트 열기 버튼(기본 화면) ===== */
+.quest-open-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+
+    width: 56px;
+    height: 56px;
+
+    background-color: transparent;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.quest-open-icon {
+    width: 48px;
+    height: 48px;
+}
+
