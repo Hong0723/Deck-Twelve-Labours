@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b81c40df5eb4b66ab63d921679e2e7, type: 3}
   m_Name: Attack
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  <Description>k__BackingField: Deals 2 damage
+  <Description>k__BackingField: Deals 10 damage
   <Mana>k__BackingField: 1
-  <Image>k__BackingField: {fileID: 21300000, guid: 789e518168d493d4396ec984b1b5bcb3, type: 3}
+  <Image>k__BackingField: {fileID: 727837933, guid: b202afaf20596324bb507536feaf8a8c, type: 3}
   <Effects>k__BackingField:
   - rid: 816320546062467150
   references:

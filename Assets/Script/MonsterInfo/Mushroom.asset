@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
   monsterName: Mushroom
-  maxHP: 40
+  maxHP: 100
   shield: 0
   defenseReduce: 40
   counterDamage: 4

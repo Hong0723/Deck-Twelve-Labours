@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
   monsterName: Slime
-  maxHP: 40
+  maxHP: 100
   shield: 0
   defenseReduce: 40
   counterDamage: 4
   block: 0
-  AttackDamage: 5
+  AttackDamage: 10

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gorgon
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
   monsterName: Gorgon
-  maxHP: 40
+  maxHP: 100
   shield: 0
   defenseReduce: 40
   counterDamage: 4

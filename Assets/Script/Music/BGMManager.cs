@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BGMManager : MonoBehaviour
 {
@@ -23,8 +24,19 @@ public class BGMManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         audioSource.loop = true;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Battle Scene")
+        {
+            PlayBattleBGM();
+        }
+        else
+        {
+            PlayFieldBGM();
+        }
+    }
     void Start()
     {
         PlayFieldBGM();

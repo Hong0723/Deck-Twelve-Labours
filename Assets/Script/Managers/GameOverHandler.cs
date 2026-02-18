@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using DG.Tweening;
 public class GameOverHandler : MonoBehaviour
 {
     public GameObject gameOverUI;   // GameOver/Panel
@@ -68,7 +68,7 @@ public class GameOverHandler : MonoBehaviour
             DeliverBattleData.MonsterInfo.monsterName
         );
     }
-
+    DOTween.KillAll(); 
     SceneManager.LoadScene("Game Scene");
       Debug.Log("Reward Continue Clicked");
     }
@@ -78,7 +78,8 @@ public class GameOverHandler : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-    GameSessionManager.ResetAll();  
+    GameSessionManager.ResetGameSession();  
+    DOTween.KillAll();   
 
     SceneManager.LoadScene("Start Scene"); 
     }

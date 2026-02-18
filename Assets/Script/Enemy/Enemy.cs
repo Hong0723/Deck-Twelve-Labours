@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         shield = 0;
         UpdateHPBar();
+         CounterReady = false;
     }
 
 

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
   monsterName: Player
-  maxHP: 30
+  maxHP: 100
   shield: 0
   defenseReduce: 0
   counterDamage: 4
   block: 0
-  AttackDamage: 20
+  AttackDamage: 0
