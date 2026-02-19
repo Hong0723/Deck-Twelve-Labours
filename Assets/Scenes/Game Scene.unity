@@ -1658,7 +1658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b000c96f0038349b918fe0714d868a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  myBase: {fileID: 11400000, guid: d3675bd9d61dffc4f8889ffff8524550, type: 2}
+  myBase: {fileID: 11400000, guid: 2d4fdd459840bc2498a5f401dde375a7, type: 2}
   pickupSFX: {fileID: 8300000, guid: 86c7de71853196d4cbde0c359e3dd10e, type: 3}
   pickupVolume: 0.7
 --- !u!58 &88823110
@@ -44138,7 +44138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b000c96f0038349b918fe0714d868a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  myBase: {fileID: 11400000, guid: d3675bd9d61dffc4f8889ffff8524550, type: 2}
+  myBase: {fileID: 11400000, guid: 8450640738507464d8704c605bc0dd25, type: 2}
   pickupSFX: {fileID: 8300000, guid: 86c7de71853196d4cbde0c359e3dd10e, type: 3}
   pickupVolume: 0.7
 --- !u!58 &1502410400

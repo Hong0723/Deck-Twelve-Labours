@@ -46,7 +46,11 @@ public class player_set : MonoBehaviour
         transform.position = GlobalWorldState.lastPlayerPosition;
         GlobalWorldState.hasSavedPosition = false;
     }
+<<<<<<< Updated upstream
         // PlayerInfo.AttackDamage = 20;//Battel Scene->GameScene 초기화
+=======
+        PlayerInfo.AttackDamage = 0;//Battel Scene->GameScene 초기화
+>>>>>>> Stashed changes
     }
 
     void Update()

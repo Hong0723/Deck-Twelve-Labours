@@ -24,7 +24,15 @@ public class BattleItem3 : MonoBehaviour, IPointerClickHandler
         {
             button.interactable = false;
             gameObject.SetActive(false);
-        }        
+        }
+
+
+        if (ItemType.Consumable != DeliverBattleData.BattleSceneItems[2].itemType)
+        {
+            DeliverBattleData.BattleSceneItems[2].useAction.Execute(gameObject);
+            itemCount.gameObject.SetActive(false);
+        }
+
     }
 
     public void OnPointerClick(PointerEventData eventData)

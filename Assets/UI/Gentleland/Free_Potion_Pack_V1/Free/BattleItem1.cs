@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,6 +25,12 @@ public class BattleItem1 : MonoBehaviour, IPointerClickHandler
         {
             button.interactable = false;
             gameObject.SetActive(false);
+        }
+
+        if(ItemType.Consumable != DeliverBattleData.BattleSceneItems[0].itemType)
+        {
+            DeliverBattleData.BattleSceneItems[0].useAction.Execute(gameObject);
+            itemCount.gameObject.SetActive(false);
         }
     }
 

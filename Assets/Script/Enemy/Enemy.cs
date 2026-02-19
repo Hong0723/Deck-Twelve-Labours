@@ -107,6 +107,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         Debug.Log("TakeDamage 호출됨, 데미지: " + damage);
+        damage += DeliverBattleData.PlayerInfo.AttackDamage;
         TakeHitFromPlayer(damage);
     }
 

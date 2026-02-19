@@ -16,7 +16,9 @@ MonoBehaviour:
   description: "\uBCF5\uC6A9 \uC2DC \uC77C\uC2DC\uC801\uC73C\uB85C \uACF5\uACA9\uB825\uC744
     4 \uB192\uD600\uC900\uB2E4.\n"
   icon: {fileID: 207780832, guid: c2d8362c85bd8114e87e9e8b909f2bb5, type: 3}
-  itemType: 1
+  ItemID: 0
+  dropRate: 0
+  itemType: 0
   isStackable: 0
   maxStack: 1
   useAction: {fileID: 11400000, guid: e4b0333a94e9c91468fd66f306255602, type: 2}

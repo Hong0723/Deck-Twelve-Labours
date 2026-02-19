@@ -9,6 +9,14 @@ public class Item : MonoBehaviour
     [SerializeField] private float pickupVolume = 0.7f;
 
 
+    void Start()
+    {
+        if (GlobalItemState.IsPicked(myBase.itemName, myBase.ItemID))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     //������ ȹ��
     public void ItemToInventory()
     {
@@ -19,6 +27,7 @@ public class Item : MonoBehaviour
         if (Inventory.Instance != null)
         {
             Inventory.Instance.AddItem(gameObject);
+            GlobalItemState.MarkAsPicked(myBase.itemName, myBase.ItemID);
         }
         else
         {

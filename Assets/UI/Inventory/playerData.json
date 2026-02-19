@@ -18,6 +18,11 @@
             "name": "사과",
             "count": 0,
             "value": 0
+        },
+        {
+            "name": "갑옷",
+            "count": 1,
+            "value": 0
         }
     ]
 }

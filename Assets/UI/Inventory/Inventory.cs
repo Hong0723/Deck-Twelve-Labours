@@ -366,13 +366,14 @@ public class Inventory : MonoBehaviour
         FromItemManager.SetItemAmount();
 
         //인벤토리에 개수 보이게 하기
+        /*
         TMP_Text ItemCountText = FromItemManager.ItemAmountText;
         if (ItemCountText == null)
         {
             Debug.Log("못찾음");
         }
         ItemCountText.gameObject.SetActive(true);
-
+        */
         Destroy(NewItemObject);
 
         //아이템 창없으면 파괴하지말아야할듯 추후
@@ -633,7 +634,10 @@ public class Inventory : MonoBehaviour
             {
                 itemslots[i].contained = false;
                 TMP_Text textCanvas = itemslots[i].obj.GetComponentInChildren<TMP_Text>();
-                textCanvas.gameObject.SetActive(false);
+                if (textCanvas != null)
+                {
+                    textCanvas.gameObject.SetActive(false);
+                }
             }
         }
     }

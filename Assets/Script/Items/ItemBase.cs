@@ -16,6 +16,8 @@ public class ItemBase : ScriptableObject
     [TextArea]
     public string description;
     public Sprite icon;
+    public int ItemID;
+    public float dropRate;
 
     [Header("분류")]
     public ItemType itemType;

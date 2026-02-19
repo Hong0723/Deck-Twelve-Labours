@@ -17,7 +17,7 @@ public class DamageSystem : MonoBehaviour
     {
         foreach (var target in dealDamageGA.Targets)
         {
-            // 대상이 적이든 플레이어든 IDamageable을 가지고 있으면 작동
+            // 대상이 적이든 플레이어든 IDamageable을 가지고 있으면 작동            
             target.TakeDamage(dealDamageGA.Amount);
             // 연출 로직
             if (target is MonoBehaviour mono)
