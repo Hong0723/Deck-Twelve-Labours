@@ -46,11 +46,10 @@ public class player_set : MonoBehaviour
         transform.position = GlobalWorldState.lastPlayerPosition;
         GlobalWorldState.hasSavedPosition = false;
     }
-<<<<<<< Updated upstream
-        // PlayerInfo.AttackDamage = 20;//Battel Scene->GameScene 초기화
-=======
+
+        //카드 스크립터블 오브젝트에서 플레이어 공격력 제공 PlayerInfo는 플레이어 공격력 + 알파값에서 알파값을 제공
         PlayerInfo.AttackDamage = 0;//Battel Scene->GameScene 초기화
->>>>>>> Stashed changes
+
     }
 
     void Update()
