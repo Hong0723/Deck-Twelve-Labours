@@ -15,7 +15,12 @@ MonoBehaviour:
   <Description>k__BackingField: Gain 3 Shield
   <Mana>k__BackingField: 2
   <Image>k__BackingField: {fileID: 1210568973, guid: b202afaf20596324bb507536feaf8a8c, type: 3}
-  <Effects>k__BackingField: []
+  <Effects>k__BackingField:
+  - rid: 816320755783172174
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 816320755783172174
+      type: {class: ShieldCardsEffect, ns: , asm: Assembly-CSharp}
+      data:
+        shieldAmount: 3

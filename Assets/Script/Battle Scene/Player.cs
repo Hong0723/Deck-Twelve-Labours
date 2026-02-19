@@ -66,6 +66,14 @@ public class Player : MonoBehaviour
         UpdateHPBar();
     }
 
+    public void GainShield(int amount)
+    {
+        if (amount <= 0) return;
+
+        block += amount;
+        UpdateHPBar();
+    }
+
     private void SyncFromGlobal()
     {
         maxHP = GlobalPlayerHP.MaxHP;

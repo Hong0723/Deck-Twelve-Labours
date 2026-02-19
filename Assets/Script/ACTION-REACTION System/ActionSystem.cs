@@ -8,6 +8,11 @@ using UnityEngine;
 
 public class ActionSystem : Singleton<ActionSystem>
 {
+    private void OnEnable()
+    {
+        AttachPerformer<GainShieldGA>(GainShieldPerformer);
+    }
+
     private List<GameAction> reactions = null;
     [SerializeField] private bool isPerformingDebug;
     public bool IsPerforming 
@@ -108,5 +113,13 @@ public class ActionSystem : Singleton<ActionSystem>
             void wrappedRaction(GameAction action) => reaction((T)action);
             subs[typeof(T)].Remove(wrappedRaction);
         }
+    }
+    private IEnumerator GainShieldPerformer(GainShieldGA action)
+    {
+        if (action == null) yield break;
+        if (action.Target == null) yield break;
+
+        action.Target.GainShield(action.Amount);
+        yield break;
     }
 }

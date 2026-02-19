@@ -1,16 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldCardsEffect : MonoBehaviour
+public class ShieldCardsEffect : Effect
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int shieldAmount;
 
-    // Update is called once per frame
-    void Update()
+    public override GameAction GetGameAction()
     {
-        
+        Player player = Object.FindFirstObjectByType<Player>();
+        if (player == null) return null;
+        return new GainShieldGA(shieldAmount, player);
     }
 }
