@@ -20733,16 +20733,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8988640031495091719, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6080150834014809439, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 3328013947956602515, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c0adfb8725c4da286c0d11332ea83b, type: 3}
 --- !u!212 &7204726264153493170
 SpriteRenderer:

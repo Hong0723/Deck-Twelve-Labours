@@ -97,7 +97,15 @@ public class Inventory : MonoBehaviour
         //임시로
         if(myInventory != null)
         {
-            myInventory.transform.position = mainCamera.transform.position;
+            //myInventory.transform.position = mainCamera.transform.position;
+
+            float distance = 5f; // 카메라 앞 거리
+            myInventory.transform.position =
+                mainCamera.transform.position +
+                mainCamera.transform.forward * distance;
+
+            // 카메라를 바라보게 (중요)
+            myInventory.transform.rotation = mainCamera.transform.rotation;
         }
         
         //인벤토리 켜기끄기
@@ -486,7 +494,8 @@ public class Inventory : MonoBehaviour
 
     public void gridListCreate()
     {
-        Debug.Log(itemslots.Count);
+        Debug.Log(itemslots.Count); 
+        Debug.Log("gridListCreate");
 
         for (int i = 0; i < itemslots.Count; i++)
         {
