@@ -47,4 +47,27 @@ public class ItemUseManager : HPBar
         //Áõ°¡°ª
         PlayerInfo.AttackDamage += val;
     }
+
+
+    public static void SetPlayerShieldAmount(int val)
+    {
+        Instance.UpdateShieldStat(val);
+    }
+
+
+    void UpdateShieldStat(int val)
+    {
+        PlayerInfo.shield += val;
+    }
+
+    public static void SetPlayerHealAmount(int val)
+    {
+        Instance.UpdateHealStat(val);
+    }
+
+
+    void UpdateHealStat(int val)
+    {
+        PlayerInfo.Heal += val;
+    }
 }

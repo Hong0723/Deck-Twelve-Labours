@@ -12,4 +12,5 @@ public class MonsterType : ScriptableObject
     public int counterDamage;//몬스터 속성
     public int block;//플레이어 속성
     public int AttackDamage;//플레이어 몬스터 공격력
+    public int Heal;//플레이어 몬스터 공격력
 }

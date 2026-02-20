@@ -60,6 +60,9 @@ public class Player : MonoBehaviour
 
     public void Heal(int amount)
     {
+        Debug.Log("힐량" + amount);
+        amount += DeliverBattleData.PlayerInfo.Heal;//아이템으로 인한 추가회복량
+        Debug.Log("힐량" + amount);
         GlobalPlayerHP.Heal(amount);
 
         SyncFromGlobal();
@@ -68,6 +71,9 @@ public class Player : MonoBehaviour
 
     public void GainShield(int amount)
     {
+        Debug.Log("쉴드량" + amount);
+        amount+= DeliverBattleData.PlayerInfo.shield;//아이템으로 인한 추가쉴드량
+        Debug.Log("쉴드량" + amount);
         if (amount <= 0) return;
 
         block += amount;

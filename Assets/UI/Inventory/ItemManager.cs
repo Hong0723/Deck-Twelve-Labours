@@ -53,7 +53,8 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     
     void SetSceneCamera()
     {
-        mainCam = Inventory.Instance.GetMainCamera();
+        //mainCam = Inventory.Instance.GetMainCamera();
+        mainCam = Camera.main;
     }
     
     public void OnPointerDown(PointerEventData eventData)
@@ -128,7 +129,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         //마우스위치를 월드좌표로 변경
         Vector2 WorldPos;
-        WorldPos = mainCam.ScreenToWorldPoint(eventData.position);       
+        WorldPos = Camera.main.ScreenToWorldPoint(eventData.position);//mainCam.ScreenToWorldPoint(eventData.position);
 
         // 좌상단이 마우스 위치에 오도록
         rect.position = WorldPos;
