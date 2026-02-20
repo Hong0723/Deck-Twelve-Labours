@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="SettingsMenu.uss" />
+
+    <!-- 화면 전체 오버레이 -->
+    <ui:VisualElement name="overlay" class="overlay">
+
+        <!-- 가운데 카드 -->
+        <ui:VisualElement name="panel" class="panel">
+            <ui:Label text="설정" class="title" />
+
+            <!-- 1) 게임재개 -->
+            <ui:Button name="resumeButton" text="게임 재개" class="btn primary" />
+
+            <!-- 2) 전체화면 토글 -->
+            <ui:VisualElement class="row">
+                <ui:Button name="fullscreenTextToggle" text="전체화면 : ON" class="text-toggle" />
+            </ui:VisualElement>
+
+            <!-- 3) 소리 토글 + 볼륨 -->
+            <ui:VisualElement class="row">
+                <ui:Button name="masterVolumeTextToggle" text="전체볼륨 : ON" class="text-toggle" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="row">
+                <ui:Label text="볼륨" class="row-label" />
+                <ui:Slider name="volumeSlider" low-value="0" high-value="1" class="slider" />
+                <ui:Label name="volumeValueLabel" text="100%" class="volume-text" />
+            </ui:VisualElement>
+
+            <!-- 4) 게임 종료 -->
+            <ui:Button name="quitButton" text="게임 종료" class="btn danger" />
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

@@ -6,7 +6,6 @@
     <ui:Button name="quest-open-btn" class="quest-open-btn">
         <ui:Image name="quest-icon" class="quest-open-icon" />
     </ui:Button>
-
     <!-- 전체 화면 오버레이 -->
     <ui:VisualElement name="quest-root" class="quest-root">
         <!-- 중앙 모달 창 -->

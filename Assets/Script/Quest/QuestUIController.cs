@@ -63,7 +63,22 @@ public class QuestUIController : MonoBehaviour
         {
             Debug.LogWarning("[QuestUIController] UXML에서 name='quest-open-btn' 버튼을 찾지 못했습니다. (UXML에 버튼 추가 필요)");
         }
+        var icon = root.Q<Image>("quest-icon");
 
+        if (icon != null)
+        {
+            icon.sprite = questIconIdle;
+
+            openBtn.RegisterCallback<MouseEnterEvent>(_ =>
+            {
+                icon.sprite = questIconHover;
+            });
+
+            openBtn.RegisterCallback<MouseLeaveEvent>(_ =>
+            {
+                icon.sprite = questIconIdle;
+            });
+        }
         questRoot = root.Q<VisualElement>("quest-root");
         closeBtn = root.Q<Button>("quest-close-btn");
         questList = root.Q<ScrollView>("quest-list");
@@ -97,13 +112,15 @@ public class QuestUIController : MonoBehaviour
             if (IsVisible()) Hide();
             else Show();
         }
-
-        // ✅ ESC로 닫기는 유지(원하면 이것도 옵션화 가능)
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // ✅ 퀘스트 창이 열려있을 때 ESC 처리: 설정창 호출 방지(ESC 소비)
+        if (IsVisible() && Input.GetKeyDown(KeyCode.Escape))
         {
-            if (IsVisible()) Hide();
-        }
+            // 원하면 ESC로 퀘스트창 닫기
+            Hide();
 
+            EscapeGuard.ConsumeEsc(); // ★ 이 프레임 ESC는 퀘스트창이 먹음
+            return;
+        }
         // 테스트용
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -125,7 +142,6 @@ public class QuestUIController : MonoBehaviour
         questRoot.Focus();
 
         if (selected == null) HideDetail();
-
         Time.timeScale = 0f;
     }
 
