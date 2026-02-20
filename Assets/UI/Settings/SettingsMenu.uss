@@ -1,0 +1,96 @@
+/* 전체 화면 덮는 반투명 배경 */
+.overlay {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+/* 가운데 패널 카드 */
+.panel {
+    width: 420px;
+    padding: 18px;
+
+    background-color: rgba(25, 25, 25, 0.95);
+    border-radius: 10px;
+
+    row-gap: 12px;
+}
+
+.title {
+    font-size: 22px;
+    -unity-font-style: bold;
+    margin-bottom: 6px;
+}
+
+/* 한 줄(row) 레이아웃 */
+.row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 10px;
+}
+
+.row-label {
+    width: 110px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.row-control {
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.slider {
+    flex-grow: 1;
+}
+
+.volume-text {
+    width: 52px;
+    text-align: right;
+    opacity: 0.9;
+}
+
+/* 버튼 공통 */
+.btn {
+    height: 38px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+    -unity-font-style: bold;
+}
+
+.primary {
+    background-color: rgba(80, 170, 255, 0.85);
+}
+
+.danger {
+    background-color: rgba(255, 90, 90, 0.85);
+}
+
+/* 글자 토글 버튼 (체크박스 대신 텍스트 버튼) */
+.text-toggle {
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,0.0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+
+    -unity-font-style: bold;
+    font-size: 14px;
+    color: rgba(230,230,230,0.95);
+}
+
+.text-toggle:hover {
+    background-color: rgba(255,255,255,0.06);
+    border-radius: 8px;
+}
