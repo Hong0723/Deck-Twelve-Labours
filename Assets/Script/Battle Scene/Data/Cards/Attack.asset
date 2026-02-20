@@ -15,6 +15,8 @@ MonoBehaviour:
   <Description>k__BackingField: Deals 10 damage
   <Mana>k__BackingField: 1
   <Image>k__BackingField: {fileID: 727837933, guid: b202afaf20596324bb507536feaf8a8c, type: 3}
+  <ManualTargetEffect>k__BackingField:
+    rid: 1555991932402925647
   <Effects>k__BackingField:
   - rid: 816320546062467150
   references:
@@ -24,3 +26,7 @@ MonoBehaviour:
       type: {class: AttackCardsEffect, ns: , asm: Assembly-CSharp}
       data:
         damageAmount: 10
+    - rid: 1555991932402925647
+      type: {class: AttackCardsEffect, ns: , asm: Assembly-CSharp}
+      data:
+        damageAmount: 0

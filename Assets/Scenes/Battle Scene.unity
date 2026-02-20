@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 60189827}
   - component: {fileID: 60189828}
   - component: {fileID: 60189829}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -786,7 +786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &62578721
 Transform:
   m_ObjectHideFlags: 0
@@ -5205,6 +5205,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb9aafeb75abd478e3895f11e13151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ManualTargetSystem
+  arrowView: {fileID: 62578722}
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &451762752
 GameObject:
   m_ObjectHideFlags: 0
@@ -15936,7 +15940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1571712454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffectStartPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
