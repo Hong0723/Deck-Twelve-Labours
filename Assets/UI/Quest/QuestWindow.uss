@@ -167,23 +167,31 @@
     pointer-events: none;
 }
 
-/* ===== 퀘스트 열기 버튼(기본 화면) ===== */
+/* ===== 퀘스트 열기: 스프라이트 시트에서 한 칸만 보여주기 ===== */
 .quest-open-btn {
     position: absolute;
-    top: 16px;
-    left: 16px;
+    top: 32px;
+    left: 8px;
 
-    width: 56px;
-    height: 56px;
+    /* (1) 아이콘 한 칸 픽셀 크기 = CELL_W/CELL_H */
+    width: 84px;   /* ← CELL_W */
+    height: 84px;  /* ← CELL_H */
 
     background-color: transparent;
+    border-width: 0;
 
-    justify-content: center;
-    align-items: center;
+    /* (2) 스프라이트 시트 전체를 배경으로 */
+    background-image: url("project://database/Assets/UI/Gentleland/SteampunkUI/Art/Steampunk_UI_gameplay_icons_4.png");
+    background-repeat: no-repeat;
+
+    /* (3) 시트 원본 픽셀 크기 = SHEET_W/SHEET_H (반드시 정확해야 함) */
+    background-size: 1920px 1080px; /* ← SHEET_W SHEET_H */
+
+    /* (4) Sprite 1(기본) 위치: -col*CELL_W, -row*CELL_H */
+    background-position: 0px 0px;  /* ← IDLE_COL=0, IDLE_ROW=0 예시 */
 }
 
-.quest-open-icon {
-    width: 48px;
-    height: 48px;
+/* hover(Sprite 2)도 위치만 바꿈 */
+.quest-open-btn:hover {
+    background-position: -220px 0px; /* ← HOVER_COL=1, HOVER_ROW=0 예시 */
 }
-
