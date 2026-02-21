@@ -26,6 +26,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
             if (enemy != null)
             {
                 enemy.TakeHitFromPlayer(player.attackDamge);
+                enemy.TakeHitFromPlayer(100);//테스트용
                 Debug.Log("AttackEnemy");
                 player.Attack1Animation(); // 공격애니메이션 재생
             }

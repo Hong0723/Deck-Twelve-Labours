@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using System.Collections;
 public class GameOverHandler : MonoBehaviour
 {
     public GameObject gameOverUI;   // GameOver/Panel
     public GameObject victoryUI;    // Victory/Panel
     public GameObject rewardUI;     // Reward/Panel
+    public GameObject rewardAnimationObj; //리워드 보상 연출
     [SerializeField] private GameObject battleInputRoot;
     private GameObject currentEnemy; // 제거할 몬스터 저장
 
@@ -14,6 +16,7 @@ public class GameOverHandler : MonoBehaviour
         if (gameOverUI != null) gameOverUI.SetActive(false);
         if (victoryUI != null) victoryUI.SetActive(false);
         if (rewardUI != null) rewardUI.SetActive(false);
+        if (rewardAnimationObj != null) rewardAnimationObj.SetActive(false);
 
         Time.timeScale = 1f;
     }
@@ -44,8 +47,9 @@ public class GameOverHandler : MonoBehaviour
     public void OnClickVictoryContinue()
     {
         if (victoryUI != null) victoryUI.SetActive(false);
-        if (rewardUI != null) rewardUI.SetActive(true);
-        Time.timeScale = 0f;
+        StartCoroutine(RewardCoroutine());
+        //if (rewardUI != null) rewardUI.SetActive(true);
+        //Time.timeScale = 0f; 애니메이션 재생시켜야해서 주석했어요
           Debug.Log("Reward Continue Clicked");
     }
 
@@ -87,5 +91,19 @@ public class GameOverHandler : MonoBehaviour
     public void OnClickExit()
     {
         Application.Quit();
+    }
+
+    IEnumerator RewardCoroutine()
+    {
+        rewardAnimationObj.SetActive(true);
+        // 1. 보상 애니메이션 실행
+        rewardAnimationObj.GetComponent<Animator>().SetTrigger("Play");
+
+        // 2. 애니메이션 시간만큼 대기
+        yield return new WaitForSecondsRealtime(2.0f);
+
+        rewardAnimationObj.SetActive(false);
+        // 3. 보상창 활성화
+        rewardUI.SetActive(true);
     }
 }
