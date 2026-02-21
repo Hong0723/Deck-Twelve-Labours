@@ -5,6 +5,7 @@ public class PlayerSkill : MonoBehaviour
 {
     public List<EffectData> effects;//인스펙터 등록용
     private Dictionary<string, EffectObjBol> effectMap;//코드내 서치용, 원본 오브젝트
+    public List<EffectObjBol> AttackEffects;//3가지 공격
     //private Dictionary<string, EffectObjBol> effectMapRef;//Instantiate 후 여기에 저장,후에는 Destroy관리
     private Dictionary<string, GameObject> effectMapRef; // 생성된 인스턴스
 
@@ -12,6 +13,26 @@ public class PlayerSkill : MonoBehaviour
     public GameObject skillEndPos;//플레이어가 스킬 맞는 지점
     private bool isMoveAble;
     public float speed;
+
+    // ===== 싱글톤 =====
+    public static PlayerSkill Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // 씬 넘어가도 유지하려면 사용
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    // ==================
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,15 +42,15 @@ public class PlayerSkill : MonoBehaviour
         effectMapRef = new Dictionary<string, GameObject>();
         foreach (var e in effects)
         {
-            if (!effectMap.ContainsKey(e.skillNameHaveImpact))
+            if (e.skillNameHaveImpact.StartsWith("Attack"))
+            {
+                AttackEffects.Add(e.data);
+            }
+            else if (!effectMap.ContainsKey(e.skillNameHaveImpact))
+            {
                 effectMap.Add(e.skillNameHaveImpact, e.data);
-        }
-        /*
-        Debug.Log("==== effectMap 최종 등록 키 목록 ====");
-        foreach (var key in effectMap.Keys)
-        {
-            Debug.Log("등록된 키: " + key);
-        }*/
+            }                
+        }        
     }
 
     // Update is called once per frame
@@ -53,18 +74,38 @@ public class PlayerSkill : MonoBehaviour
         }
     }
 
+    public static void EffAttack()
+    {
+        Instance.EffectAttack();
+    }
+    public static void EffDraw()
+    {
+        Instance.EffectDraw();
+    }
+    public static void EffHeal()
+    {
+        Instance.EffectHeal();
+    }
+    public static void EffShield()
+    {
+        Instance.EffectShield();
+    }
     public void EffectAttack()
     {
+        int AttackIndex = Random.Range(0, AttackEffects.Count);
+        
         if (false)//(effectMap["Attack"].haveImpaact)
         {//플레이어가 스킬에 대한 피격애니메이션이 있을때
             Debug.Log("Attack 생성");
-            effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, skillStartPos.transform.position, Quaternion.identity);
+            //effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, skillStartPos.transform.position, Quaternion.identity);
+            effectMapRef["Attack"] = Instantiate(AttackEffects[AttackIndex].prefab, skillStartPos.transform.position, Quaternion.identity);
             Animator animator = effectMapRef["Attack"].GetComponent<Animator>();
             animator.SetTrigger("Effect");            
         }
         else
         {//없을때
-            effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, skillStartPos.transform.position, Quaternion.identity);
+            //effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, skillStartPos.transform.position, Quaternion.identity);
+            effectMapRef["Attack"] = Instantiate(AttackEffects[AttackIndex].prefab, skillStartPos.transform.position, Quaternion.identity);
             Animator animator = effectMapRef["Attack"].GetComponent<Animator>();
             animator.SetTrigger("Effect");
         }
@@ -72,15 +113,41 @@ public class PlayerSkill : MonoBehaviour
         EffectAttackImpact();//때리면 피격모션까지
     }
 
-    void EffectAttackImpact()
+    public void EffectAttackImpact()
     {       
-        Debug.Log("AttackImpact");
+        Debug.Log("HurtedImpact");
         //animator1.SetBool("Effect", false);파괴하는데..?
-        effectMapRef["AttackImpact"] = Instantiate(effectMap["AttackImpact"].prefab, skillEndPos.transform.position, Quaternion.identity);
-        Animator animator = effectMapRef["AttackImpact"].GetComponent<Animator>();
+        effectMapRef["HurtedImpact"] = Instantiate(effectMap["HurtedImpact"].prefab, skillEndPos.transform.position, Quaternion.identity);
+        Animator animator = effectMapRef["HurtedImpact"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
     }
 
+    public void EffectHeal()
+    {
+        Debug.Log("Heal");
+        //animator1.SetBool("Effect", false);파괴하는데..?
+        effectMapRef["Heal"] = Instantiate(effectMap["Heal"].prefab, skillStartPos.transform.position, Quaternion.identity);
+        Animator animator = effectMapRef["Heal"].GetComponent<Animator>();
+        animator.SetTrigger("Effect");
+    }
+
+    public void EffectShield()
+    {
+        Debug.Log("Shield");
+        //animator1.SetBool("Effect", false);파괴하는데..?
+        effectMapRef["Shield"] = Instantiate(effectMap["Shield"].prefab, skillStartPos.transform.position, Quaternion.identity);
+        Animator animator = effectMapRef["Shield"].GetComponent<Animator>();
+        animator.SetTrigger("Effect");
+    }
+
+    public void EffectDraw()
+    {
+        Debug.Log("Draw");
+        //animator1.SetBool("Effect", false);파괴하는데..?
+        effectMapRef["Draw"] = Instantiate(effectMap["Draw"].prefab, skillStartPos.transform.position, Quaternion.identity);
+        Animator animator = effectMapRef["Draw"].GetComponent<Animator>();
+        animator.SetTrigger("Effect");
+    }
     public void EndEffectAttack()
     {
         Destroy(effectMapRef["Attack"]);
@@ -88,6 +155,23 @@ public class PlayerSkill : MonoBehaviour
 
     public void EndEffectAttackImpact()
     {
-        Destroy(effectMapRef["AttackImpact"]);
+        Destroy(effectMapRef["HurtedImpact"]);
     }
+
+    public void EndEffectHealImpact()
+    {
+        Destroy(effectMapRef["Heal"]);
+    }
+
+    public void EndEffectShieldImpact()
+    {
+        Destroy(effectMapRef["Shield"]);
+    }
+
+    public void EndEffectDrawImpact()
+    {
+        Destroy(effectMapRef["Draw"]);
+    }
+
+
 }

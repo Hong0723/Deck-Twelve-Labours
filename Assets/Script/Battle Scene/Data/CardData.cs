@@ -12,6 +12,9 @@ public class CardData : ScriptableObject
 
     [field: SerializeField] public Sprite Image {get; private set;}
 
+    //카드사용시 플레이어한테 이펙트 추가 김동주
+    //[field: SerializeField] public CardEff Effect { get; private set; }
+
     [field: SerializeReference, SR] public Effect ManualTargetEffect { get; private set; }
     [field: SerializeReference, SR] public List<Effect> Effects { get; private set; }
 }

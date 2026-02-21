@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     public Animator animator;
     private Coroutine attackCoroutine; // 실행중인 공격애니메이션
+    public PlayerSkill playerSkill;//이펙트 애니메이션은 여기서 실행
 
     private void Start()
     {
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
 
     public void Heal(int amount)
     {
+        playerSkill.EffectHeal();
         Debug.Log("힐량" + amount);
         amount += DeliverBattleData.PlayerInfo.Heal;//아이템으로 인한 추가회복량
         Debug.Log("힐량" + amount);
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
 
     public void GainShield(int amount)
     {
+        playerSkill.EffectShield();
         Debug.Log("쉴드량" + amount);
         amount+= DeliverBattleData.PlayerInfo.shield;//아이템으로 인한 추가쉴드량
         Debug.Log("쉴드량" + amount);
@@ -96,17 +99,14 @@ public class Player : MonoBehaviour
 
     public void Attack1Animation()
     {
-        attackCoroutine = StartCoroutine(Attack1Coroutine());
-    }
-
-    public void Attack2Animation()
-    {
-        attackCoroutine = StartCoroutine(Attack2Coroutine());
-    }
+        animator.SetTrigger("Attack1");
+        //attackCoroutine = StartCoroutine(Attack1Coroutine());
+    }    
 
     public void HurtedAnimation()
     {
-        StartCoroutine(HurtedCoroutine());
+        animator.SetTrigger("Hurted");
+        //StartCoroutine(HurtedCoroutine());
     }
 
     public void SetDefensed(bool state)
@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
         animator.SetBool("Defensed", state);
     }
 
+    /*
     // 공격 1
     public IEnumerator Attack1Coroutine()
     {
@@ -121,14 +122,7 @@ public class Player : MonoBehaviour
 
         // Attack1 애니메이션 길이만큼 대기
         yield return new WaitForSeconds(GetAnimationLength("PlayerAttack1"));
-    }
-
-    // 공격 2
-    public IEnumerator Attack2Coroutine()
-    {
-        animator.SetTrigger("Attack2");
-        yield return new WaitForSeconds(GetAnimationLength("PlayerAttack2"));
-    }
+    }    
 
     // 피격
     public IEnumerator HurtedCoroutine()
@@ -147,5 +141,5 @@ public class Player : MonoBehaviour
         }
         Debug.LogWarning("Clip not found: " + clipName);
         return 0f;
-    }
+    }*/
 }

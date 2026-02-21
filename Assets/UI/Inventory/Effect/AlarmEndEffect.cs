@@ -60,4 +60,19 @@ public class AlarmEndEffect : MonoBehaviour
     {
         playerEffectAccureScript.EndEffectAttackImpact();
     }
+
+    public void EndEffectHealPlayer()
+    {
+        playerEffectAccureScript.EndEffectHealImpact();
+    }
+
+    public void EndEffectShieldPlayer()
+    {
+        playerEffectAccureScript.EndEffectShieldImpact();
+    }
+
+    public void EndEffectDrawPlayer()
+    {
+        playerEffectAccureScript.EndEffectDrawImpact();
+    }
 }
