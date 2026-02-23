@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
@@ -15,6 +16,8 @@ public class RewardManager : MonoBehaviour,
     public GameObject RewardItem1;
     public GameObject RewardItem2;
 
+    public List<GameObject> RewardTexts;
+
     ItemBase ScriptableItem1;
     ItemBase ScriptableItem2;
 
@@ -23,6 +26,7 @@ public class RewardManager : MonoBehaviour,
 
     public List<ItemBase> allItems;
     float total;
+    float delay = 0.3f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,9 +47,19 @@ public class RewardManager : MonoBehaviour,
         RewardItem1.GetComponentInChildren<TextMeshProUGUI>().text = ScriptableItem1.itemName;
         RewardItem2.GetComponentInChildren<TextMeshProUGUI>().text = ScriptableItem2.itemName;
 
+
+        StartCoroutine(PlaySequential());
     }
 
-    
+    IEnumerator PlaySequential()
+    {
+        foreach (var text in RewardTexts)
+        {
+            text.GetComponent<Animator>().SetBool("Play", true);
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
     // 마우스 올림
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -81,7 +95,7 @@ public class RewardManager : MonoBehaviour,
             Debug.Log("highlight 없음 : " + targetObject.name);
             return;
         }
-
+        
         GameObject targetHighlight = highlight.gameObject;
         //이전에 선택한 오브젝트 하이라이트 제거
         if (CurrentObject != null)
@@ -98,6 +112,7 @@ public class RewardManager : MonoBehaviour,
         CurrentObject = targetObject;
 
         targetHighlight.SetActive(true);
+        
         {
             Image img = targetObject.GetComponent<Image>();
             Color c = img.color;

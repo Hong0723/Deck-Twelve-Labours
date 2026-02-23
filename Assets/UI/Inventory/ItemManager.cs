@@ -11,7 +11,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
   
     public RectTransform rectTransform;//아이템 Transform    
-    public Camera mainCam;
+    //public Camera mainCam;
     public bool isDragging = false;
     public Transform savedParent; // 임시    
     public Transform dragLayer; // Inspector에 DragLayer 연결 (Root Canvas 하위)
@@ -47,16 +47,16 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         myRect.pivot = new Vector2(0.5f, 0.5f);
         myRect.anchoredPosition = Vector2.zero;
         
-        SetSceneCamera();
+        //SetSceneCamera();
         //ItemAmountText.gameObject.SetActive(false);
     }
-    
+    /*
     void SetSceneCamera()
     {
         //mainCam = Inventory.Instance.GetMainCamera();
         mainCam = Camera.main;
     }
-    
+    */
     public void OnPointerDown(PointerEventData eventData)
     {     
         //Debug.Log("OnPointerDown");
@@ -99,7 +99,7 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         //아이템이 마우스포인터를 따라옴
         Vector3 mousePos = Input.mousePosition;
         Vector3 worldPos2;
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, mousePos, mainCam, out worldPos2);
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, mousePos, Camera.main, out worldPos2);
         rectTransform.position = worldPos2;
 
         

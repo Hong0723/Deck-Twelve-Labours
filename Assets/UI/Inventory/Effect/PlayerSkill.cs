@@ -13,7 +13,7 @@ public class PlayerSkill : MonoBehaviour
     public GameObject skillEndPos;//플레이어가 스킬 맞는 지점
     private bool isMoveAble;
     public float speed;
-
+/*
     // ===== 싱글톤 =====
     public static PlayerSkill Instance { get; private set; }
 
@@ -32,7 +32,7 @@ public class PlayerSkill : MonoBehaviour
     }
 
     // ==================
-
+    */
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -73,7 +73,7 @@ public class PlayerSkill : MonoBehaviour
             EffectAttack();
         }
     }
-
+    /*
     public static void EffAttack()
     {
         Instance.EffectAttack();
@@ -90,6 +90,7 @@ public class PlayerSkill : MonoBehaviour
     {
         Instance.EffectShield();
     }
+    */
     public void EffectAttack()
     {
         int AttackIndex = Random.Range(0, AttackEffects.Count);

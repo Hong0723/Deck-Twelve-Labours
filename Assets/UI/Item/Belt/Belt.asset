@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc6c8f386606f8e4e8cf586b770c846b, type: 3}
-  m_Name: AttackUpPotion
+  m_Name: Belt
   m_EditorClassIdentifier: Assembly-CSharp::ItemBase
-  itemName: "\uC804\uD22C\uB825\uD5A5\uC0C1\uD3EC\uC158"
-  description: "\uBCF5\uC6A9 \uC2DC \uC77C\uC2DC\uC801\uC73C\uB85C \uACF5\uACA9\uB825\uC744
-    4 \uB192\uD600\uC900\uB2E4.\n"
-  icon: {fileID: 21300000, guid: d9c96c01150232d4193cbfb1024641cc, type: 3}
+  itemName: "\uBCA8\uD2B8"
+  description: "\uC274\uB4DC\uCE74\uB4DC \uC0AC\uC6A9 \uC2DC \uC274\uB4DC\uB7C9\uC744
+    \uB300\uD3ED \uB298\uB824\uC900\uB2E4"
+  icon: {fileID: -746481808, guid: c5c7d09b01daa4b47a6f1b79e1ebfb10, type: 3}
   ItemID: 0
   dropRate: 0
-  itemType: 0
+  itemType: 1
   isStackable: 0
   maxStack: 1
-  useAction: {fileID: 11400000, guid: e4b0333a94e9c91468fd66f306255602, type: 2}
+  useAction: {fileID: 11400000, guid: 219a693cd22f9a44da43ceb1f725694b, type: 2}
