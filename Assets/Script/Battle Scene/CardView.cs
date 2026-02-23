@@ -80,9 +80,12 @@ public class CardView : MonoBehaviour
         if (!Interactions.Instance.PlayerCanInteract()) return;
         if (Card.ManualTargetEffect != null)
         {
-            EnemyStatus target = ManualTargetSystem.Instance.EndTargeting(MouseUtil.GetMousePositionInWorldSpace(-1));
+            Vector3 mouseWorldPos = MouseUtil.GetMousePositionInWorldSpace(100f); 
+        
+            EnemyStatus target = ManualTargetSystem.Instance.EndTargeting(mouseWorldPos);
             if (target != null && ManaSystem.Instance.HasEnoughMana(Card.Mana))
             {
+                Debug.Log($"공격 시도: {target.name}에게 {Card.Title} 발사!");
                 PlayCardGA playCardGA = new(Card, target);
                 ActionSystem.Instance.Perform(playCardGA);
             }
