@@ -19,7 +19,10 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     void Update()
     {
     }
-
+    public void SetHP(int value)
+    {
+        currentHP = value;
+    }
     public void TakeDamage(int damage)
     {
         //--지금 HP관리하는부분이 Enemy.cs랑 중복되어 관리하고 있어서
@@ -37,8 +40,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         //이부분은 사용합니다.
         if (currentHP <= 0)
         {
-            if (handler != null)
-                handler.DisplayVictory(this.gameObject);
+            GetComponent<Enemy>()?.OnDeathFromStatus();
         }
     } 
     

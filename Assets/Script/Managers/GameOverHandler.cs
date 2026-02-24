@@ -80,11 +80,10 @@ public class GameOverHandler : MonoBehaviour
     // Retry 버튼
     public void OnClickRetry()
     {
-        Time.timeScale = 1f;
-
-    GameSessionManager.ResetGameSession();  
+        
+    GameSessionManager.ResetGameSession(); 
+    Time.timeScale = 1f;
     DOTween.KillAll();   
-
     SceneManager.LoadScene("Start Scene"); 
     }
 
