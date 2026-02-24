@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: "\uC0AC\uACFC"
   description: "\uC0AC\uACFC\uC774\uB2E4. \uBA39\uC73C\uBA74 \uC778\uBCA4\uD1A0\uB9AC\uAC00
     \uD655\uC7A5\uB420\uAC70 \uAC19\uB2E4."
-  icon: {fileID: 21300000, guid: 60c1d42986dc0094c808b9e135f31ba2, type: 3}
+  icon: {fileID: -2104438198, guid: 8b4120794ceae66429040ca96e73fd45, type: 3}
   ItemID: 0
   dropRate: 0
   itemType: 0

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemBase
   itemName: "\uC2A4\uD0DC\uD504"
   description: "\uD790\uCE74\uB4DC \uB9C8\uBC95 \uD6A8\uC728\uC774 \uC18C\uD3ED \uC99D\uAC00\uD55C\uB2E4\n"
-  icon: {fileID: 21300000, guid: 469c2629c08b96944b6e1f3575449d4b, type: 3}
+  icon: {fileID: 21300000, guid: fd581d9916eacae4aae7d55a790e8ee4, type: 3}
   ItemID: 4567
-  dropRate: 0.3
+  dropRate: 0.1
   itemType: 1
   isStackable: 0
   maxStack: 1

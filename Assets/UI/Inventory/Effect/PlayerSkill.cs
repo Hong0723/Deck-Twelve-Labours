@@ -13,7 +13,8 @@ public class PlayerSkill : MonoBehaviour
     public GameObject skillEndPos;//플레이어가 스킬 맞는 지점
     private bool isMoveAble;
     public float speed;
-
+    public Player player;
+/*
     // ===== 싱글톤 =====
     public static PlayerSkill Instance { get; private set; }
 
@@ -32,7 +33,7 @@ public class PlayerSkill : MonoBehaviour
     }
 
     // ==================
-
+    */
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -73,25 +74,15 @@ public class PlayerSkill : MonoBehaviour
             EffectAttack();
         }
     }
-
-    public static void EffAttack()
-    {
-        Instance.EffectAttack();
-    }
-    public static void EffDraw()
-    {
-        Instance.EffectDraw();
-    }
-    public static void EffHeal()
-    {
-        Instance.EffectHeal();
-    }
-    public static void EffShield()
-    {
-        Instance.EffectShield();
-    }
+    
     public void EffectAttack()
     {
+        if (effectMapRef.ContainsKey("Attack") && effectMapRef["Attack"] != null)
+        {
+            Destroy(effectMapRef["Attack"]);
+        }
+
+        player.Attack1Animation();
         int AttackIndex = Random.Range(0, AttackEffects.Count);
         
         if (false)//(effectMap["Attack"].haveImpaact)
@@ -114,7 +105,13 @@ public class PlayerSkill : MonoBehaviour
     }
 
     public void EffectAttackImpact()
-    {       
+    {
+        if (effectMapRef.ContainsKey("HurtedImpact") && effectMapRef["HurtedImpact"] != null)
+        {
+            Destroy(effectMapRef["HurtedImpact"]);
+        }
+
+
         Debug.Log("HurtedImpact");
         //animator1.SetBool("Effect", false);파괴하는데..?
         effectMapRef["HurtedImpact"] = Instantiate(effectMap["HurtedImpact"].prefab, skillEndPos.transform.position, Quaternion.identity);
@@ -124,6 +121,11 @@ public class PlayerSkill : MonoBehaviour
 
     public void EffectHeal()
     {
+        if (effectMapRef.ContainsKey("Heal") && effectMapRef["Heal"] != null)
+        {
+            Destroy(effectMapRef["Heal"]);
+        }
+        player.HurtedAnimation();
         Debug.Log("Heal");
         //animator1.SetBool("Effect", false);파괴하는데..?
         effectMapRef["Heal"] = Instantiate(effectMap["Heal"].prefab, skillStartPos.transform.position, Quaternion.identity);
@@ -133,6 +135,11 @@ public class PlayerSkill : MonoBehaviour
 
     public void EffectShield()
     {
+        if (effectMapRef.ContainsKey("Shield") && effectMapRef["Shield"] != null)
+        {
+            Destroy(effectMapRef["Shield"]);
+        }
+        
         Debug.Log("Shield");
         //animator1.SetBool("Effect", false);파괴하는데..?
         effectMapRef["Shield"] = Instantiate(effectMap["Shield"].prefab, skillStartPos.transform.position, Quaternion.identity);
@@ -142,6 +149,10 @@ public class PlayerSkill : MonoBehaviour
 
     public void EffectDraw()
     {
+        if (effectMapRef.ContainsKey("Draw") && effectMapRef["Draw"] != null)
+        {
+            Destroy(effectMapRef["Draw"]);
+        }
         Debug.Log("Draw");
         //animator1.SetBool("Effect", false);파괴하는데..?
         effectMapRef["Draw"] = Instantiate(effectMap["Draw"].prefab, skillStartPos.transform.position, Quaternion.identity);

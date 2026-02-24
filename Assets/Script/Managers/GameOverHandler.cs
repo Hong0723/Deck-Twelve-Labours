@@ -1,13 +1,15 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 public class GameOverHandler : MonoBehaviour
 {
     public GameObject gameOverUI;   // GameOver/Panel
     public GameObject victoryUI;    // Victory/Panel
     public GameObject rewardUI;     // Reward/Panel
     public GameObject rewardAnimationObj; //리워드 보상 연출
+    //public AudioClip rewardclip;        // 리워드 재생할 사운드
     [SerializeField] private GameObject battleInputRoot;
     private GameObject currentEnemy; // 제거할 몬스터 저장
 
@@ -97,6 +99,9 @@ public class GameOverHandler : MonoBehaviour
         rewardAnimationObj.SetActive(true);
         // 1. 보상 애니메이션 실행
         rewardAnimationObj.GetComponent<Animator>().SetTrigger("Play");
+
+        AudioSource audioSource = rewardAnimationObj.GetComponent<AudioSource>();
+        audioSource.Play();
 
         // 2. 애니메이션 시간만큼 대기
         yield return new WaitForSecondsRealtime(2.0f);

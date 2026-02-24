@@ -21,6 +21,8 @@ public class CardSystem : Singleton<CardSystem>
     [SerializeField] private AudioClip reshuffleSFX;    
     [SerializeField] private float reshuffleVolume = 0.7f;
 
+    [SerializeField] private PlayerSkill playerSkill;
+
     private void OnEnable()
     {
         ActionSystem.AttachPerformer<DrawCardsGA>(DrawCardsPerformer);
@@ -50,6 +52,7 @@ public class CardSystem : Singleton<CardSystem>
 
     private IEnumerator DrawCardsPerformer(DrawCardsGA drawCardsGA)
     {
+        playerSkill.EffectDraw();//드로우 이펙트
         for (int i = 0; i < drawCardsGA.Amount; i++)
         {
             // 1. 만약 뽑을 카드가 없다면 덱을 다시 채움

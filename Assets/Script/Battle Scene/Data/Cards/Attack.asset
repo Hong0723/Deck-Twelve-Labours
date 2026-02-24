@@ -29,4 +29,4 @@ MonoBehaviour:
     - rid: 1555991932402925647
       type: {class: AttackCardsEffect, ns: , asm: Assembly-CSharp}
       data:
-        damageAmount: 0
+        damageAmount: 10
