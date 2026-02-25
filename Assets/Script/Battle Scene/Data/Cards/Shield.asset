@@ -18,13 +18,13 @@ MonoBehaviour:
   <ManualTargetEffect>k__BackingField:
     rid: -2
   <Effects>k__BackingField:
-  - rid: 1555992048972333134
+  - rid: 2660875890585501776
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 1555992048972333134
+    - rid: 2660875890585501776
       type: {class: ShieldCardsEffect, ns: , asm: Assembly-CSharp}
       data:
-        shieldAmount: 10
+        shieldAmount: 3

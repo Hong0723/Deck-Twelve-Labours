@@ -9,4 +9,9 @@ public class FirstItem : BattleSceneItem
         Debug.Log("Ã¹¹øÂ°");
 
     }
+
+    public override void ClearStaticItemData()
+    {
+        DeliverBattleData.BattleSceneItems[0] = null;
+    }
 }

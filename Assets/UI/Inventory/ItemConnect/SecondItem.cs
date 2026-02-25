@@ -8,4 +8,9 @@ public class SecondItem : BattleSceneItem
         DeliverBattleData.BattleSceneItems[1] = itembase;
         Debug.Log("µÎ¹øÂ°");
     }
+
+    public override void ClearStaticItemData()
+    {
+        DeliverBattleData.BattleSceneItems[1] = null;
+    }
 }

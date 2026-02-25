@@ -180,8 +180,8 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             Debug.Log("우클릭 감지!");
             Image itemImage = GetComponent<Image>();
-            itemImage.sprite = null;
-            itemImage.color = new Color(1, 1, 1, 0);
+            //itemImage.sprite = null;
+            //itemImage.color = new Color(1, 1, 1, 0);
 
             if (itemData.useAction == null)
             {
@@ -205,6 +205,9 @@ public class ItemManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (remainCount == 0)
             {
+                itemImage.sprite = null;
+                itemImage.color = new Color(1, 1, 1, 0);
+
                 itemData = null;
                 Inventory.Instance.ResetItemSlot(eventData);
             }

@@ -234,15 +234,33 @@ public class Inventory : MonoBehaviour
                 ToItemManager.SetMyItemslotsIndex(i);
                 FromItemManager.SetMyItemslotsIndex(ToItemSlotIndex);
 
-                if (FromItemManager.itemData.itemName == "test")
+
+                //itemslots배열 contained 갱신
+                int index = 0;
+                foreach (var slotData in itemslots)
                 {
-                    itemslots[FromItemManager.GetMyItemslotsIndex()].contained = false;
-                    Debug.Log("indexA slots false");
-                }
-                else if (ToItemManager.itemData.itemName == "test")
-                {
-                    itemslots[ToItemManager.GetMyItemslotsIndex()].contained = false;
-                    Debug.Log("indexB slots false");
+                    if (slotData.isStand)
+                        continue;
+
+                    // 슬롯에 연결된 ItemManager 찾기
+                    ItemManager manager =
+                        slotData.obj.GetComponentInChildren<ItemManager>();
+
+                    if (manager == null || manager.itemData == null)
+                    {
+                        slotData.contained = false;
+                    }
+                    else if (manager.itemData.itemName == "test")
+                    {
+                        slotData.contained = false;
+                    }
+                    else
+                    {
+                        slotData.contained = true;
+                    }
+
+                    Debug.Log($"[{index}] contained = {slotData.contained}");
+                    index++;
                 }
 
                 return true;
@@ -402,7 +420,17 @@ public class Inventory : MonoBehaviour
     //itemslots리스트 내용을 서로 바꾸는 swap
     void SwapItemSlots(int indexA, int indexB, ItemManager AManager, ItemManager BManager)
     {
-        
+
+        Debug.Log("스왑아이템 실행");
+        /*
+        ItemBase tempItemData = AManager.itemData;
+        AManager.itemData = BManager.itemData;
+        BManager.itemData = tempItemData;
+        */
+        // 🔹 1. swap 이전 itemData 백업 (중요)
+        ItemBase fromItemData = AManager.itemData; // 집은 아이템
+        ItemBase toItemData = BManager.itemData; // 도착지 아이템
+
 
         Itemslot Aslot = itemslots[indexA].obj.GetComponent<Itemslot>();
         Aslot.SetItemManager(BManager);
@@ -412,7 +440,7 @@ public class Inventory : MonoBehaviour
         BattleSceneItem InStandItem = Aslot.GetComponentInChildren<BattleSceneItem>();
         if (InStandItem != null)
         {
-            ItemBase itemData = AManager.itemData;
+            ItemBase itemData = BManager.itemData;
             Debug.Log(
         $"[Item 전달]\n" +
         $"이름: {itemData.itemName}\n" +
@@ -423,12 +451,24 @@ public class Inventory : MonoBehaviour
         $"최대스택: {itemData.maxStack}\n" +
         $"사용액션: {(itemData.useAction != null ? itemData.useAction.name : "없음")}"
     );
-            InStandItem.SetStaticItemData(itemData);
+
+            if (itemData == null || itemData.itemName == "test")
+            {
+                InStandItem.ClearStaticItemData(); // static 비우기
+                Debug.Log("[Stand Clear1]");
+            }
+            else
+            {
+                InStandItem.SetStaticItemData(itemData);
+                Debug.Log("[Stand Set1]");
+            }
+
+            
         }
             BattleSceneItem InStandItem2 = Bslot.GetComponentInChildren<BattleSceneItem>();
             if (InStandItem2 != null)
             {
-                ItemBase itemData2 = BManager.itemData;
+                ItemBase itemData2 = AManager.itemData;
                 Debug.Log(
             $"[Item 전달]\n" +
             $"이름: {itemData2.itemName}\n" +
@@ -439,8 +479,17 @@ public class Inventory : MonoBehaviour
             $"최대스택: {itemData2.maxStack}\n" +
             $"사용액션: {(itemData2.useAction != null ? itemData2.useAction.name : "없음")}"
         );
-
+            if (itemData2 == null || itemData2.itemName == "test")
+            {
+                InStandItem2.ClearStaticItemData(); // static 비우기
+                Debug.Log("[Standd Clear2]");
+            }
+            else
+            {
                 InStandItem2.SetStaticItemData(itemData2);
+                Debug.Log("[Stand Set22]");
+            }
+            
         }
         
         AManager.SetMyItemslotsIndex(indexB);

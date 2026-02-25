@@ -13,7 +13,7 @@ public class BattleItem3 : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         GetComponent<Image>().sprite = null;
-        if (DeliverBattleData.BattleSceneItems[2] != null)
+        if (DeliverBattleData.BattleSceneItems[2] != null && DeliverBattleData.BattleSceneItems[2].itemName != "test")
         {
             portionData = PlayerDataToJson.Instance.CheckItemData(DeliverBattleData.BattleSceneItems[2].itemName);
             GetComponent<Image>().sprite = DeliverBattleData.BattleSceneItems[2].icon;
@@ -27,7 +27,7 @@ public class BattleItem3 : MonoBehaviour, IPointerClickHandler
         }
 
 
-        if (ItemType.Consumable != DeliverBattleData.BattleSceneItems[2].itemType)
+        if (DeliverBattleData.BattleSceneItems[2] != null && ItemType.Consumable != DeliverBattleData.BattleSceneItems[2].itemType && DeliverBattleData.BattleSceneItems[2].itemName != "test")
         {
             DeliverBattleData.BattleSceneItems[2].useAction.Execute(gameObject);
             itemCount.gameObject.SetActive(false);
