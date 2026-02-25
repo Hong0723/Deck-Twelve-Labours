@@ -99,6 +99,7 @@ public class Player : MonoBehaviour
 
     public void Attack1Animation()
     {
+        Debug.Log("어택시전");
         animator.SetTrigger("Attack1");
         //attackCoroutine = StartCoroutine(Attack1Coroutine());
     }    

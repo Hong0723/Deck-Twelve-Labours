@@ -60,6 +60,14 @@ public class BattleManager : MonoBehaviour
         StartCoroutine(EnemyTurn());
     }
 
+    public void WinBattle()
+    {
+        if (state == BattleState.Victory)
+        return;
+        state = BattleState.Victory;
+        GameOverHandler handler = FindObjectOfType<GameOverHandler>();
+        handler.DisplayVictory(enemyObject);
+    }
     private IEnumerator EnemyTurn()
     {
         enemyObject?.SendMessage(

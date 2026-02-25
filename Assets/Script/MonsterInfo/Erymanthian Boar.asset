@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Erymanthian Boar
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
   monsterName: Erymanthian Boar
-  maxHP: 100
+  maxHP: 1000
   shield: 0
   defenseReduce: 40
   counterDamage: 4
   block: 0
   AttackDamage: 10
+  Heal: 0
+  reviveTimes: 0
+  heavyDefense: 0
+  weakenTurn: 5
+  weakenHP: 100
+  invincibleTurns: 0
+  surviveMode: 0

@@ -26,17 +26,20 @@ public class Enemy : MonoBehaviour, IDamageable
     private MonsterSkill effectScript;
     private GameObject newVisual;
     [SerializeField] private IntentUI intentUI;
-    
-    
+    private int reviveCounter = 0;
+    private MonsterType monsterInfo;
+    private int battleTurn = 0;
+    private bool isInvincible = false;
+    private int surviveTurn = 0;
     void Start()
     {
         currentHP = maxHP;
         shield = 0;
+        monsterInfo = DeliverBattleData.MonsterInfo;
 
-
-        if (DeliverBattleData.MonsterInfo)
+        if (monsterInfo)
         {
-            MonsterType monsterInfo = DeliverBattleData.MonsterInfo;
+           
             maxHP = monsterInfo.maxHP;
             currentHP = maxHP;
             shield = monsterInfo.shield;
@@ -59,12 +62,57 @@ public class Enemy : MonoBehaviour, IDamageable
     {
     }
 
-    public void OnEnemyTurnStart()
+public void OnEnemyTurnStart()
+{
+    battleTurn++;
+
+    // 4과업 멧돼지 약화
+    if (monsterInfo != null && monsterInfo.weakenTurn > 0)
     {
-        shield = 0;
-        UpdateHPBar();
-         CounterReady = false;
+        if (battleTurn == monsterInfo.weakenTurn)
+        {
+            maxHP = monsterInfo.weakenHP;
+            currentHP = Mathf.Min(currentHP, maxHP);
+            GetComponent<EnemyStatus>().SetHP(currentHP);
+            UpdateHPBar();
+            Debug.Log("Boar 약화");
+        }
     }
+
+    // 6과업 무적
+    if (monsterInfo != null && monsterInfo.invincibleTurns > 0)
+        isInvincible = battleTurn <= monsterInfo.invincibleTurns;
+    else
+        isInvincible = false;
+
+    shield = 0;
+    CounterReady = false;
+
+    // 11과업
+    if(monsterInfo != null && monsterInfo.surviveMode)
+        {
+            surviveTurn++;
+            int damage = 0;
+            switch(surviveTurn)
+            {
+                case 1 : damage = 5; break;
+                case 2 : damage = 5; break;
+                case 3 : damage = 10; break;
+                case 4 : damage = 10; break;
+                case 5 : damage = 15; break;
+            }
+
+            BattleManager.Instance.player.TakeDamage(damage);
+
+            // 5턴 버티면 승리
+        if(surviveTurn >= 5)
+            {
+                BattleManager.Instance.WinBattle();
+                return;
+            }
+
+        }
+}
 
 
     public void TakeTurn()
@@ -112,8 +160,12 @@ public class Enemy : MonoBehaviour, IDamageable
     }
 
     public void TakeHitFromPlayer(int damage)
-    {       
-
+    {
+        if (isInvincible)
+        {
+            Debug.Log("무적 상태");
+            return;
+        }
         int finalDamage = damage;
 
         if (CounterReady)
@@ -135,16 +187,44 @@ public class Enemy : MonoBehaviour, IDamageable
         UpdateHPBar();
         HurtedAnimation();
 
-        if (currentHP <= 0)
-        {
-        gameObject.SetActive(false);
-        }
     }
 
-
+    public void OnDeathFromStatus()
+    {
+        // 히드라 체크
+        if (DeliverBattleData.MonsterInfo.reviveTimes > 0)
+        {
+            reviveCounter++;
+            if(reviveCounter < monsterInfo.reviveTimes)
+            {
+                Debug.Log("히드라 부활");
+                currentHP = maxHP;
+                GetComponent<EnemyStatus>().SetHP(maxHP);
+                UpdateHPBar();
+                return;
+            }
+        }
+        BattleManager.Instance.WinBattle();
+    }
     void DecideNextAction()
     {
-        List<EnemyActionType> pool = new()
+        if (monsterInfo != null && monsterInfo.heavyDefense)
+        {
+            List<EnemyActionType> pool1 = new()
+        {
+            EnemyActionType.Attack,
+            EnemyActionType.Defense
+        };
+        
+            if (currentHP < maxHP * 0.8f)
+            pool1.Add(EnemyActionType.Heal);
+            
+            if(Random.value < 0.7f)
+                nextAction = EnemyActionType.Shield;
+            else
+                nextAction = pool1[Random.Range(0,pool1.Count)];
+        }
+        else {List<EnemyActionType> pool = new()
         {
             EnemyActionType.Attack,
             EnemyActionType.Shield,
@@ -154,12 +234,9 @@ public class Enemy : MonoBehaviour, IDamageable
         if (currentHP < maxHP * 0.8f)
             pool.Add(EnemyActionType.Heal);
 
-        nextAction = pool[Random.Range(0, pool.Count)];
-        if(intentUI != null){
-         intentUI.UpdateIntent();
+        nextAction = pool[Random.Range(0, pool.Count)]; }
+        intentUI?.UpdateIntent();
         }
-    }
-
 
     void UpdateHPBar()
     {

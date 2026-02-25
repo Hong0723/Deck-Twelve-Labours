@@ -19,3 +19,9 @@ MonoBehaviour:
   counterDamage: 4
   block: 0
   AttackDamage: 10
+  Heal: 0
+  reviveTimes: 0
+  heavyDefense: 1
+  weakenTurn: 0
+  invincibleTurns: 0
+  surviveMode: 0
