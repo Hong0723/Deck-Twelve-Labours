@@ -50,6 +50,7 @@ public class CardSystem : Singleton<CardSystem>
 
     private IEnumerator DrawCardsPerformer(DrawCardsGA drawCardsGA)
     {
+        Debug.Log($"뽑기 시작! 목표 장수: {drawCardsGA.Amount}");
         for (int i = 0; i < drawCardsGA.Amount; i++)
         {
             // 1. 만약 뽑을 카드가 없다면 덱을 다시 채움
