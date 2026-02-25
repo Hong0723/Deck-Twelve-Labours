@@ -11,6 +11,7 @@ public class ActionSystem : Singleton<ActionSystem>
     private void OnEnable()
     {
         AttachPerformer<GainShieldGA>(GainShieldPerformer);
+        AttachPerformer<HealGA>(HealPerformer);
     }
 
     private readonly Stack<List<GameAction>> reactionTargets = new();
@@ -176,4 +177,14 @@ public class ActionSystem : Singleton<ActionSystem>
         action.Target.GainShield(action.Amount);
         yield break;
     }
+
+    private IEnumerator HealPerformer(HealGA action)
+    {
+        if (action == null) yield break;
+        if (action.Target == null) yield break;
+
+        action.Target.Heal(action.Amount);
+        yield break;
+    }
+
 }

@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class HealCardsEffect : MonoBehaviour
+public class HealCardsEffect : Effect
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [Min(1)]
+    [SerializeField] private int healAmount;
 
-    // Update is called once per frame
-    void Update()
+    public override GameAction GetGameAction()
     {
-        
+        Debug.Log($"[HealCardsEffects] called. healAmount={healAmount}");
+
+        Player player = Object.FindFirstObjectByType<Player>();
+        if ( player == null ) return null;
+
+        return new HealGA(healAmount, player);
     }
 }

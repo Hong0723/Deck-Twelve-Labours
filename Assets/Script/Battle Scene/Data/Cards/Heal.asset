@@ -12,10 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b81c40df5eb4b66ab63d921679e2e7, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  <Description>k__BackingField: Restores 2 Health
+  <Description>k__BackingField: Restores 5 Health
   <Mana>k__BackingField: 3
   <Image>k__BackingField: {fileID: -1269391747, guid: b202afaf20596324bb507536feaf8a8c, type: 3}
-  <Effects>k__BackingField: []
+  <ManualTargetEffect>k__BackingField:
+    rid: -2
+  <Effects>k__BackingField:
+  - rid: 816320895483904078
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 816320895483904078
+      type: {class: HealCardsEffect, ns: , asm: Assembly-CSharp}
+      data:
+        healAmount: 5
