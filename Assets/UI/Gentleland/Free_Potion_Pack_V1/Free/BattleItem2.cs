@@ -13,17 +13,9 @@ public class BattleItem2 : MonoBehaviour, IPointerClickHandler
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GetComponent<Image>().sprite = null;
-        if (DeliverBattleData.BattleSceneItems == null)
-        {
-            Debug.LogError("❌ BattleSceneItems 배열이 null 입니다!");
-        }
-        else
-        {
-            Debug.Log($"BattleSceneItems 개수: {DeliverBattleData.BattleSceneItems.Count()}");
-        }
+        GetComponent<Image>().sprite = null;        
 
-        if (DeliverBattleData.BattleSceneItems[1] != null)
+        if (DeliverBattleData.BattleSceneItems[1] != null && DeliverBattleData.BattleSceneItems[1].itemName != "test")
         {
             Debug.Log("✅ BattleSceneItems[1] 존재");
 
@@ -38,7 +30,7 @@ public class BattleItem2 : MonoBehaviour, IPointerClickHandler
             gameObject.SetActive(false);
         }
 
-        if (ItemType.Consumable != DeliverBattleData.BattleSceneItems[1].itemType)
+        if (DeliverBattleData.BattleSceneItems[1] != null && ItemType.Consumable != DeliverBattleData.BattleSceneItems[1].itemType && DeliverBattleData.BattleSceneItems[1].itemName != "test")
         {
             DeliverBattleData.BattleSceneItems[1].useAction.Execute(gameObject);
             itemCount.gameObject.SetActive(false);

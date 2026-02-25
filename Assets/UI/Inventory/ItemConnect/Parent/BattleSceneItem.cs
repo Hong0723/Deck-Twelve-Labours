@@ -6,4 +6,8 @@ public class BattleSceneItem : MonoBehaviour
     {
         Debug.Log("Override 되지 않았습니다 상속후 Override해서 구체적인 내용을 작성해주세요");
     }
+    public virtual void ClearStaticItemData()
+    {
+        Debug.Log("Override 되지 않았습니다 상속후 Override해서 구체적인 내용을 작성해주세요");
+    }
 }
