@@ -15,6 +15,9 @@ public class GameOverHandler : MonoBehaviour
 
     void Awake()
     {
+        if (Interactions.Instance != null)
+            Interactions.Instance.SetInputLocked(false);
+
         if (gameOverUI != null) gameOverUI.SetActive(false);
         if (victoryUI != null) victoryUI.SetActive(false);
         if (rewardUI != null) rewardUI.SetActive(false);
@@ -26,6 +29,9 @@ public class GameOverHandler : MonoBehaviour
     // ===== 패배 =====
     public void DisplayGameOver()
     {
+        if (Interactions.Instance != null)
+            Interactions.Instance.SetInputLocked(true);
+
         if (gameOverUI != null)
         {
             gameOverUI.SetActive(true);
@@ -37,6 +43,9 @@ public class GameOverHandler : MonoBehaviour
     public void DisplayVictory(GameObject enemy)
     {
         currentEnemy = enemy;
+        if (Interactions.Instance != null)
+            Interactions.Instance.SetInputLocked(true);
+
         if (battleInputRoot != null)
         battleInputRoot.SetActive(false);   // 🔥 입력 전체 차단
         if (victoryUI != null)
@@ -58,6 +67,8 @@ public class GameOverHandler : MonoBehaviour
     // Reward → 게임 복귀 버튼
     public void OnClickRewardContinue()
     {
+        if (Interactions.Instance != null)
+            Interactions.Instance.SetInputLocked(false);
 
         if (battleInputRoot != null)
         battleInputRoot.SetActive(true);
@@ -82,6 +93,8 @@ public class GameOverHandler : MonoBehaviour
     // Retry 버튼
     public void OnClickRetry()
     {
+    if (Interactions.Instance != null)
+        Interactions.Instance.SetInputLocked(false);
         
     GameSessionManager.ResetGameSession(); 
     Time.timeScale = 1f;

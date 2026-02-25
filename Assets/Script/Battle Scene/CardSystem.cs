@@ -41,11 +41,42 @@ public class CardSystem : Singleton<CardSystem>
 
     public void Setup(List<CardData> deckData)
     {
-        foreach(var cardData in deckData)
+        if (deckData == null)
         {
+            Debug.LogError("CardSystem.Setup 실패: deckData가 null 입니다.");
+            return;
+        }
+
+        int validCount = 0;
+        for (int i = 0; i < deckData.Count; i++)
+        {
+            if (deckData[i] != null) validCount++;
+        }
+
+        if (validCount == 0)
+        {
+            Debug.LogWarning("CardSystem.Setup 호출됨: 유효한 카드가 0장이라 기존 덱을 유지합니다.");
+            return;
+        }
+
+        drawPile.Clear();
+        discardPile.Clear();
+        hand.Clear();
+
+        for (int i = 0; i < deckData.Count; i++)
+        {
+            CardData cardData = deckData[i];
+            if (cardData == null)
+            {
+                Debug.LogWarning($"덱 데이터 {i}번 슬롯이 비어 있습니다(null). 건너뜁니다.");
+                continue;
+            }
+
             Card card = new(cardData);
             drawPile.Add(card);
         }
+
+        Debug.Log($"CardSystem.Setup 완료: 유효 카드 {drawPile.Count}장");
     }
 
     private IEnumerator DrawCardsPerformer(DrawCardsGA drawCardsGA)
@@ -98,8 +129,23 @@ public class CardSystem : Singleton<CardSystem>
             PerformEffectGA performEffectGA = new(playCardGA.Card.ManualTargetEffect, new() { Target = playCardGA.ManualTarget });
             ActionSystem.Instance.AddReaction(performEffectGA);
         }
+        if (playCardGA.Card.Effects == null) yield break;
+
         foreach (var effect in playCardGA.Card.Effects)
         {
+            if (effect == null)
+            {
+                Debug.LogWarning($"카드 '{playCardGA.Card.Title}' 에 null Effect가 있습니다. 해당 효과는 건너뜁니다.");
+                continue;
+            }
+
+            // 수동 타겟 공격카드가 일반 효과 리스트에도 같은 공격 효과를 갖고 있으면 데미지가 2번 들어간다.
+            if (playCardGA.Card.ManualTargetEffect is AttackCardsEffect && effect is AttackCardsEffect)
+            {
+                Debug.LogWarning($"카드 '{playCardGA.Card.Title}' 에 공격 효과가 중복 설정되어 있어 일반 효과의 공격을 건너뜁니다. (ManualTargetEffect + Effects)");
+                continue;
+            }
+
             PerformEffectGA performEffectGA = new(effect);
             ActionSystem.Instance.AddReaction(performEffectGA);
         }

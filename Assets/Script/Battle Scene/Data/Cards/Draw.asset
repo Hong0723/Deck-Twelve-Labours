@@ -18,9 +18,13 @@ MonoBehaviour:
   <ManualTargetEffect>k__BackingField:
     rid: -2
   <Effects>k__BackingField:
-  - rid: -2
+  - rid: 1555992048972333133
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 1555992048972333133
+      type: {class: DrawCardsEffect, ns: , asm: Assembly-CSharp}
+      data:
+        drawAmount: 2

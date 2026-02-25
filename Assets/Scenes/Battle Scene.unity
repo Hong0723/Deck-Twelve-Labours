@@ -8421,6 +8421,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aaaa16049f3c99448821abcad9fcb170, type: 2}
   - {fileID: 11400000, guid: 74f1344a6ff1c3448a6e2657a45f2c75, type: 2}
   - {fileID: 11400000, guid: 74f1344a6ff1c3448a6e2657a45f2c75, type: 2}
+  - {fileID: 11400000, guid: 74f1344a6ff1c3448a6e2657a45f2c75, type: 2}
+  - {fileID: 11400000, guid: 74f1344a6ff1c3448a6e2657a45f2c75, type: 2}
 --- !u!1 &834231029
 GameObject:
   m_ObjectHideFlags: 0
@@ -14109,7 +14111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1328601130
 Transform:
   m_ObjectHideFlags: 0
@@ -23190,7 +23192,6 @@ MonoBehaviour:
   discardCardVolume: 0.55
   reshuffleSFX: {fileID: 8300000, guid: 6f3a478dd7dfd064e8a6e325e2449263, type: 3}
   reshuffleVolume: 0.7
-  playerSkill: {fileID: 269354715}
 --- !u!1 &2026938737
 GameObject:
   m_ObjectHideFlags: 0

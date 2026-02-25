@@ -13,7 +13,7 @@ public class ActionSystem : Singleton<ActionSystem>
         AttachPerformer<GainShieldGA>(GainShieldPerformer);
     }
 
-    private List<GameAction> reactions = null;
+    private readonly Stack<List<GameAction>> reactionTargets = new();
     [SerializeField] private bool isPerformingDebug;
     public bool IsPerforming 
     { 
@@ -22,6 +22,8 @@ public class ActionSystem : Singleton<ActionSystem>
     }
     private static Dictionary<Type, List<Action<GameAction>>> preSubs = new();
     private static Dictionary<Type, List<Action<GameAction>>> postSubs = new();
+    private static Dictionary<Type, Dictionary<Delegate, Action<GameAction>>> preSubWrappers = new();
+    private static Dictionary<Type, Dictionary<Delegate, Action<GameAction>>> postSubWrappers = new();
     private static Dictionary<Type, Func<GameAction, IEnumerator>> performers = new();
     public void Perform(GameAction action, System.Action OnPerformFinished = null)
     {
@@ -35,23 +37,45 @@ public class ActionSystem : Singleton<ActionSystem>
     }
     public void AddReaction(GameAction gameAction)
     {
-        reactions?.Add(gameAction);
+        if (gameAction == null) return;
+        if (reactionTargets.Count == 0)
+        {
+            Debug.LogWarning("현재 반응을 추가할 대상 리스트가 없습니다.");
+            return;
+        }
+
+        reactionTargets.Peek().Add(gameAction);
     }
     private IEnumerator Flow(GameAction action, Action OnFlowFinished = null)
     {
-        reactions = action.PreReactions;
-        PerformSubscribers(action, preSubs);
-        yield return PerformReactions();
+        if (action == null)
+        {
+            OnFlowFinished?.Invoke();
+            yield break;
+        }
 
-        reactions = action.PerformReactions;
-        yield return PerformPerformer(action);
-        yield return PerformReactions();
-
-        reactions = action.PostReactions;
-        PerformSubscribers(action, postSubs);
-        yield return PerformReactions();
+        yield return RunPhase(action.PreReactions, subscribers: () => PerformSubscribers(action, preSubs));
+        yield return RunPhase(action.PerformReactions, performer: () => PerformPerformer(action));
+        yield return RunPhase(action.PostReactions, subscribers: () => PerformSubscribers(action, postSubs));
 
         OnFlowFinished?.Invoke();
+    }
+    private IEnumerator RunPhase(List<GameAction> phaseReactions, Func<IEnumerator> performer = null, Action subscribers = null)
+    {
+        reactionTargets.Push(phaseReactions);
+        try
+        {
+            subscribers?.Invoke();
+            if (performer != null)
+            {
+                yield return performer();
+            }
+            yield return PerformReactions(phaseReactions);
+        }
+        finally
+        {
+            reactionTargets.Pop();
+        }
     }
     private IEnumerator PerformPerformer(GameAction action)
     {
@@ -72,10 +96,18 @@ public class ActionSystem : Singleton<ActionSystem>
             }
         }
     }
-    private IEnumerator PerformReactions()
+    private IEnumerator PerformReactions(List<GameAction> reactions)
     {
-        foreach (var reaction in reactions)
+        if (reactions == null) yield break;
+
+        for (int i = 0; i < reactions.Count; i++)
         {
+            var reaction = reactions[i];
+            if (reaction == null)
+            {
+                Debug.LogWarning("null Reaction을 건너뜁니다.");
+                continue;
+            }
             yield return Flow(reaction);
         }
     }
@@ -94,25 +126,47 @@ public class ActionSystem : Singleton<ActionSystem>
     public static void SubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
     {
         Dictionary<Type, List<Action<GameAction>>> subs = timing == ReactionTiming.PRE ? preSubs : postSubs;
+        Dictionary<Type, Dictionary<Delegate, Action<GameAction>>> wrapperMapByType = timing == ReactionTiming.PRE ? preSubWrappers : postSubWrappers;
+        Type type = typeof(T);
+
+        if (!wrapperMapByType.ContainsKey(type))
+        {
+            wrapperMapByType[type] = new();
+        }
+
+        // 같은 메서드가 중복 등록되지 않도록 보호
+        if (wrapperMapByType[type].ContainsKey(reaction))
+        {
+            return;
+        }
+
         void wrappedReaction(GameAction action) => reaction((T)action);
-        if (subs.ContainsKey(typeof(T)))
+        wrapperMapByType[type][reaction] = wrappedReaction;
+
+        if (!subs.ContainsKey(type))
         {
-            subs[typeof(T)].Add(wrappedReaction);  
+            subs.Add(type, new());
         }
-        else
-        {
-            subs.Add(typeof(T), new());
-            subs[typeof(T)].Add(wrappedReaction);
-        }
+        subs[type].Add(wrappedReaction);
     }
     public static void UnsubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
     {
         Dictionary<Type, List<Action<GameAction>>> subs = timing == ReactionTiming.PRE ? preSubs : postSubs;
-        if (subs.ContainsKey(typeof(T)))
+        Dictionary<Type, Dictionary<Delegate, Action<GameAction>>> wrapperMapByType = timing == ReactionTiming.PRE ? preSubWrappers : postSubWrappers;
+        Type type = typeof(T);
+
+        if (!subs.ContainsKey(type) || !wrapperMapByType.ContainsKey(type))
         {
-            void wrappedRaction(GameAction action) => reaction((T)action);
-            subs[typeof(T)].Remove(wrappedRaction);
+            return;
         }
+
+        if (!wrapperMapByType[type].TryGetValue(reaction, out var wrappedReaction))
+        {
+            return;
+        }
+
+        subs[type].Remove(wrappedReaction);
+        wrapperMapByType[type].Remove(reaction);
     }
     private IEnumerator GainShieldPerformer(GainShieldGA action)
     {

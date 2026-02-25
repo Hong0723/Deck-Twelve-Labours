@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ShieldCardsEffect : Effect
 {
+    [Min(1)]
     [SerializeField] private int shieldAmount;
 
     public override GameAction GetGameAction()
