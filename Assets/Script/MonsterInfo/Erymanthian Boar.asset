@@ -15,7 +15,7 @@ MonoBehaviour:
   monsterName: Erymanthian Boar
   maxHP: 1000
   shield: 0
-  defenseReduce: 40
+  defenseReduce: 50
   counterDamage: 4
   block: 0
   AttackDamage: 10

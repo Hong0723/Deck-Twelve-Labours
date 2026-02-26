@@ -15,7 +15,14 @@ MonoBehaviour:
   monsterName: Mares of Diomedes
   maxHP: 100
   shield: 0
-  defenseReduce: 40
-  counterDamage: 4
+  defenseReduce: 50
+  counterDamage: 5
   block: 0
-  AttackDamage: 0
+  AttackDamage: 15
+  Heal: 0
+  reviveTimes: 0
+  heavyDefense: 0
+  weakenTurn: 0
+  weakenHP: 0
+  invincibleTurns: 0
+  surviveMode: 0

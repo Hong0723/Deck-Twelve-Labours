@@ -3253,7 +3253,6 @@ MonoBehaviour:
   skillStartPos: {fileID: 1487561937}
   skillEndPos: {fileID: 1571712453}
   speed: 5
-  player: {fileID: 269354710}
 --- !u!1 &270033302
 GameObject:
   m_ObjectHideFlags: 0
@@ -8416,14 +8415,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MatchSetupSystem
   deckData:
-  - {fileID: 11400000, guid: af2cf809fe4014af0b82806b481d00d1, type: 2}
-  - {fileID: 11400000, guid: af2cf809fe4014af0b82806b481d00d1, type: 2}
-  - {fileID: 11400000, guid: af2cf809fe4014af0b82806b481d00d1, type: 2}
-  - {fileID: 11400000, guid: af2cf809fe4014af0b82806b481d00d1, type: 2}
-  - {fileID: 11400000, guid: af2cf809fe4014af0b82806b481d00d1, type: 2}
-  - {fileID: 11400000, guid: af2cf809fe4014af0b82806b481d00d1, type: 2}
-  - {fileID: 11400000, guid: af2cf809fe4014af0b82806b481d00d1, type: 2}
   - {fileID: 11400000, guid: 74f1344a6ff1c3448a6e2657a45f2c75, type: 2}
+  - {fileID: 11400000, guid: 74f1344a6ff1c3448a6e2657a45f2c75, type: 2}
+  - {fileID: 11400000, guid: 74f1344a6ff1c3448a6e2657a45f2c75, type: 2}
+  - {fileID: 11400000, guid: 33b4d863176eaab42b7002c1e71b5fd8, type: 2}
+  - {fileID: 11400000, guid: 33b4d863176eaab42b7002c1e71b5fd8, type: 2}
+  - {fileID: 11400000, guid: aaaa16049f3c99448821abcad9fcb170, type: 2}
+  - {fileID: 11400000, guid: aaaa16049f3c99448821abcad9fcb170, type: 2}
+  - {fileID: 11400000, guid: aaaa16049f3c99448821abcad9fcb170, type: 2}
+  - {fileID: 11400000, guid: 64158bf261144c24bb1554a46d0f6b25, type: 2}
+  - {fileID: 11400000, guid: 64158bf261144c24bb1554a46d0f6b25, type: 2}
   - {fileID: 11400000, guid: 64158bf261144c24bb1554a46d0f6b25, type: 2}
 --- !u!1 &834231029
 GameObject:

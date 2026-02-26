@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Cerberus
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
   monsterName: Cerberus
-  maxHP: 100
+  maxHP: 300
   shield: 0
-  defenseReduce: 40
-  counterDamage: 4
+  defenseReduce: 50
+  counterDamage: 10
   block: 0
-  AttackDamage: 10
+  AttackDamage: 30
+  Heal: 0
+  reviveTimes: 0
+  heavyDefense: 0
+  weakenTurn: 0
+  weakenHP: 0
+  invincibleTurns: 0
+  surviveMode: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   monsterName: Ceryneian Hind
   maxHP: 100
   shield: 0
-  defenseReduce: 40
+  defenseReduce: 50
   counterDamage: 4
   block: 0
   AttackDamage: 10
@@ -23,5 +23,6 @@ MonoBehaviour:
   reviveTimes: 0
   heavyDefense: 1
   weakenTurn: 0
+  weakenHP: 0
   invincibleTurns: 0
   surviveMode: 0

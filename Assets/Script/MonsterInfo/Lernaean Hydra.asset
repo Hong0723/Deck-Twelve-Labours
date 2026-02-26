@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: Lernaean Hydra
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
   monsterName: Lernaean Hydra
-  maxHP: 100
+  maxHP: 50
   shield: 0
-  defenseReduce: 40
-  counterDamage: 4
+  defenseReduce: 50
+  counterDamage: 5
   block: 0
-  AttackDamage: 0
+  AttackDamage: 10
   Heal: 0
   reviveTimes: 3
   heavyDefense: 0
   weakenTurn: 0
+  weakenHP: 0
   invincibleTurns: 0
   surviveMode: 0

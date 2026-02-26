@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Stymphalian Birds
   m_EditorClassIdentifier: Assembly-CSharp::MonsterType
   monsterName: Stymphalian Birds
-  maxHP: 100
+  maxHP: 70
   shield: 0
-  defenseReduce: 40
-  counterDamage: 4
+  defenseReduce: 50
+  counterDamage: 5
   block: 0
   AttackDamage: 10
   Heal: 0
