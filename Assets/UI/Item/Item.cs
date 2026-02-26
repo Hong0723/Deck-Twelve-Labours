@@ -1,14 +1,13 @@
 using UnityEngine;
 
 public class Item : MonoBehaviour
-{
-    //��ũ���ͺ� ������Ʈ
+{    
     public ItemBase myBase;
     [Header("Pickup SFX")]
     [SerializeField] private AudioClip pickupSFX;
     [SerializeField] private float pickupVolume = 0.7f;
 
-
+    //씬이 로드되었을때 이전에 주은 아이템이면 비활성화
     void Start()
     {
         if (GlobalItemState.IsPicked(myBase.itemName, myBase.ItemID))

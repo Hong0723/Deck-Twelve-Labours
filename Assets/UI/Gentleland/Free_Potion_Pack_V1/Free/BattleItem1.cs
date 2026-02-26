@@ -24,7 +24,7 @@ public class BattleItem1 : MonoBehaviour, IPointerClickHandler
             //ex 검(공격력 5추가)
             if (ItemType.Consumable != DeliverBattleData.BattleSceneItems[0].itemType)
             {
-                DeliverBattleData.BattleSceneItems[0].useAction.Execute(gameObject);
+                DeliverBattleData.BattleSceneItems[0].useAction.Execute();
                 itemCount.gameObject.SetActive(false);
             }
         }
@@ -47,7 +47,7 @@ public class BattleItem1 : MonoBehaviour, IPointerClickHandler
         ItemUseAction action = DeliverBattleData.BattleSceneItems[0].useAction;
         if (action != null)
         {
-            action.Execute(gameObject);
+            action.Execute();
         }
 
         //마지막 1개 소모품 사용할때

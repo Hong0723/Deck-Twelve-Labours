@@ -13,11 +13,11 @@ using static UnityEditor.Progress;
 
 [System.Serializable]
 public class ItemSlot {
-    public GameObject obj;
-    public bool contained;
-    public float posX;
+    public GameObject obj;//itembacground오브젝트
+    public bool contained;//obj에 아이템 유무
+    public float posX;//itembacground 좌표
     public float posY;
-    public bool isStand;
+    public bool isStand;//battleScene으로 아이템 연결 유무(true->배틀씬으로 연결)
 }
 
 public class Inventory : MonoBehaviour
@@ -37,11 +37,7 @@ public class Inventory : MonoBehaviour
     public GameObject Content;
 
     [SerializeField]
-    private GraphicRaycaster fogRaycaster;//이거때매 인벤토리가 안눌려서 i눌렀을때 온오프
-
-    public Dictionary<string, ItemBase> StandHaveItem;
-
-    //public TMP_Text testText;
+    private GraphicRaycaster fogRaycaster;//인벤토리 활성화 되있을때는 off        
 
     void Awake()
     {
@@ -66,12 +62,9 @@ public class Inventory : MonoBehaviour
         //초기화후 바로 비활성화
         myInventory.gameObject.SetActive(true);
         StartCoroutine(LateSort());
-        myInventory.gameObject.SetActive(false);
-
-        StandHaveItem = new();
+        myInventory.gameObject.SetActive(false);        
     }
-
-    //---비활성화 상태에서는 Awake가 실행이 안되어서 빠르게 열고 닫기
+    
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -82,29 +75,21 @@ public class Inventory : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    //씬 바뀌었을때 mainCamera 재할당
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         mainCamera = Camera.main;
-    }
-
-    public Camera GetMainCamera()
-    {
-        return mainCamera;
     }
 
     void Update()
     {
         //임시로
         if(myInventory != null)
-        {
-            //myInventory.transform.position = mainCamera.transform.position;
-
+        {            
             float distance = 5f; // 카메라 앞 거리
             myInventory.transform.position =
                 mainCamera.transform.position +
-                mainCamera.transform.forward * distance;
-
-            // 카메라를 바라보게 (중요)
+                mainCamera.transform.forward * distance;                        
             myInventory.transform.rotation = mainCamera.transform.rotation;
         }
         
@@ -132,6 +117,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        //사과  아이템 테스트용
         if (Input.GetKeyDown(KeyCode.V))
         {
             AddInventorySlot(4);
@@ -163,14 +149,13 @@ public class Inventory : MonoBehaviour
         // 현재 아이템이 들어있는 슬롯 인덱스 찾기      
         ItemManager ToItemManager = gameobject.GetComponent<ItemManager>();
         int ToItemSlotIndex = ToItemManager.GetMyItemslotsIndex();
-        //Debug.Log($"현재 아이템이 들어있는위치 {remainIndex}");
+        
         if (ToItemSlotIndex < 0)
-        {
-            
+        {            
             Debug.LogError($"인덱스 {ToItemSlotIndex} 기존 슬롯을 찾지 못함");
             return false;
         }
-        //Debug.Log($"리스트 개수 {itemslots.Count}");
+        
         // 모든 슬롯 순회
         for (int i = 0; i < itemslots.Count; i++)
         {
@@ -195,10 +180,8 @@ public class Inventory : MonoBehaviour
                 // 대상 슬롯에 이미 아이템이 있는지 확인
                 GameObject FromItem = FindChildWithTag(slot.transform, "Item");
                 ItemManager FromItemManager = FromItem.GetComponent<ItemManager>(); 
-
-                //Debug.Log($"옮길 자리 {i}");
+                
                 // 이미 아이템이 있고, 그게 자기 자신이 아니면
-                // 여기 추후 수정해야할듯
                 if (FromItem != null && FromItem != gameobject)
                 {
                     GameObject remainSlot = itemslots[ToItemSlotIndex].obj;//드래그 시작지점 itembackground
@@ -218,24 +201,16 @@ public class Inventory : MonoBehaviour
                 {
                     ToItemTrasform.SetParent(ToitemedgeTransform, true);
                     ToItemTrasform.anchoredPosition = Vector2.zero;
-                }
+                }                
 
-                /*
-                TMP_Text FromText = FromItemManager.GetComponentInChildren<TMP_Text>();
-                TMP_Text ToText = ToItemManager.GetComponentInChildren<TMP_Text>();
-                FromItemManager.SetItemText(ToText);
-                ToItemManager.SetItemText(FromText);
-                */
-
-                SwapItemSlots(i, ToItemSlotIndex, FromItemManager, ToItemManager);
-
-                
+                SwapItemSlots(i, ToItemSlotIndex, FromItemManager, ToItemManager);                
 
                 ToItemManager.SetMyItemslotsIndex(i);
                 FromItemManager.SetMyItemslotsIndex(ToItemSlotIndex);
 
 
                 //itemslots배열 contained 갱신
+                //test이름의 스크립터블 오브젝트가 있는 곳이 아이템 빈칸으로 -> contained = false
                 int index = 0;
                 foreach (var slotData in itemslots)
                 {
@@ -265,8 +240,7 @@ public class Inventory : MonoBehaviour
 
                 return true;
             }
-        }        
-        //Debug.Log("조건에 맞는 슬롯 없음");
+        }                
         return false;
     }
 
@@ -275,39 +249,39 @@ public class Inventory : MonoBehaviour
     {
         bool isDone = false;
 
+        //기존 아이템과 같은 아이템이 추가될때 수량만 변경
         for (int k = 0; k < itemslots.Count; k++)
         {
             ItemManager manager = itemslots[k].obj.GetComponentInChildren<ItemManager>();
-            ItemBase ItemScriptableObject = manager.itemData;//기존에 있던거
-            ItemBase NewItemScriptableObject = NewItemObject.GetComponent<Item>().myBase;//새로 추가한거
+            ItemBase ItemScriptableObject = manager.itemData;//기존 아이템
+            ItemBase NewItemScriptableObject = NewItemObject.GetComponent<Item>().myBase;//새로 추가한 아이템
             if (ItemScriptableObject && ItemScriptableObject.itemName == NewItemScriptableObject.itemName)
             {
-                GetComponent<PlayerDataToJson>().UpdateItemData(NewItemScriptableObject.itemName, 1);
-                //Debug.Log($"슬롯 이름: {itemslots[k].obj.name}");
-                //Debug.Log($"기존 매니저 수량: {manager.ItemAmount}");
+                //Json 파일 업데이트
+                GetComponent<PlayerDataToJson>().UpdateItemData(NewItemScriptableObject.itemName, 1);                
                 manager.SetItemAmount();
-                //Debug.Log($"슬롯 이름: {itemslots[k].obj.name}");
-                //Debug.Log($"증가 후 수량: {manager.ItemAmount}");
-                //스크립터블오브젝트의 이름가져오기위해               
-
-
                 Destroy(NewItemObject);
                 return;
             }
-
         }
 
+        if (isDone)
+        {
+            isDone = false;
+            return;
+        }
+
+        //기존 아이템과 같은 아이템이 없을때
         //아이템창이 비어있는 최좌상단 아이템 슬롯
         for (int k=0; k<itemslots.Count; k++)
         {
-            //석상에는 넣지 않습니다
-            
+            //석상에는 넣지 않습니다            
            if (itemslots[k].isStand)
            {
                continue;
            }
            
-           
+           //아이템이 이미 존재
            if (itemslots[k].contained)
            {
                continue;
@@ -319,21 +293,12 @@ public class Inventory : MonoBehaviour
            }
            else
            {
-                itemIndex = k;
-                Debug.Log("test = "+itemIndex);
+                itemIndex = k;                
                 break;
            }
             
         }
 
-        if (isDone)
-        {
-            isDone = false;
-            return;
-        }
-
-        //Debug.Log($"{itemIndex}");
-        //Debug.Log($"{itemslots.Count}");
         GameObject ToItembackground = itemslots[itemIndex].obj;
         // itemedge 찾기
         Transform ToItemEdge = ToItembackground.transform.Find("itemedge");
@@ -376,11 +341,9 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        //스크립터블 오브젝트교체
-        //FromItemManager.itemData = ItemInfoScriptableObj.GetItemBase();               
+        //스크립터블 오브젝트교체                      
         FromItemManager.SetItemData(ItemInfoScriptableObj.GetItemBase());
-        // Sprite 변경
-        //지금은 맥주잔이지만 나중에 투명이미지로 바꿔서
+        // Sprite 변경        
         //아이템이 들어오면 sprite만 바꾸는 형식으로 구현
         BackgroundImage.sprite = ItemInfoScriptableObj.GetItemBase().icon;
         BackgroundImage.color = new Color(1, 1, 1, 1);
@@ -390,20 +353,11 @@ public class Inventory : MonoBehaviour
         ItemBase ItemScriptable = ItemInfoScriptableObj.GetItemBase();
         GetComponent<PlayerDataToJson>().UpdateItemData(ItemScriptable.itemName, 1);
         FromItemManager.SetItemAmount();
-
-        //인벤토리에 개수 보이게 하기
-        /*
-        TMP_Text ItemCountText = FromItemManager.ItemAmountText;
-        if (ItemCountText == null)
-        {
-            Debug.Log("못찾음");
-        }
-        ItemCountText.gameObject.SetActive(true);
-        */
+        
         Destroy(NewItemObject);
 
-        //아이템 창없으면 파괴하지말아야할듯 추후
-        //슬롯 상태 갱신 추후 수정예정
+        //아이템이 들어갈 창없으면 파괴x->미구현
+        //위 상태일때 슬롯 상태 갱신->미구현
         itemslots[itemIndex].contained = true;        
     }
 
@@ -413,54 +367,30 @@ public class Inventory : MonoBehaviour
         GameObject obj = new GameObject();
         Item comp = obj.AddComponent<Item>();
         comp.myBase = scriptableobject; // ScriptableObject 참조만 연결
-        AddItem(obj);
-        Destroy(obj);
+        AddItem(obj);        
     }
 
     //itemslots리스트 내용을 서로 바꾸는 swap
     void SwapItemSlots(int indexA, int indexB, ItemManager AManager, ItemManager BManager)
-    {
-
-        Debug.Log("스왑아이템 실행");
-        /*
-        ItemBase tempItemData = AManager.itemData;
-        AManager.itemData = BManager.itemData;
-        BManager.itemData = tempItemData;
-        */
-        // 🔹 1. swap 이전 itemData 백업 (중요)
-        ItemBase fromItemData = AManager.itemData; // 집은 아이템
-        ItemBase toItemData = BManager.itemData; // 도착지 아이템
-
-
+    {       
         Itemslot Aslot = itemslots[indexA].obj.GetComponent<Itemslot>();
         Aslot.SetItemManager(BManager);
         Itemslot Bslot = itemslots[indexB].obj.GetComponent<Itemslot>();
         Bslot.SetItemManager(AManager);
 
+        //BattleSceneItem스크립트가 아이템 슬롯이 붙어있는 오브젝트이면 BattleScene으로 연결
         BattleSceneItem InStandItem = Aslot.GetComponentInChildren<BattleSceneItem>();
         if (InStandItem != null)
         {
-            ItemBase itemData = BManager.itemData;
-            Debug.Log(
-        $"[Item 전달]\n" +
-        $"이름: {itemData.itemName}\n" +
-        $"설명: {itemData.description}\n" +
-        $"아이콘: {itemData.icon}\n" +
-        $"타입: {itemData.itemType}\n" +
-        $"스택가능: {itemData.isStackable}\n" +
-        $"최대스택: {itemData.maxStack}\n" +
-        $"사용액션: {(itemData.useAction != null ? itemData.useAction.name : "없음")}"
-    );
-
+            ItemBase itemData = BManager.itemData;            
+            //test는 빈 아이템
             if (itemData == null || itemData.itemName == "test")
             {
-                InStandItem.ClearStaticItemData(); // static 비우기
-                Debug.Log("[Stand Clear1]");
+                InStandItem.ClearStaticItemData();//BattleScene과 연결되는 static변수 초기화               
             }
             else
             {
-                InStandItem.SetStaticItemData(itemData);
-                Debug.Log("[Stand Set1]");
+                InStandItem.SetStaticItemData(itemData);//BattleScene과 연결되는 static변수로 전달     
             }
 
             
@@ -469,34 +399,20 @@ public class Inventory : MonoBehaviour
             if (InStandItem2 != null)
             {
                 ItemBase itemData2 = AManager.itemData;
-                Debug.Log(
-            $"[Item 전달]\n" +
-            $"이름: {itemData2.itemName}\n" +
-            $"설명: {itemData2.description}\n" +
-            $"아이콘: {itemData2.icon}\n" +
-            $"타입: {itemData2.itemType}\n" +
-            $"스택가능: {itemData2.isStackable}\n" +
-            $"최대스택: {itemData2.maxStack}\n" +
-            $"사용액션: {(itemData2.useAction != null ? itemData2.useAction.name : "없음")}"
-        );
+                
             if (itemData2 == null || itemData2.itemName == "test")
             {
-                InStandItem2.ClearStaticItemData(); // static 비우기
-                Debug.Log("[Standd Clear2]");
+                InStandItem2.ClearStaticItemData();                
             }
             else
             {
-                InStandItem2.SetStaticItemData(itemData2);
-                Debug.Log("[Stand Set22]");
+                InStandItem2.SetStaticItemData(itemData2);                
             }
             
         }
         
         AManager.SetMyItemslotsIndex(indexB);
-        BManager.SetMyItemslotsIndex(indexA);
-
-        //AManager.SetItemAmount();
-        //BManager.SetItemAmount();
+        BManager.SetMyItemslotsIndex(indexA);       
     }
 
     //parent transform 하위의 오브젝트 중에 tag검색

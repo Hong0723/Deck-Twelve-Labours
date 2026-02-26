@@ -3,5 +3,5 @@ using UnityEngine;
 
 public abstract class ItemUseAction : ScriptableObject
 {
-    public abstract void Execute(GameObject user);
+    public abstract void Execute();
 }

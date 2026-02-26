@@ -22,7 +22,7 @@ public class BattleItem2 : MonoBehaviour, IPointerClickHandler
 
             if (ItemType.Consumable != DeliverBattleData.BattleSceneItems[1].itemType)
             {
-                DeliverBattleData.BattleSceneItems[1].useAction.Execute(gameObject);
+                DeliverBattleData.BattleSceneItems[1].useAction.Execute();
                 itemCount.gameObject.SetActive(false);
             }
         }
@@ -46,7 +46,7 @@ public class BattleItem2 : MonoBehaviour, IPointerClickHandler
 
         if (action != null)
         {
-            action.Execute(gameObject); 
+            action.Execute(); 
         }
 
         if (portionData.count <= 1 && usedPortionImage != null)

@@ -7,8 +7,7 @@ public class ItemUseManager : HPBar
     [SerializeField] private MonsterType PlayerInfo;
 
     void Awake()
-    {
-        //Instance = this;
+    {        
         base.Awake();
         if (Instance != null && Instance != this)
         {
@@ -21,8 +20,7 @@ public class ItemUseManager : HPBar
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        //GlobalPlayerHP.SetCurrentHP(GlobalPlayerHP.MaxHP);//플레이어 체력 초기화
+    {        
         UpdateGameSceneBar();
     }
 
