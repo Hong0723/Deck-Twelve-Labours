@@ -14,26 +14,22 @@ public class BattleItem2 : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         GetComponent<Image>().sprite = null;        
-
         if (DeliverBattleData.BattleSceneItems[1] != null && DeliverBattleData.BattleSceneItems[1].itemName != "test")
-        {
-            Debug.Log("✅ BattleSceneItems[1] 존재");
-
+        {            
             portionData = PlayerDataToJson.Instance.CheckItemData(DeliverBattleData.BattleSceneItems[1].itemName);
-            GetComponent<Image>().sprite = DeliverBattleData.BattleSceneItems[1].icon;
-            //GetComponent<TMP_Text>().text = portionData.count.ToString();
+            GetComponent<Image>().sprite = DeliverBattleData.BattleSceneItems[1].icon;            
             itemCount.text = portionData.count.ToString();
+
+            if (ItemType.Consumable != DeliverBattleData.BattleSceneItems[1].itemType)
+            {
+                DeliverBattleData.BattleSceneItems[1].useAction.Execute(gameObject);
+                itemCount.gameObject.SetActive(false);
+            }
         }
         else
         {
             button.interactable = false;
             gameObject.SetActive(false);
-        }
-
-        if (DeliverBattleData.BattleSceneItems[1] != null && ItemType.Consumable != DeliverBattleData.BattleSceneItems[1].itemType && DeliverBattleData.BattleSceneItems[1].itemName != "test")
-        {
-            DeliverBattleData.BattleSceneItems[1].useAction.Execute(gameObject);
-            itemCount.gameObject.SetActive(false);
         }
     }
 
@@ -41,7 +37,7 @@ public class BattleItem2 : MonoBehaviour, IPointerClickHandler
     {
         portionData = PlayerDataToJson.Instance.CheckItemData(DeliverBattleData.BattleSceneItems[1].itemName);
 
-        if (portionData.count == 0)
+        if (portionData.count == 0 || ItemType.Consumable != DeliverBattleData.BattleSceneItems[1].itemType)
         {
             return;
         }
@@ -50,7 +46,7 @@ public class BattleItem2 : MonoBehaviour, IPointerClickHandler
 
         if (action != null)
         {
-            action.Execute(gameObject); // 메서드명 대문자 권장
+            action.Execute(gameObject); 
         }
 
         if (portionData.count <= 1 && usedPortionImage != null)

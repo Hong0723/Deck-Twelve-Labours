@@ -17,29 +17,25 @@ public class BattleItem3 : MonoBehaviour, IPointerClickHandler
         {
             portionData = PlayerDataToJson.Instance.CheckItemData(DeliverBattleData.BattleSceneItems[2].itemName);
             GetComponent<Image>().sprite = DeliverBattleData.BattleSceneItems[2].icon;
-            //GetComponent<TMP_Text>().text = portionData.count.ToString();
             itemCount.text = portionData.count.ToString();
+            if (ItemType.Consumable != DeliverBattleData.BattleSceneItems[2].itemType)
+            {
+                DeliverBattleData.BattleSceneItems[2].useAction.Execute(gameObject);
+                itemCount.gameObject.SetActive(false);
+            }
         }
         else
         {
             button.interactable = false;
             gameObject.SetActive(false);
         }
-
-
-        if (DeliverBattleData.BattleSceneItems[2] != null && ItemType.Consumable != DeliverBattleData.BattleSceneItems[2].itemType && DeliverBattleData.BattleSceneItems[2].itemName != "test")
-        {
-            DeliverBattleData.BattleSceneItems[2].useAction.Execute(gameObject);
-            itemCount.gameObject.SetActive(false);
-        }
-
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         portionData = PlayerDataToJson.Instance.CheckItemData(DeliverBattleData.BattleSceneItems[2].itemName);
 
-        if (portionData.count == 0)
+        if (portionData.count == 0 || ItemType.Consumable != DeliverBattleData.BattleSceneItems[2].itemType)
         {
             return;
         }
@@ -48,7 +44,7 @@ public class BattleItem3 : MonoBehaviour, IPointerClickHandler
 
         if (action != null)
         {
-            action.Execute(gameObject); // 메서드명 대문자 권장
+            action.Execute(gameObject); 
         }
 
         if (portionData.count <= 1 && usedPortionImage != null)

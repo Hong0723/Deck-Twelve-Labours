@@ -22940,6 +22940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageSystem
   damageVFX: {fileID: 0}
+  player: {fileID: 269354710}
   playerSkill: {fileID: 269354715}
 --- !u!1 &2016040802
 GameObject:

@@ -81,8 +81,7 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             case EnemyActionType.Attack:
                 Attack1Animation();
-                BattleManager.Instance.player.TakeDamage(attackDamage);
-                BattleManager.Instance.player.HurtedAnimation();            
+                BattleManager.Instance.player.TakeDamage(attackDamage);                        
                 break;
 
             case EnemyActionType.Shield:
@@ -224,12 +223,13 @@ public class Enemy : MonoBehaviour, IDamageable
     }
 
 
-    //Enemy������Ʈ �ڽ����� �˸��� ���� ������
+    //화면 바깥에 있는 적GameObject를 가져옵니다.
     public void ReplaceVisual(GameObject target, GameObject visualSource)
     {
         if (!target || !visualSource)
             return;
 
+        //기존 적GameObject제거
         Transform old = target.transform.Find("VisualRoot");
         if (old) Object.Destroy(old.gameObject);
 
@@ -248,7 +248,7 @@ public class Enemy : MonoBehaviour, IDamageable
             srcWorldScale.z / parentWorldScale.z
         );
 
-        //Debug.Log($"[ReplaceVisual] world scale matched: {srcWorldScale}");
+        
         animator = newVisual.GetComponent<Animator>();
     }
 

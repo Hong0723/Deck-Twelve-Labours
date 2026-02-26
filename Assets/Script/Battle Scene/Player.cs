@@ -3,16 +3,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    //수치 확인용
     public int maxHP = 30;
     public int currentHP;
     public int block;
     public int attackDamge;//공격력
-
-    //public HPBar hpBar;
-    public ItemUseManager hpBar;
-
-    public Animator animator;
-    private Coroutine attackCoroutine; // 실행중인 공격애니메이션
+                          
+    public ItemUseManager hpBar;//Hpbar를 상속 받는 아이템 사용시 실행되는 스크립트
+    public Animator animator;//플레이어 애니메이션
     public PlayerSkill playerSkill;//이펙트 애니메이션은 여기서 실행
 
     private void Start()
@@ -44,7 +42,8 @@ public class Player : MonoBehaviour
 
     
     public void TakeDamage(int dmg)
-    {       
+    {
+        HurtedAnimation();
         int absorbed = Mathf.Min(block, dmg);
         block -= absorbed;
         dmg -= absorbed;
@@ -61,10 +60,8 @@ public class Player : MonoBehaviour
 
     public void Heal(int amount)
     {
-        playerSkill.EffectHeal();
-        Debug.Log("힐량" + amount);
-        amount += DeliverBattleData.PlayerInfo.Heal;//아이템으로 인한 추가회복량
-        Debug.Log("힐량" + amount);
+        playerSkill.EffectHeal();        
+        amount += DeliverBattleData.PlayerInfo.Heal;//아이템으로 인한 추가회복량        
         GlobalPlayerHP.Heal(amount);
 
         SyncFromGlobal();
@@ -73,13 +70,11 @@ public class Player : MonoBehaviour
 
     public void GainShield(int amount)
     {
-        playerSkill.EffectShield();
-        Debug.Log("쉴드량" + amount);
-        amount+= DeliverBattleData.PlayerInfo.shield;//아이템으로 인한 추가쉴드량
-        Debug.Log("쉴드량" + amount);
+        playerSkill.EffectShield();        
+        amount+= DeliverBattleData.PlayerInfo.shield;//아이템으로 인한 추가쉴드량        
         if (amount <= 0) return;
-
         block += amount;
+
         UpdateHPBar();
     }
 
@@ -98,49 +93,17 @@ public class Player : MonoBehaviour
     public bool IsDead() => currentHP <= 0;
 
     public void Attack1Animation()
-    {
-        Debug.Log("어택시전");
-        animator.SetTrigger("Attack1");
-        //attackCoroutine = StartCoroutine(Attack1Coroutine());
+    {        
+        animator.SetTrigger("Attack1");       
     }    
 
     public void HurtedAnimation()
     {
-        animator.SetTrigger("Hurted");
-        //StartCoroutine(HurtedCoroutine());
+        animator.SetTrigger("Hurted");        
     }
 
     public void SetDefensed(bool state)
     {
         animator.SetBool("Defensed", state);
-    }
-
-    /*
-    // 공격 1
-    public IEnumerator Attack1Coroutine()
-    {
-        animator.SetTrigger("Attack1");
-
-        // Attack1 애니메이션 길이만큼 대기
-        yield return new WaitForSeconds(GetAnimationLength("PlayerAttack1"));
-    }    
-
-    // 피격
-    public IEnumerator HurtedCoroutine()
-    {
-        animator.SetTrigger("Hurted");
-        yield return new WaitForSeconds(GetAnimationLength("Damaged"));
-    }
-
-    // Animation Clip 길이 가져오기
-    private float GetAnimationLength(string clipName)
-    {
-        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
-        {
-            if (clip.name == clipName)
-                return clip.length;
-        }
-        Debug.LogWarning("Clip not found: " + clipName);
-        return 0f;
-    }*/
+    }   
 }

@@ -19,11 +19,8 @@ public class MonsterSkill : MonoBehaviour
 {
     public List<EffectData> effects;//인스펙터 등록용
     private Dictionary<string, EffectObjBol> effectMap;//코드내 서치용, 원본 오브젝트
-    //private Dictionary<string, EffectObjBol> effectMapRef;//Instantiate 후 여기에 저장,후에는 Destroy관리
     private Dictionary<string, GameObject> effectMapRef; // 생성된 인스턴스
-
-
-    //public GameObject skillStartPos;//스킬 시작점
+            
     public GameObject attackSocket;//스킬 시작점
     public GameObject healSocket;//스킬 시작점
     public GameObject defenseSocket;//스킬 시작점
@@ -48,18 +45,13 @@ public class MonsterSkill : MonoBehaviour
             if (!effectMap.ContainsKey(e.skillNameHaveImpact))
                 effectMap.Add(e.skillNameHaveImpact, e.data);
         }
-        /*
-        Debug.Log("==== effectMap 최종 등록 키 목록 ====");
-        foreach (var key in effectMap.Keys)
-        {
-            Debug.Log("등록된 키: " + key);
-        }*/
+
+        //Enemy Hpbar를 머리 위에 설치
         cam = Camera.main;
-        Vector3 offset = new Vector3(0,15,0);        // 머리 위 보정
+        Vector3 offset = new Vector3(0,15,0);
         Vector3 worldPos = head.transform.position + offset;
         Vector3 screenPos = cam.WorldToScreenPoint(worldPos);
         hpBar.transform.position = screenPos;
-
     }
 
     // Update is called once per frame
@@ -84,32 +76,27 @@ public class MonsterSkill : MonoBehaviour
 
     public void EffectAttack()
     {
-        if (effectMap["Attack"].haveImpaact)
-        {//플레이어가 스킬에 대한 피격애니메이션이 있을때
-            Debug.Log("Attack 생성");
+        if (effectMap["Attack"].haveImpaact)//플레이어가 스킬에 대한 피격애니메이션이 있을때   
+        {         
             effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, attackSocket.transform.position, Quaternion.identity);
             Animator animator = effectMapRef["Attack"].GetComponent<Animator>();
             animator.SetBool("Effect", true);
             isMoveAble = true;
         }
-        else
-        {//없을때
+        else//없을때
+        {
             effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, attackSocket.transform.position, Quaternion.identity);
             Animator animator = effectMapRef["Attack"].GetComponent<Animator>();
             animator.SetTrigger("Effect");
         }            
     }
 
-
     void EffectAttackImpact()
     {
         if (effectMapRef["Attack"])
         {
             Destroy(effectMapRef["Attack"]);
-        }        
-
-        Debug.Log("AttackImpact");
-        //animator1.SetBool("Effect", false);파괴하는데..?
+        }
         effectMapRef["AttackImpact"] = Instantiate(effectMap["AttackImpact"].prefab, skillEndPos.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["AttackImpact"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
@@ -117,23 +104,19 @@ public class MonsterSkill : MonoBehaviour
 
     public void EffectShield()
     {
-        Vector3 offset2 = new Vector3(0, 0, -20);
         effectMapRef["Shield"] = Instantiate(effectMap["Shield"].prefab, shieldSocket.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["Shield"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
-
     }
 
     public void EffectHeal()
     {
-        Vector3 offset2 = new Vector3(0, 0, -20);
         effectMapRef["Heal"] = Instantiate(effectMap["Heal"].prefab, healSocket.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["Heal"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
     }
     public void EffectDefense()
     {
-        Vector3 offset2 = new Vector3(0, 0, -20);
         effectMapRef["Defense"] = Instantiate(effectMap["Defense"].prefab, defenseSocket.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["Defense"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
@@ -163,9 +146,5 @@ public class MonsterSkill : MonoBehaviour
     {
         Destroy(effectMapRef["Defense"]);
     }
-    /*
-    public void EndAttack1Hurted()
-    {
-        Destroy(Attack1HurtedEffect);
-    }*/
+    
 }

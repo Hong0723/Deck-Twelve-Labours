@@ -8,9 +8,6 @@ using UnityEngine.UI;
 
 
 public class RewardManager : MonoBehaviour,
-    IPointerEnterHandler,
-    IPointerExitHandler,
-    IPointerDownHandler,
     IPointerClickHandler
 {
     public GameObject RewardItem1;
@@ -21,10 +18,9 @@ public class RewardManager : MonoBehaviour,
     ItemBase ScriptableItem1;
     ItemBase ScriptableItem2;
 
-    //private GameObject targetObject;//현재 선택한 오브젝트
-    private GameObject CurrentObject;//이전에 선택한 오브젝트
+    private GameObject CurrentObject;//이전에 선택한 highlight오브젝트
 
-    public List<ItemBase> allItems;
+    public List<ItemBase> allItems;//보상 아이템 스크립터블 오브젝트 목록
     float total;
     float delay = 0.3f;
 
@@ -60,43 +56,20 @@ public class RewardManager : MonoBehaviour,
         }
     }
 
-    // 마우스 올림
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-       
-    }
-
-    // 마우스 나감
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        
-    }
-
-    // 마우스 누르는 순간
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("마우스 다운");
-    }
+    
 
     // 클릭 판정 (Down + Up 같은 오브젝트)
     public void OnPointerClick(PointerEventData eventData)
-    {
-
-        //if (eventData.pointerEnter == null)
-        //   return;
-
+    {       
         GameObject targetObject = eventData.pointerEnter;
-
-        Transform highlight =
-            targetObject.transform.Find("highlight");
-
+        Transform highlight = targetObject.transform.Find("highlight");
         if (highlight == null)
         {
             Debug.Log("highlight 없음 : " + targetObject.name);
             return;
-        }
-        
+        }        
         GameObject targetHighlight = highlight.gameObject;
+
         //이전에 선택한 오브젝트 하이라이트 제거
         if (CurrentObject != null)
         {
@@ -111,19 +84,16 @@ public class RewardManager : MonoBehaviour,
         //선택한 오브젝트 갱신
         CurrentObject = targetObject;
 
-        targetHighlight.SetActive(true);
-        
+        targetHighlight.SetActive(true);        
         {
             Image img = targetObject.GetComponent<Image>();
             Color c = img.color;
             c.a = 0.3f;
             img.color = c;
-        }
-               
-
-           
+        }           
     }
 
+    //Continue 버튼 클릭으로 실행
     public void AddItemToInventory()
     {
         //인벤토리에 아이템 추가
@@ -142,11 +112,8 @@ public class RewardManager : MonoBehaviour,
     }
 
     public ItemBase GetRandomItem()
-    {
-        
-
+    {      
         float rand = Random.Range(0, total);
-
         float current = 0f;
 
         foreach (var d in allItems)

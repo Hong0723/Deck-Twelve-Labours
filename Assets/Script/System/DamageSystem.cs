@@ -4,6 +4,7 @@ using UnityEngine;
 public class DamageSystem : MonoBehaviour
 {
     [SerializeField] private GameObject damageVFX;
+    [SerializeField] private Player player;
     [SerializeField] private PlayerSkill playerSkill;
     void OnEnable()
     {
@@ -15,6 +16,7 @@ public class DamageSystem : MonoBehaviour
     }
     private IEnumerator DealDamagePerformer(DealDamageGA dealDamageGA)
     {
+        player.Attack1Animation();//플레이어 애니메이션
         playerSkill.EffectAttack();//공격이펙트
         foreach (var target in dealDamageGA.Targets)
         {
