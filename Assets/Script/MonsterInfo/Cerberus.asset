@@ -26,3 +26,4 @@ MonoBehaviour:
   weakenHP: 0
   invincibleTurns: 0
   surviveMode: 0
+  isFinalBoss: 1

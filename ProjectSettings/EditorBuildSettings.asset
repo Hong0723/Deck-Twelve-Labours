@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battle Scene.unity
     guid: 3d2a49317c8955a42b532e5e98ca712f
+  - enabled: 1
+    path: Assets/Scenes/Ending Scene.unity
+    guid: b30785641ac7c684f80cebb15527e4d0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

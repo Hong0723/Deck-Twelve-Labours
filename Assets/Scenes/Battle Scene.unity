@@ -8420,12 +8420,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 74f1344a6ff1c3448a6e2657a45f2c75, type: 2}
   - {fileID: 11400000, guid: 33b4d863176eaab42b7002c1e71b5fd8, type: 2}
   - {fileID: 11400000, guid: 33b4d863176eaab42b7002c1e71b5fd8, type: 2}
+  - {fileID: 11400000, guid: 64158bf261144c24bb1554a46d0f6b25, type: 2}
+  - {fileID: 11400000, guid: 64158bf261144c24bb1554a46d0f6b25, type: 2}
   - {fileID: 11400000, guid: aaaa16049f3c99448821abcad9fcb170, type: 2}
   - {fileID: 11400000, guid: aaaa16049f3c99448821abcad9fcb170, type: 2}
   - {fileID: 11400000, guid: aaaa16049f3c99448821abcad9fcb170, type: 2}
-  - {fileID: 11400000, guid: 64158bf261144c24bb1554a46d0f6b25, type: 2}
-  - {fileID: 11400000, guid: 64158bf261144c24bb1554a46d0f6b25, type: 2}
-  - {fileID: 11400000, guid: 64158bf261144c24bb1554a46d0f6b25, type: 2}
 --- !u!1 &834231029
 GameObject:
   m_ObjectHideFlags: 0
@@ -14759,15 +14758,15 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 34a4a0c89db9414489be1315c76bc9f1, type: 2}
+  m_sharedMaterial: {fileID: 4068044055246775935, guid: 34a4a0c89db9414489be1315c76bc9f1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14784,13 +14783,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 35
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -17068,7 +17067,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 99
   m_Sprite: {fileID: 21300000, guid: b0394665e16ef504bb922274dd606020, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.19052315, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -18373,8 +18372,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -18398,7 +18397,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -21876,8 +21875,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300014, guid: 34ecf51bcd3f4424eafda7dafd885bd0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
