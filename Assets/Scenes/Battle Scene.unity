@@ -1899,7 +1899,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2046956077990515177, guid: 9291b39306d4ce640bf255c16c6ddf5b, type: 3}
+  m_Sprite: {fileID: -2279932274459760023, guid: 9291b39306d4ce640bf255c16c6ddf5b, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7527,7 +7527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &725289426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15329,6 +15329,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8b30fa36a8318b0419dd5b7ceab35ded, type: 2}
   - {fileID: 11400000, guid: 01c84bc2f1a66184cb8923967d4c96a7, type: 2}
   - {fileID: 11400000, guid: d3675bd9d61dffc4f8889ffff8524550, type: 2}
+  - {fileID: 11400000, guid: 808d7bd222a6f6847a4a0ca39684889f, type: 2}
+  - {fileID: 11400000, guid: e878f0aa46f5f3846a1786182ddc4b20, type: 2}
+  - {fileID: 11400000, guid: 22d90a2e61dde2a4f8a07ec8dd2f111a, type: 2}
 --- !u!82 &1392854693
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18982,7 +18985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2046956077990515177, guid: 9291b39306d4ce640bf255c16c6ddf5b, type: 3}
+  m_Sprite: {fileID: -2279932274459760023, guid: 9291b39306d4ce640bf255c16c6ddf5b, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -17,7 +17,7 @@ MonoBehaviour:
     \uD655\uC7A5\uB420\uAC70 \uAC19\uB2E4."
   icon: {fileID: -2104438198, guid: 8b4120794ceae66429040ca96e73fd45, type: 3}
   ItemID: 0
-  dropRate: 0
+  dropRate: 0.01
   itemType: 0
   isStackable: 0
   maxStack: 1
