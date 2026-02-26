@@ -4,6 +4,15 @@ using UnityEngine.SceneManagement;
 
 public static class GameSessionManager
 {
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void ResetStaticsOnPlayStart()
+    {
+        Time.timeScale = 1f;
+        GlobalPlayerHP.ResetAll();
+        GlobalMonsterState.ResetAll();
+        GlobalWorldState.ResetAll();
+        DeliverBattleData.Clear();
+    }
 
         public static void ResetGameSession()
     {

@@ -38,9 +38,7 @@ public class Itemslot : MonoBehaviour
 
     public void SetItemManager(ItemManager itemManager)
     {
-        item = itemManager;
-
-       
+        item = itemManager;       
     }
 
     public void CreateEffectActivate()
@@ -49,8 +47,7 @@ public class Itemslot : MonoBehaviour
         {
             StartCoroutine(CreateEffect());
             isFirstEffect = false;
-        }
-        
+        }        
     }
 
     public void SetItemEdgeAlpha(int alpha)
@@ -58,23 +55,16 @@ public class Itemslot : MonoBehaviour
         Transform edgeTr = transform.Find("itemedge");
         itemEdgeImg = edgeTr.GetComponent<Image>();
         Color c = itemEdgeImg.color;
-        c.a = alpha;      // 0 = 투명, 1 = 불투명
+        c.a = alpha;
         itemEdgeImg.color = c;
     }
 
     IEnumerator CreateEffect()
-    {
-        
-        animator.SetTrigger("CreateEffect");
-        Debug.Log("이펙트 발동");
+    {        
+        animator.SetTrigger("CreateEffect");        
 
         yield return new WaitForSeconds(1.0f);
 
         SetItemEdgeAlpha(1);
-    }
-
-    public ItemManager GetItemManager()
-    {
-        return item;
-    }
+    }    
 }

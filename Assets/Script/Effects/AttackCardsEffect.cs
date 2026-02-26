@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackCardsEffect : Effect
 {
+    [Min(1)]
     [SerializeField] private int damageAmount;
     public override GameAction GetGameAction()
     {
@@ -20,4 +21,3 @@ public class AttackCardsEffect : Effect
         return new DealDamageGA(damageAmount, targets);
     }
 }
-

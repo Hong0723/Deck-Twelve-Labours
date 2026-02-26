@@ -7,7 +7,6 @@ public class PlayerDataToJson : MonoBehaviour
 {
     public static PlayerDataToJson Instance;
     public PlayerData playerData;
-
     void Awake()
     {
         if (Instance != null)
@@ -19,25 +18,15 @@ public class PlayerDataToJson : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SavePlayerDataToJson();
     }
-
-    void Start()
-    {
-        //SavePlayerDataToJson();
-    }
-    string directoryPath = Path.Combine(
-            Application.dataPath,
-            "UI",
-            "Inventory"
-        );
+    
+    string directoryPath = Path.Combine(Application.dataPath, "UI", "Inventory");
 
     [ContextMenu("To Json Data")]
     void SavePlayerDataToJson()
     {
-        string jsonData = JsonUtility.ToJson(playerData, true);
+        string jsonData = JsonUtility.ToJson(playerData, true);        
 
-        
-
-        // ⭐ 폴더 없으면 생성
+        //폴더 없으면 생성
         Directory.CreateDirectory(directoryPath);
 
         string filePath = Path.Combine(
@@ -66,9 +55,7 @@ public class PlayerDataToJson : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(data, true);
 
-
-
-        // ⭐ 폴더 없으면 생성
+        //폴더 없으면 생성
         Directory.CreateDirectory(directoryPath);
 
         string filePath = Path.Combine(
@@ -134,16 +121,13 @@ public class PlayerDataToJson : MonoBehaviour
     }
 }
 
-
-
 [System.Serializable]
 public class PlayerData
 {
     public string name;
     public int age;
     public int level;
-    public bool isDead;
-    //public ItemData[] items;
+    public bool isDead;    
     public List<ItemData> items = new List<ItemData>();
 }
 

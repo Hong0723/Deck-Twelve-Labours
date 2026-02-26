@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/ItemUse/GameScenePlayerHPUP")]
 public class GameSceneHealthUP : ItemUseAction
 {
-    public override void Execute(GameObject user)
+    public override void Execute()
     {
         ItemUseManager.UpdateGameScenePlayerHp(GlobalPlayerHP.CurrentHP + 10);
         Debug.Log("체력회복");

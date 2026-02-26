@@ -5,42 +5,22 @@ public class PlayerSkill : MonoBehaviour
 {
     public List<EffectData> effects;//인스펙터 등록용
     private Dictionary<string, EffectObjBol> effectMap;//코드내 서치용, 원본 오브젝트
-    public List<EffectObjBol> AttackEffects;//3가지 공격
-    //private Dictionary<string, EffectObjBol> effectMapRef;//Instantiate 후 여기에 저장,후에는 Destroy관리
-    private Dictionary<string, GameObject> effectMapRef; // 생성된 인스턴스
+    public List<EffectObjBol> AttackEffects;//3가지 공격모션 저장용    
+    private Dictionary<string, GameObject> effectMapRef;//생성된 인스턴스 관리용
+    public GameObject skillStartPos;//스킬이펙트 시작점
+    public GameObject skillEndPos;//스킬이펙트 끝나는 지점
+    private bool isMoveAble;//스킬이펙트가 이동하면서 실행되어야 할때
+    public float speed;//이동속도
+    
 
-    public GameObject skillStartPos;//스킬 시작점
-    public GameObject skillEndPos;//플레이어가 스킬 맞는 지점
-    private bool isMoveAble;
-    public float speed;
-    public Player player;
-/*
-    // ===== 싱글톤 =====
-    public static PlayerSkill Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // 씬 넘어가도 유지하려면 사용
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-
-    // ==================
-    */
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         isMoveAble = false;
         speed = 5f;
         effectMap = new Dictionary<string, EffectObjBol>();
         effectMapRef = new Dictionary<string, GameObject>();
+
+        //이름에 Attack이 들어가있다면 공격리스트에 저장(추후 랜덤 뽑기를 위해)
         foreach (var e in effects)
         {
             if (e.skillNameHaveImpact.StartsWith("Attack"))
@@ -68,7 +48,7 @@ public class PlayerSkill : MonoBehaviour
             }
         }
 
-
+        //테스트용
         if (Input.GetKeyDown(KeyCode.Space))
         {
             EffectAttack();
@@ -77,31 +57,31 @@ public class PlayerSkill : MonoBehaviour
     
     public void EffectAttack()
     {
+        //이전에 사용하던 이펙트가 안지워졌을 경우 한번더 지우는 코드
         if (effectMapRef.ContainsKey("Attack") && effectMapRef["Attack"] != null)
         {
             Destroy(effectMapRef["Attack"]);
         }
-
-        player.Attack1Animation();
+        
+        //랜덤 공격모션
         int AttackIndex = Random.Range(0, AttackEffects.Count);
         
-        if (false)//(effectMap["Attack"].haveImpaact)
-        {//플레이어가 스킬에 대한 피격애니메이션이 있을때
-            Debug.Log("Attack 생성");
-            //effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, skillStartPos.transform.position, Quaternion.identity);
+        if (false)//스킬이펙트가 이동하면서 실행되어야 할때
+        {           
+            isMoveAble = true;
             effectMapRef["Attack"] = Instantiate(AttackEffects[AttackIndex].prefab, skillStartPos.transform.position, Quaternion.identity);
             Animator animator = effectMapRef["Attack"].GetComponent<Animator>();
             animator.SetTrigger("Effect");            
         }
-        else
-        {//없을때
-            //effectMapRef["Attack"] = Instantiate(effectMap["Attack"].prefab, skillStartPos.transform.position, Quaternion.identity);
+        else//제자리 이펙트 재생
+        {           
+            //생성된 이펙트 인스턴스 저장
             effectMapRef["Attack"] = Instantiate(AttackEffects[AttackIndex].prefab, skillStartPos.transform.position, Quaternion.identity);
             Animator animator = effectMapRef["Attack"].GetComponent<Animator>();
             animator.SetTrigger("Effect");
         }
 
-        EffectAttackImpact();//때리면 피격모션까지
+        EffectAttackImpact();//피격이펙트
     }
 
     public void EffectAttackImpact()
@@ -109,11 +89,7 @@ public class PlayerSkill : MonoBehaviour
         if (effectMapRef.ContainsKey("HurtedImpact") && effectMapRef["HurtedImpact"] != null)
         {
             Destroy(effectMapRef["HurtedImpact"]);
-        }
-
-
-        Debug.Log("HurtedImpact");
-        //animator1.SetBool("Effect", false);파괴하는데..?
+        }                
         effectMapRef["HurtedImpact"] = Instantiate(effectMap["HurtedImpact"].prefab, skillEndPos.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["HurtedImpact"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
@@ -124,10 +100,7 @@ public class PlayerSkill : MonoBehaviour
         if (effectMapRef.ContainsKey("Heal") && effectMapRef["Heal"] != null)
         {
             Destroy(effectMapRef["Heal"]);
-        }
-        player.HurtedAnimation();
-        Debug.Log("Heal");
-        //animator1.SetBool("Effect", false);파괴하는데..?
+        }           
         effectMapRef["Heal"] = Instantiate(effectMap["Heal"].prefab, skillStartPos.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["Heal"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
@@ -139,9 +112,6 @@ public class PlayerSkill : MonoBehaviour
         {
             Destroy(effectMapRef["Shield"]);
         }
-        
-        Debug.Log("Shield");
-        //animator1.SetBool("Effect", false);파괴하는데..?
         effectMapRef["Shield"] = Instantiate(effectMap["Shield"].prefab, skillStartPos.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["Shield"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
@@ -153,12 +123,12 @@ public class PlayerSkill : MonoBehaviour
         {
             Destroy(effectMapRef["Draw"]);
         }
-        Debug.Log("Draw");
-        //animator1.SetBool("Effect", false);파괴하는데..?
         effectMapRef["Draw"] = Instantiate(effectMap["Draw"].prefab, skillStartPos.transform.position, Quaternion.identity);
         Animator animator = effectMapRef["Draw"].GetComponent<Animator>();
         animator.SetTrigger("Effect");
     }
+
+    //이펙트 애니메이션 끝에 AddAnimationEvent로 호출하여 사용된 인스턴스 제거
     public void EndEffectAttack()
     {
         Destroy(effectMapRef["Attack"]);
@@ -183,6 +153,4 @@ public class PlayerSkill : MonoBehaviour
     {
         Destroy(effectMapRef["Draw"]);
     }
-
-
 }

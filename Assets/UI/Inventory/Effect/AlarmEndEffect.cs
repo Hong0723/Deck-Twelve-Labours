@@ -20,6 +20,7 @@ public class AlarmEndEffect : MonoBehaviour
         playerEffectAccureScript =playerObj.GetComponent<PlayerSkill>();
     }
 
+    //Enemy 이펙트 종료 알림
     public void EndEffectAttack()
     {
 
@@ -48,9 +49,7 @@ public class AlarmEndEffect : MonoBehaviour
         effectAccureScript.EndEffectDefense();
     }
 
-
-
-    //플레이어용
+    //Player 이펙트 종료 알림
     public void EndEffectAttackPlayer()
     {
         playerEffectAccureScript.EndEffectAttack();

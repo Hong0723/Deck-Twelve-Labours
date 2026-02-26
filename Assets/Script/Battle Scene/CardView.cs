@@ -92,8 +92,22 @@ public class CardView : MonoBehaviour
         }
         else
         {
-            if (ManaSystem.Instance.HasEnoughMana(Card.Mana)
-                && Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f, dropLayer))
+            bool canPlay = ManaSystem.Instance.HasEnoughMana(Card.Mana);
+            bool hitDropZone = false;
+
+            Camera cam = Camera.main;
+            if (cam != null)
+            {
+                Ray mouseRay = cam.ScreenPointToRay(Input.mousePosition);
+                hitDropZone = Physics.Raycast(mouseRay, out RaycastHit hit, 1000f, dropLayer);
+            }
+            else
+            {
+                // Fallback: main camera가 없을 때만 기존 방식 사용
+                hitDropZone = Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f, dropLayer);
+            }
+
+            if (canPlay && hitDropZone)
             {
                 PlayCardGA playCardGA = new(Card);
                 ActionSystem.Instance.Perform(playCardGA);
@@ -109,4 +123,3 @@ public class CardView : MonoBehaviour
 
     }
 }
-
