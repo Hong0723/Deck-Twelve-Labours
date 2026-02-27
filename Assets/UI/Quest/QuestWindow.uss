@@ -170,7 +170,7 @@
 /* ===== 퀘스트 열기: 스프라이트 시트에서 한 칸만 보여주기 ===== */
 .quest-open-btn {
     position: absolute;
-    top: 32px;
+    top: 96px;
     left: 8px;
 
     /* (1) 아이콘 한 칸 픽셀 크기 = CELL_W/CELL_H */
