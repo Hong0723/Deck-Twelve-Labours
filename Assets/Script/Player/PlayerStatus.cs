@@ -18,7 +18,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         RefreshHPBar();
     }
 
-    private void Update()
+    /* private void Update()
     {
         // (원본 유지) 스페이스바를 누르면 적(EnemyStatus)의 피를 깎음
         if (Input.GetKeyDown(KeyCode.Space))
@@ -31,7 +31,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
                 player.Attack1Animation(); // 공격애니메이션 재생
             }
         }
-    }
+    } */
 
     public void TakeDamage(int damage)
     {

@@ -68,6 +68,14 @@ public class BattleManager : MonoBehaviour
         if (state == BattleState.Victory)
         return;
         state = BattleState.Victory;
+        MonsterType info = DeliverBattleData.MonsterInfo;
+         if (info != null && info.isFinalBoss)
+    {
+        //  케르베로스면 바로 엔딩씬
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Ending Scene");
+        return;
+    }
+
         GameOverHandler handler = FindObjectOfType<GameOverHandler>();
         handler.DisplayVictory(enemyObject);
     }

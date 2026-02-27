@@ -20,5 +20,6 @@ public class MonsterType : ScriptableObject
     public int weakenHP; 
     public int invincibleTurns; // 6과업 새용
     public bool surviveMode; // 11과업 아틀라스용
+    public bool isFinalBoss; // 엔딩씬 용
 
 }

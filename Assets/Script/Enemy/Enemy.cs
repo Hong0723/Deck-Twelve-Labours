@@ -13,11 +13,11 @@ public enum EnemyActionType
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    public int maxHP = 40;
+    public int maxHP = 50;
     public int currentHP;
     public int shield;
     public bool CounterReady;
-    public int defenseReduce = 40;
+    public int defenseReduce = 50;
     public int counterDamage = 4;
     public int attackDamage;
     public EnemyActionType nextAction;
@@ -192,7 +192,7 @@ public void OnEnemyTurnStart()
     }
     }
 
-     public void OnDeathFromStatus()
+    public void OnDeathFromStatus()
     {
         // 히드라 체크
         if (DeliverBattleData.MonsterInfo.reviveTimes > 0)
