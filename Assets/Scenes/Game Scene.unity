@@ -61350,6 +61350,7 @@ MonoBehaviour:
   playerTag: Player
   interactUI: {fileID: 288061438}
   interactKey: 101
+  requireLabours1To11: 1
   targetSceneName: Game Scene 2
   targetSpawnId: Default
   fadeOutTime: 3
