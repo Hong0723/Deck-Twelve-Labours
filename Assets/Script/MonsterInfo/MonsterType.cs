@@ -22,4 +22,6 @@ public class MonsterType : ScriptableObject
     public bool surviveMode; // 11과업 아틀라스용
     public bool isFinalBoss; // 엔딩씬 용
 
+    [Header("Set UP")]
+    public Vector3 SpawnPosition;//BattleScene 몬스터 스폰 위치 오프셋
 }

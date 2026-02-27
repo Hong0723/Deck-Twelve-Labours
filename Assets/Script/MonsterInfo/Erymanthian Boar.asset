@@ -26,3 +26,5 @@ MonoBehaviour:
   weakenHP: 100
   invincibleTurns: 0
   surviveMode: 0
+  isFinalBoss: 0
+  SpawnPosition: {x: 0, y: 0.1, z: 0}

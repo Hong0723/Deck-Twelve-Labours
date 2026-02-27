@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour, IDamageable
             counterDamage = monsterInfo.counterDamage;
             attackDamage = monsterInfo.AttackDamage;
             GameObject monsterObj = FindByTagAndName("Monster", monsterInfo.name);
-            ReplaceVisual(this.gameObject, monsterObj);            
+            ReplaceVisual(monsterInfo.SpawnPosition, monsterObj);            
             effectScript = newVisual.GetComponent<MonsterSkill>();
             //-----
         }
@@ -306,23 +306,24 @@ void DecideNextAction()
 
 
     //화면 바깥에 있는 적GameObject를 가져옵니다.
-    public void ReplaceVisual(GameObject target, GameObject visualSource)
+    public void ReplaceVisual(Vector3 spawnPos, GameObject visualSource)
     {
-        if (!target || !visualSource)
+        
+        if (!visualSource)
             return;
-
+        
         //기존 적GameObject제거
-        Transform old = target.transform.Find("VisualRoot");
+        Transform old = this.gameObject.transform.Find("VisualRoot");
         if (old) Object.Destroy(old.gameObject);
 
-        newVisual = Object.Instantiate(visualSource, target.transform);
+        newVisual = Object.Instantiate(visualSource, this.transform);
         newVisual.name = "VisualRoot";
 
-        newVisual.transform.localPosition = Vector3.zero;
+        newVisual.transform.localPosition = spawnPos;
         newVisual.transform.localRotation = Quaternion.identity;
 
         Vector3 srcWorldScale = visualSource.transform.lossyScale;
-        Vector3 parentWorldScale = target.transform.lossyScale;
+        Vector3 parentWorldScale = this.gameObject.transform.lossyScale;
 
         newVisual.transform.localScale = new Vector3(
             srcWorldScale.x / parentWorldScale.x,
@@ -330,8 +331,9 @@ void DecideNextAction()
             srcWorldScale.z / parentWorldScale.z
         );
 
-        
+       
         animator = newVisual.GetComponent<Animator>();
+        
     }
 
     public GameObject GetnewVisualObj()
