@@ -66,19 +66,41 @@ public class BattleManager : MonoBehaviour
     public void WinBattle()
     {
         if (state == BattleState.Victory)
-        return;
+            return;
+
         state = BattleState.Victory;
+
         MonsterType info = DeliverBattleData.MonsterInfo;
-         if (info != null && info.isFinalBoss)
-    {
-        //  케르베로스면 바로 엔딩씬
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Ending Scene");
-        return;
-    }
+
+        // ✅ (추가) 이번 전투의 적 ID를 퀘스트에 보고
+        // 아래 GetEnemyIdForQuest(...)는 네 프로젝트에 맞게 1줄만 맞춰주면 됨
+        string enemyIdForQuest = GetEnemyIdForQuest(info, enemyObject);
+
+        Debug.Log($"[Battle] WinBattle 호출됨 | enemyIdForQuest = {enemyIdForQuest}");
+        Debug.Log($"[Battle] QuestUIController.Instance 존재 여부 = {(QuestUIController.Instance != null)}");
+
+        if (!string.IsNullOrEmpty(enemyIdForQuest))
+            QuestUIController.Instance?.NotifyEnemyDefeated(enemyIdForQuest, 1);
+
+        if (info != null && info.isFinalBoss)
+        {
+            // ✅ 케르베로스면 바로 엔딩씬 (퀘스트 처리 후 이동)
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Ending Scene");
+            return;
+        }
 
         GameOverHandler handler = FindObjectOfType<GameOverHandler>();
         handler.DisplayVictory(enemyObject);
     }
+
+    private string GetEnemyIdForQuest(MonsterType info, GameObject enemyObject)
+    {
+        if (info != null && !string.IsNullOrEmpty(info.monsterName))
+            return info.monsterName;
+
+        return null;
+    }
+
     private IEnumerator EnemyTurn()
     {
         enemyObject?.SendMessage(

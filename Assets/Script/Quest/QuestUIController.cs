@@ -46,6 +46,8 @@ public class QuestUIController : MonoBehaviour
         }
         Instance = this;
 
+        DontDestroyOnLoad(gameObject);
+
         doc = GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
 
@@ -112,6 +114,7 @@ public class QuestUIController : MonoBehaviour
             if (IsVisible()) Hide();
             else Show();
         }
+
         // ✅ 퀘스트 창이 열려있을 때 ESC 처리: 설정창 호출 방지(ESC 소비)
         if (IsVisible() && Input.GetKeyDown(KeyCode.Escape))
         {
@@ -238,7 +241,7 @@ public class QuestUIController : MonoBehaviour
     public void NotifyEnemyDefeated(string enemyId, int amount = 1)
     {
         if (string.IsNullOrEmpty(enemyId)) return;
-
+        Debug.Log($"[Quest] NotifyEnemyDefeated 호출됨: {enemyId}");
         bool anyChanged = false;
 
         foreach (var q in quests)
@@ -249,7 +252,10 @@ public class QuestUIController : MonoBehaviour
             {
                 if (string.IsNullOrEmpty(obj.targetEnemyId)) continue;
 
-                if (obj.targetEnemyId == enemyId)
+                if (string.Equals(
+                        obj.targetEnemyId?.Trim(),
+                        enemyId?.Trim(),
+                        System.StringComparison.Ordinal))
                 {
                     obj.current = Mathf.Min(obj.current + amount, obj.required);
                     anyChanged = true;
@@ -284,25 +290,173 @@ public class QuestUIController : MonoBehaviour
     {
         quests.Clear();
 
-        for (int i = 1; i <= 12; i++)
+        quests.Add(new QuestModel
         {
-            quests.Add(new QuestModel
+            id = "labour1",
+            title = "제1과업",
+            description = "무기가 통하지 않는 사자를 동굴로 몰아넣고 질식시켜 처치하라.",
+            completed = false,
+            objectives = new List<QuestObjective>
             {
-                id = $"chapter{i}",
-                title = $"Chapter{i}.",
-                description = $"스테이지 {i}를 클리어하기 위해 적을 처치하자.",
-                completed = false,
-                objectives = new List<QuestObjective>
-                {
-                    new QuestObjective
-                    {
-                        text = $"Test{i} 처치",
-                        targetEnemyId = $"Test{i}",
-                        current = 0,
-                        required = 1
-                    }
-                }
-            });
+                new QuestObjective { text = "네메아의 사자 처치(질식)", targetEnemyId = "Nemean Lion", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour2",
+            title = "제2과업",
+            description = "머리를 자르면 재생한다. 불로 지져 재생을 막아라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "히드라 처치", targetEnemyId = "Lernaean Hydra", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour3",
+            title = "제3과업",
+            description = "죽이지 말고 지치게 만들어 생포하라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "사슴 포획", targetEnemyId = "Ceryneian Hind", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour4",
+            title = "제4과업",
+            description = "눈 덮인 산으로 몰아 지치게 만든 뒤 포획하라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "멧돼지 생포", targetEnemyId = "Erymanthian Boar", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour5",
+            title = "제5과업",
+            description = "강의 흐름을 바꿔 하루 만에 외양간을 씻어내라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "외양간 과업 완료", targetEnemyId = "Gorgon", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour6",
+            title = "제6과업",
+            description = "청동 방울로 새를 날려보낸 뒤 격추하라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "괴조 처치", targetEnemyId = "Stymphalian Birds", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour7",
+            title = "제7과업",
+            description = "광폭해진 황소를 죽이지 않고 제압하라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "크레타의 황소 제압", targetEnemyId = "Cretan Bull", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour8",
+            title = "제8과업",
+            description = "폭군을 쓰러뜨리고 식인 말을 제압하라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "디오메데스 처치", targetEnemyId = "Mares of Diomedes", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour9",
+            title = "제9과업",
+            description = "전투에서 승리해 허리띠를 획득하라.(퀘스트 달성 불가로 인한 처리)",
+            completed = true,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "히폴리테 전투 승리", targetEnemyId = "Hippolyta", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour10",
+            title = "제10과업",
+            description = "게리온을 쓰러뜨리고 소 떼를 확보하라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "게리온 처치", targetEnemyId = "Geryon and  Orthrus", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour11",
+            title = "제11과업",
+            description = "시련을 통과해 황금 사과를 얻어라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "황금 사과 획득", targetEnemyId = "Atlas", current = 0, required = 1 }
+            }
+        });
+
+        quests.Add(new QuestModel
+        {
+            id = "labour12",
+            title = "제12과업",
+            description = "무기 없이 케르베로스를 제압하고 돌아오라.",
+            completed = false,
+            objectives = new List<QuestObjective>
+            {
+                new QuestObjective { text = "케르베로스 제압", targetEnemyId = "Cerberus", current = 0, required = 1 }
+            }
+        });
+    }
+    // ✅ 1~11 과업(=labour1~labour11) 모두 완료했는지
+    public bool AreLabours1To11Completed()
+    {
+        for (int i = 1; i <= 11; i++)
+        {
+            string id = $"labour{i}";
+            var q = quests.Find(x => x.id == id);
+            if (q == null || !q.completed)
+                return false;
         }
+        return true;
+    }
+
+    // ✅ (선택) 현재 1~11 완료 개수
+    public int GetCompletedLabours1To11Count()
+    {
+        int count = 0;
+        for (int i = 1; i <= 11; i++)
+        {
+            string id = $"labour{i}";
+            var q = quests.Find(x => x.id == id);
+            if (q != null && q.completed) count++;
+        }
+        return count;
     }
 }
