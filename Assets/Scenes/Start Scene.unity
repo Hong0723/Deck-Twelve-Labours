@@ -940,6 +940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BGMManager
   fieldBGM: {fileID: 8300000, guid: ea45ac7d754399b4ba65cae2a8f358e6, type: 3}
   battleBGM: {fileID: 8300000, guid: 94c200ced0cedf5449a237f87b4dac7a, type: 3}
+  endingBGM: {fileID: 8300000, guid: 742ebd2675898ff4f97908a3c5adaf3c, type: 3}
 --- !u!82 &750543960
 AudioSource:
   m_ObjectHideFlags: 0

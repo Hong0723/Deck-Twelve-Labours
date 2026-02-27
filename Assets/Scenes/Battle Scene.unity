@@ -5932,6 +5932,7 @@ GameObject:
   - component: {fileID: 496155535}
   - component: {fileID: 496155537}
   - component: {fileID: 496155536}
+  - component: {fileID: 496155538}
   m_Layer: 5
   m_Name: IntentTooltip
   m_TagString: Untagged
@@ -5997,6 +5998,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496155533}
   m_CullTransparentMesh: 1
+--- !u!225 &496155538
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496155533}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &499250379
 GameObject:
   m_ObjectHideFlags: 0
@@ -12792,7 +12805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1158947371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21118,7 +21131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1927545251
 RectTransform:
   m_ObjectHideFlags: 0
