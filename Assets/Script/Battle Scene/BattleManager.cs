@@ -21,6 +21,9 @@ public class BattleManager : MonoBehaviour
 
     private BattleState state;
 
+    public bool IsVictory => state == BattleState.Victory; // 경빈 추가 퀘스트에서 승리 판정
+    public GameObject EnemyObject => enemyObject; // 경빈 추가 퀘스트에서 오브젝트 id 불러오는 인터페이스
+
     void Awake()
     {
         Instance = this;
