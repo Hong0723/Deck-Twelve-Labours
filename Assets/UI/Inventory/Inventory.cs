@@ -115,13 +115,7 @@ public class Inventory : MonoBehaviour
                 StartCoroutine(LateSort());
                 isChangeSlot = false;
             }
-        }
-
-        //사과  아이템 테스트용
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            AddInventorySlot(4);
-        }
+        }        
     }
     
 

@@ -46,13 +46,7 @@ public class PlayerSkill : MonoBehaviour
                 EffectAttackImpact();
                 isMoveAble = false;
             }
-        }
-
-        //테스트용
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            EffectAttack();
-        }
+        }        
     }
     
     public void EffectAttack()
