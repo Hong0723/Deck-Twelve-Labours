@@ -6,7 +6,7 @@
     "items": [
         {
             "name": "체력포션",
-            "count": 2,
+            "count": 0,
             "value": 0
         },
         {
@@ -17,11 +17,6 @@
         {
             "name": "사과",
             "count": 0,
-            "value": 0
-        },
-        {
-            "name": "스태프",
-            "count": 1,
             "value": 0
         }
     ]

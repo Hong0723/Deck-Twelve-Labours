@@ -7055,6 +7055,7 @@ GameObject:
   - component: {fileID: 184631621}
   - component: {fileID: 184631620}
   - component: {fileID: 184631619}
+  - component: {fileID: 184631626}
   m_Layer: 0
   m_Name: Nemean lion
   m_TagString: Monster
@@ -7243,7 +7244,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -549717355
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: a87cb8c699b9fee4295147a58d4403cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7282,6 +7283,19 @@ Transform:
   - {fileID: 595914033}
   m_Father: {fileID: 494124837}
   m_LocalEulerAnglesHint: {x: 0, y: 175.317, z: 0}
+--- !u!114 &184631626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184631618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 21300000, guid: b46d628ae9f87e740b05767345c01d99, type: 3}
 --- !u!1 &191782907
 GameObject:
   m_ObjectHideFlags: 0
@@ -16474,6 +16488,7 @@ GameObject:
   - component: {fileID: 392014439}
   - component: {fileID: 392014438}
   - component: {fileID: 392014437}
+  - component: {fileID: 392014441}
   m_Layer: 0
   m_Name: Geryon and  Orthrus
   m_TagString: Untagged
@@ -16642,6 +16657,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &392014441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392014435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 21300000, guid: 4bb0eb62512888b41ba10ac0b4435b8a, type: 3}
 --- !u!1001 &392285108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18759,6 +18787,7 @@ GameObject:
   - component: {fileID: 465247457}
   - component: {fileID: 465247456}
   - component: {fileID: 465247455}
+  - component: {fileID: 465247459}
   m_Layer: 0
   m_Name: Ceryneian Hind
   m_TagString: Untagged
@@ -18927,6 +18956,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &465247459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465247453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 21300000, guid: 29e326f3bfb914e42a3e793f0f6a2b85, type: 3}
 --- !u!1 &468976450
 GameObject:
   m_ObjectHideFlags: 0
@@ -19996,7 +20038,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1197162843
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300098, guid: 1c9ed9d1200c29d4cbfd2071028c1cd5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -22652,7 +22694,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1197162843
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300054, guid: 9f8f114589864b6489859a58fbb6baf9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -24734,6 +24776,7 @@ GameObject:
   - component: {fileID: 638127322}
   - component: {fileID: 638127321}
   - component: {fileID: 638127320}
+  - component: {fileID: 638127324}
   m_Layer: 0
   m_Name: Cretan Bull
   m_TagString: Untagged
@@ -24902,6 +24945,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &638127324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638127318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 21300000, guid: 22c7be717ccd7a0438bead6156e31a91, type: 3}
 --- !u!1001 &639169826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26783,6 +26839,7 @@ GameObject:
   - component: {fileID: 693300788}
   - component: {fileID: 693300787}
   - component: {fileID: 693300791}
+  - component: {fileID: 693300792}
   m_Layer: 0
   m_Name: Gorgon
   m_TagString: Untagged
@@ -26973,6 +27030,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &693300792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693300785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 21300000, guid: 4bb0eb62512888b41ba10ac0b4435b8a, type: 3}
 --- !u!1001 &693480530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31145,6 +31215,7 @@ GameObject:
   - component: {fileID: 830994992}
   - component: {fileID: 830994991}
   - component: {fileID: 830994990}
+  - component: {fileID: 830994994}
   m_Layer: 0
   m_Name: Mares of Diomedes
   m_TagString: Untagged
@@ -31313,6 +31384,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &830994994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830994988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 21300000, guid: b46d628ae9f87e740b05767345c01d99, type: 3}
 --- !u!1001 &832699336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36934,6 +37018,7 @@ GameObject:
   - component: {fileID: 1006946699}
   - component: {fileID: 1006946701}
   - component: {fileID: 1006946700}
+  - component: {fileID: 1006946702}
   m_Layer: 5
   m_Name: FadeImage
   m_TagString: Untagged
@@ -36998,6 +37083,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006946698}
   m_CullTransparentMesh: 1
+--- !u!114 &1006946702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006946698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 0}
 --- !u!4 &1013671826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3112375125460322631, guid: 424ccba55881d2743a04e1f1a4947e4c, type: 3}
@@ -40331,7 +40429,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1197162843
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1c9ed9d1200c29d4cbfd2071028c1cd5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -55073,6 +55171,7 @@ GameObject:
   - component: {fileID: 1405533747}
   - component: {fileID: 1405533746}
   - component: {fileID: 1405533750}
+  - component: {fileID: 1405533751}
   m_Layer: 0
   m_Name: Stymphalian Birds
   m_TagString: Untagged
@@ -55254,6 +55353,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestEnemyId
   <EnemyId>k__BackingField: StymphalianBird
+--- !u!114 &1405533751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405533744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 21300000, guid: 29e326f3bfb914e42a3e793f0f6a2b85, type: 3}
 --- !u!1001 &1410562136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58409,6 +58521,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7947911505737750448, guid: 713b33322b495794e92184973ece3034, type: 3}
   m_PrefabInstance: {fileID: 1515572124}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1517288050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517288052}
+  - component: {fileID: 1517288051}
+  m_Layer: 0
+  m_Name: CombatContext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1517288051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517288050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83d19c11bcd49b44a732d99d4abcbe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatContext
+  selectedBattleBackground: {fileID: 0}
+--- !u!4 &1517288052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517288050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.45351, y: 0, z: 17.99618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1518884787 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3112375125460322631, guid: 424ccba55881d2743a04e1f1a4947e4c, type: 3}
@@ -61490,7 +61647,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1015392785
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 4
   m_Sprite: {fileID: -438622927, guid: b57070f28b7485d40810fb7ab0ef9e04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -68403,7 +68560,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -651100847
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1013059874, guid: ad5462cd969690f49ad2fe1bb9c16409, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -70157,7 +70314,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1197162843
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300054, guid: 9f8f114589864b6489859a58fbb6baf9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -70277,6 +70434,7 @@ GameObject:
   - component: {fileID: 1925427034}
   - component: {fileID: 1925427033}
   - component: {fileID: 1925427032}
+  - component: {fileID: 1925427036}
   m_Layer: 0
   m_Name: Erymanthian Boar
   m_TagString: Untagged
@@ -70445,6 +70603,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1925427036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925427030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 21300000, guid: 22c7be717ccd7a0438bead6156e31a91, type: 3}
 --- !u!1 &1931042428
 GameObject:
   m_ObjectHideFlags: 0
@@ -73598,6 +73769,7 @@ GameObject:
   - component: {fileID: 2045085437}
   - component: {fileID: 2045085436}
   - component: {fileID: 2045085435}
+  - component: {fileID: 2045085439}
   m_Layer: 0
   m_Name: Lernaean Hydra
   m_TagString: Untagged
@@ -73753,7 +73925,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -549717355
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 0debdeef8255487489a7b1b7f595853f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -73766,6 +73938,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2045085439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045085433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef4d5e7c7eebc44eabd6bca82aa5a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterBattleBackground
+  battleBackground: {fileID: 21300000, guid: 4a4b08ef1b611d042831c7d2aa9b3550, type: 3}
 --- !u!1001 &2045658890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74736,7 +74921,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1015392785
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1469048376, guid: 37091bcc76c5f664fb3eef51271939a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -81902,3 +82087,4 @@ SceneRoots:
   - {fileID: 815937926}
   - {fileID: 434820690}
   - {fileID: 2083967443}
+  - {fileID: 1517288052}
