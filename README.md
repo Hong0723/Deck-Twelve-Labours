@@ -4,7 +4,16 @@
 [게임 다운로드 · itch.io](https://hong0723.itch.io/deck-twelve-labours) · [게임 소스 · develop](https://github.com/Hong0723/Deck-Twelve-Labours/tree/develop)
 
 ## 플레이 영상 · 스크린샷
-추후 추가 예정입니다.
+[![플레이 미리보기](docs/media/preview.gif)](https://github.com/Hong0723/Deck-Twelve-Labours/blob/main/docs/media/gameplay.mp4)
+
+[전체 플레이 영상 · MP4](https://github.com/Hong0723/Deck-Twelve-Labours/blob/main/docs/media/gameplay.mp4) · [다운로드](https://github.com/Hong0723/Deck-Twelve-Labours/raw/refs/heads/main/docs/media/gameplay.mp4) · 1080p / 30fps
+
+<details>
+<summary>스크린샷 보기</summary>
+
+![게임플레이 화면](docs/media/screenshot.png)
+
+</details>
 
 ## 게임 소개
 필드를 탐험하며 적과 만나 카드 전투를 진행하고, 획득한 아이템과 보상으로 다음 전투를 준비합니다. 탐험 중의 대화·퀘스트와 손패·마나를 활용하는 전투를 연결한 게임입니다.
